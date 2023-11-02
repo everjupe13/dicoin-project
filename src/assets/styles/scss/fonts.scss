@@ -1,0 +1,23 @@
+@mixin font($family, $filePath, $weight: normal, $style: normal) {
+  @font-face {
+    font-family: $family;
+    src: url("#{$filePath}.woff") format("woff"),
+    url("#{$filePath}.woff2") format("woff2"),
+    url("#{$filePath}.ttf") format("truetype");
+
+    font-weight: $weight;
+    font-style: $style;
+    font-display: swap;
+  }
+}
+
+@include font('Gilroy', '@/assets/fonts/Gilroy/Gilroy-Regular', 400);
+@include font('Gilroy', '@/assets/fonts/Gilroy/Gilroy-Medium', 500);
+@include font('Gilroy', '@/assets/fonts/Gilroy/Gilroy-MediumItalic', 500, italic);
+@include font('Gilroy', '@/assets/fonts/Gilroy/Gilroy-SemiBold', 600);
+@include font('Gilroy', '@/assets/fonts/Gilroy/Gilroy-Bold', 700);
+@include font('Gilroy', '@/assets/fonts/Gilroy/Gilroy-ExtraBold', 800);
+
+@include font('Hauora', '@/assets/fonts/Hauora/Hauora-Regular', 400);
+@include font('Hauora', '@/assets/fonts/Hauora/Hauora-Medium', 500);
+@include font('Hauora', '@/assets/fonts/Hauora/Hauora-Bold', 700);

@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/react.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vite + React + TS</title>
+
+  <style>
+    body {
+      background: #4b4b4b;
+    }
+
+    .app-preloader {
+      display: none;
+
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      z-index: 1000;
+      transform: translate(-50%, -50%);
+
+      background-color: #222222;
+
+      opacity: 0;
+      transition: border-radius .2s ease, width .5s ease, height .5s ease;
+      transition-delay: .1s;
+      overflow: hidden;
+    }
+
+    .app-preloader__icon {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+
+      transition: opacity .2s linear, width, height .9s ease;
+      opacity: 0;
+    }
+
+    .app-preloader.before-load {
+      display: block;
+
+      width: calc(100vmax + 50px);
+      height: calc(100vmax + 50px);
+      border-radius: 0;
+
+      opacity: 1;
+    }
+
+    .app-preloader.before-load .app-preloader__icon {
+      opacity: 1;
+    }
+
+    .app-preloader.erase {
+      border-radius: 100%;
+      width: 150px;
+      height: 150px;
+    }
+
+    .app-preloader.erase .app-preloader__icon {
+      opacity: 0.1;
+      width: 100vmax;
+      height: 100vmax;
+    }
+
+    .body-preloader-loading {
+      @apply overflow-hidden relative
+    }
+  </style>
+
+</head>
+
+<body class="body-preloader-loading">
+  <div id="app-preloader" class="app-preloader before-load">
+    <!-- <svg class="app-preloader__icon" xmlns="http://www.w3.org/2000/svg" width="55" height="54" viewBox="0 0 55 54" fill="none">
+      <path
+        d="M44.5811 47.4935C55.8993 37.7849 57.2041 20.7393 47.4954 9.42115C45.8294 7.47894 43.9473 5.83159 41.9152 4.48417L21.2434 22.2164L35.2583 22.2877C42.7564 22.3259 46.182 31.6537 40.4908 36.5356L20.934 53.3113C29.0025 55.1654 37.8152 53.2973 44.5811 47.4935Z"
+        fill="#6CEABD" />
+      <path
+        d="M13.5524 16.9561L32.6297 0.591752C24.6821 -1.09577 16.066 0.808541 9.42302 6.50688C-1.89514 16.2155 -3.1999 33.2611 6.50875 44.5793C8.08961 46.4222 9.865 47.9997 11.7785 49.3073L32.7999 31.2753L18.785 31.204C11.2869 31.1658 7.86121 21.838 13.5524 16.9561Z"
+        fill="#6CEABD" />
+    </svg> -->
+    <svg class="app-preloader__icon" xmlns="http://www.w3.org/2000/svg" width="54" height="54" viewBox="0 0 54 54" fill="none">
+      <g clip-path="url(#clip0_421_1172)">
+        <path
+          d="M17.5156 41.5954H32.1102C35.1169 41.5954 36.8331 38.1629 35.0291 35.7576L21.894 18.2441C20.09 15.8388 21.8063 12.4062 24.8129 12.4062H54.0021"
+          stroke="white" stroke-width="11.6757" />
+        <circle cx="5.83784" cy="41.5956" r="5.83784" fill="#6CEABD" />
+      </g>
+      <defs>
+        <clipPath id="clip0_421_1172">
+          <rect width="54" height="54" fill="white" />
+        </clipPath>
+      </defs>
+    </svg>
+  </div>
+  <div id="root"></div>
+  <script type="module" src="/src/main.tsx"></script>
+</body>
+
+</html>

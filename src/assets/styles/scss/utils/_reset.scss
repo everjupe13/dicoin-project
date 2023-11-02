@@ -1,0 +1,50 @@
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body,
+#root {
+  @apply flex h-full w-full flex-col flex-grow;
+}
+
+.main {
+  flex-grow: 1;
+  padding-top: 60px;
+}
+
+html {
+  overflow-x: hidden;
+}
+
+body {
+  min-width: 320px;
+  min-height: 100vh;
+
+  background: #161B21;
+
+  color: #FFF;
+  line-height: 1.3;
+  font-size: 16px;
+  
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  text-decoration-skip: objects;
+  -webkit-text-size-adjust: 100%;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  
+  -webkit-tap-highlight-color: transparent;
+  overflow-x: hidden;
+  transition: color 0.5s, background-color 0.5s;
+  transition-delay: 1.4s;
+
+  @include phone {
+    overscroll-behavior-y: contain;
+  }
+}

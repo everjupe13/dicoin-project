@@ -1,0 +1,7 @@
+.home-divisions-list-item {
+  &:hover {
+    .icon-box {
+      @apply bg-green
+    }
+  }
+}
