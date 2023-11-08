@@ -1,13 +1,12 @@
 import { FC } from 'react'
 
-import { AppForm } from '@/components/widgets/AppForm/AppForm'
+import { Button } from '@/components/shared/button'
 
 export const AboutPage: FC = () => {
-  // const as = ''
-
   return (
     <>
-      <AppForm></AppForm>
+      <p>hello</p>
+      <Button>click</Button>
     </>
   )
 }
