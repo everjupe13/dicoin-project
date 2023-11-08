@@ -1,13 +1,13 @@
-import { FC, ReactNode } from 'react'
+import { FC, ReactElement } from 'react'
 
-// import { AppFooter } from '@/components/widgets/AppFooter/AppFooter'
-import { AppHeader } from '@/components/widgets/AppHeader/AppHeader'
+import { Footer } from '@/components/widgets/footer'
+import { Header } from '@/components/widgets/header'
 
-interface ILayoutProps {
-  children?: ReactNode
+type Props = {
+  children?: string | ReactElement | JSX.Element | JSX.Element[]
 }
 
-const Layout: FC<ILayoutProps> = ({ children }) => {
+const Layout: FC<Props> = ({ children }) => {
   return (
     <>
       {/* <AppHeader /> */}
@@ -16,13 +16,13 @@ const Layout: FC<ILayoutProps> = ({ children }) => {
           <div className="w-full rounded-12 bg-[#1D232C]"></div>
         </nav>
         <nav className="fixed bottom-0 left-[240px] right-0 top-0 z-[100] flex h-[100px] p-20 pb-0 pl-0">
-          <AppHeader></AppHeader>
+          <Header></Header>
         </nav>
         <main className="relatvie main z-[1] ml-[240px] mt-[100px]">
           {children}
         </main>
       </div>
-      {/* <AppFooter /> */}
+      <Footer />
     </>
   )
 }
