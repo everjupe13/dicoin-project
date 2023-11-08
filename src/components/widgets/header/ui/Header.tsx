@@ -1,15 +1,12 @@
 import { clsx } from 'clsx'
-import { FC, ReactNode } from 'react'
+import { FC, ReactElement } from 'react'
 // import { NavLink } from 'react-router-dom'
 
-// import LogoIconRaw from '@/assets/img/logo-main.svg'
-// import { AppButton } from '@/components/shared/AppButton'
-
-interface IAppHeader {
-  children?: ReactNode
+type Props = {
+  children?: string | ReactElement | JSX.Element | JSX.Element[]
 }
 
-export const AppHeader: FC<IAppHeader> = () => {
+const Header: FC<Props> = () => {
   const imageUrl = ''
   return (
     <header className="flex w-full rounded-12 bg-[#1D232C] px-25 py-20">
@@ -30,3 +27,5 @@ export const AppHeader: FC<IAppHeader> = () => {
     </header>
   )
 }
+
+export default Header
