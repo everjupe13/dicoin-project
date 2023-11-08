@@ -4,17 +4,17 @@ import { Link, LinkProps } from 'react-router-dom'
 
 import { ArrowUpRightIcon } from '@/components/shared/icons/ArrowUpRightIcon'
 
-import styles from './AppButton.module.scss'
-import { ButtonSize, ButtonVariant } from './AppButton.types'
+import styles from './Button.module.scss'
+import { ButtonSize, ButtonVariant } from './Button.types'
 
-interface IAppButton extends ButtonHTMLAttributes<HTMLButtonElement> {
+type Props = ButtonHTMLAttributes<HTMLButtonElement> & {
   variant?: ButtonVariant
   size?: ButtonSize
   link?: boolean
   to?: LinkProps['to']
 }
 
-export const AppButton: FC<IAppButton> = ({
+const Button: FC<Props> = ({
   variant = 'primary',
   size = 'normal',
   link = false,
@@ -51,3 +51,5 @@ export const AppButton: FC<IAppButton> = ({
     </>
   )
 }
+
+export default Button

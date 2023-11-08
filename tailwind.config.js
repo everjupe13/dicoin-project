@@ -13,120 +13,17 @@ const fallbackSansSerifFonts = [
   'sans-serif'
 ]
 
-const typography = {
-  // '.text-medium-30': {
-  //   fontSize: '30px',
-  //   lineHeight: '42px',
-  //   fontWeight: 500
-  // },
-  // '.text-regular-28': {
-  //   fontSize: '28px',
-  //   lineHeight: '34px',
-  //   fontWeight: 400
-  // },
-  // '.text-regular-26': {
-  //   fontSize: '26px',
-  //   lineHeight: '36px',
-  //   fontWeight: 400
-  // },
-  // '.text-medium-22': {
-  //   fontSize: '22px',
-  //   lineHeight: '32px',
-  //   fontWeight: 500
-  // },
-  // '.text-regular-22': {
-  //   fontSize: '22px',
-  //   lineHeight: '32px',
-  //   fontWeight: 400
-  // },
-  // '.text-medium-20': {
-  //   fontSize: '20px',
-  //   lineHeight: '32px',
-  //   fontWeight: 500
-  // },
-  // '.text-regular-20': {
-  //   fontSize: '20px',
-  //   lineHeight: '32px',
-  //   fontWeight: 400
-  // },
-
-  '.text-medium-48': { // using
-    fontSize: '48px',
-    lineHeight: '62px',
-    fontWeight: 500
-  },
-  
-  '.text-medium-32': { // using
-    fontSize: '32px',
-    lineHeight: '48px',
-    fontWeight: 500
-  },
-
-  '.text-medium-24': { // using
-    fontSize: '24px',
-    lineHeight: '38px',
-    fontWeight: 500
-  },
-
-  '.text-medium-18': { // using
-    fontSize: '18px',
-    lineHeight: '28px',
-    fontWeight: 500
-  },
-
-  '.text-medium-16': { // using
-    fontSize: '16px',
-    lineHeight: '24px',
-    fontWeight: 500
-  },
-
-  '.text-medium-14': { // using
-    fontSize: '14px',
-    lineHeight: '22px',
-    fontWeight: 500
-  },
-
-  '.text-regular-18': {
-    fontSize: '18px',
-    lineHeight: '25px',
-    fontWeight: 400
-  },
-
-  // '.text-semibold-14': {
-  //   fontSize: '14px',
-  //   lineHeight: '21px',
-  //   fontWeight: 600
-  // },
-
-  // '.text-regular-17': {
-  //   fontSize: '17px',
-  //   lineHeight: '22px',
-  //   fontWeight: 400
-  // },
-  // '.text-medium-15': {
-  //   fontSize: '15px',
-  //   lineHeight: '20px',
-  //   fontWeight: 500
-  // },
-  // '.text-regular-15': {
-  //   fontSize: '15px',
-  //   lineHeight: '20px',
-  //   fontWeight: 400
-  // },
-  // '.text-regular-13': {
-  //   fontSize: '13px',
-  //   lineHeight: '18px',
-  //   fontWeight: 400
-  // }
-}
 
 module.exports = {
-  plugins: [
-    require('@tailwindcss/aspect-ratio'),
-
+  plugins: [    
     plugin(({ addUtilities }) => {
-      addUtilities(typography)
-    }),
+      const typographyWithOnlySizes = {}
+      for (let i = 8; i <= 100; i += 2) {
+        typographyWithOnlySizes[`.text-${i}`] = { fontSize: `${i}px` }
+      }
+
+      addUtilities(typographyWithOnlySizes)
+    })
 
     // plugin(({ addComponents }) => {
     //   addComponents({
@@ -155,16 +52,10 @@ module.exports = {
   content: ['./src/**/*.{js,ts,jsx,tsx}'],
 
   corePlugins: {
-    aspectRatio: false,
     container: false
   },
 
   theme: {
-    container: {
-      center: true,
-      padding: '16px'
-    },
-
     extend: {
       borderColor: {
         DEFAULT: 'transparent'
@@ -176,13 +67,6 @@ module.exports = {
     },
 
     screens: {
-      // xs: '0',
-      // sm: '640px',
-      // md: '768px',
-      // lg: '1024px',
-      // xl: '1280px',
-      // '2xl': '1536px'
-
       xl: { max: '1529.99px' },
       lg: { max: '1199.99px' },
       md: { max: '991.99px' },
