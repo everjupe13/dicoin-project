@@ -33,19 +33,13 @@ a.secondary {
 }
 
 .normal {
-  @apply px-28 py-14 text-medium-14;
-  // @apply leading-none #{!important};
-  line-height: 1 !important;
+  @apply px-28 py-14 text-14 leading-none;
 }
 
 .large {
-  @apply px-40 py-20 text-medium-24;
-  // @apply leading-none #{!important};
-  line-height: 1 !important;
+  @apply px-40 py-20 text-24 leading-none;
 }
 
 .large-with-small-text {
-  @apply px-40 py-20 text-medium-16;
-  // @apply leading-none #{!important};
-  line-height: 1 !important;
+  @apply px-40 py-20 text-16 leading-none;
 }
