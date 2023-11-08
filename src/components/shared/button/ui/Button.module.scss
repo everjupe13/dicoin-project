@@ -1,45 +1,20 @@
 .primary {
-  @apply rounded-full border border-white border-solid text-black bg-white transition-colors hover:bg-green hover:border-green active:bg-green-button-pressed active:border-green-button-pressed disabled:bg-green/50;
-
-  &:hover {
-    svg {
-      @apply fill-white
-    }
-  }
-  svg {
-    @apply transition fill-black
-  }
+  @apply rounded-[14px] border border-white text-[#FFFFFF] bg-[#0077E4] transition-colors hover:bg-green hover:border-green disabled:opacity-50;
 }
 
 .secondary {
-  @apply rounded-full border transition-colors border-black bg-black text-white hover:bg-white hover:border-white hover:text-black active:bg-white/80 active:border-white/80 disabled:border-black/50 disabled:bg-black/50 disabled:text-white/50;
+  @apply rounded-[14px] border border-white text-[#FFFFFF] bg-[#0077E4] transition-colors hover:bg-green hover:border-green disabled:opacity-50;
 }
 
-.outlined {
-  @apply rounded-full border border-white border-solid text-white bg-transparent transition-all hover:bg-green hover:border-green hover:text-black active:bg-green-button-pressed active:border-green-button-pressed disabled:bg-green/50;
+.success {
 
-  &:hover {
-    svg {
-      @apply fill-black
-    }
-  }
-  svg {
-    @apply transition fill-white
-  }
-}
-
-a.secondary {
-  @apply hover:bg-green hover:text-white;
 }
 
 .normal {
-  @apply px-28 py-14 text-14 leading-none;
+  @apply px-28 py-14 h-32 text-14 leading-none;
 }
 
-.large {
-  @apply px-40 py-20 text-24 leading-none;
+.small {
+  @apply text-14 leading-none;
 }
 
-.large-with-small-text {
-  @apply px-40 py-20 text-16 leading-none;
-}

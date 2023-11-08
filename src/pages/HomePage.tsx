@@ -6,7 +6,7 @@ export const HomePage: FC = () => {
   return (
     <>
       <p>hello</p>
-      <Button>click</Button>
+      <Button className="mb-10">click</Button>
     </>
   )
 }
