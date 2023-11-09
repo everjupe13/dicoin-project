@@ -10,7 +10,7 @@ type Props = ButtonHTMLAttributes<HTMLButtonElement> & {
 }
 
 const Button: FC<Props> = ({
-  variant = 'primary',
+  variant = 'dark',
   size = 'normal',
   children,
   className,
