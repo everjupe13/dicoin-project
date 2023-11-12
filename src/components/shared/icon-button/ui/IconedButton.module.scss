@@ -1,39 +1,39 @@
 .primary {
-    @apply border border-[#319DFF] text-[#FFFFFF] bg-[#319DFF] transition-colors hover:bg-[#0077E4] hover:border-[#0077E4] disabled:opacity-50;
+  @apply border border-[#319DFF] text-[#FFFFFF] bg-[#319DFF] transition-colors hover:bg-[#0077E4] hover:border-[#0077E4] disabled:opacity-50;
 }
 
 .secondary {
-    @apply border border-[#7D8FA9] text-[#FFFFFF] bg-[#7D8FA9] transition-colors hover:bg-[#586A84] hover:border-[#586A84] disabled:opacity-50;
+  @apply border border-[#7D8FA9] text-[#FFFFFF] bg-[#7D8FA9] transition-colors hover:bg-[#586A84] hover:border-[#586A84] disabled:opacity-50;
 }
 
 .success {
-    @apply border border-[#10D096] text-[#FFFFFF] bg-[#10D096] transition-colors hover:bg-[#0DA678] hover:border-[#0DA678] disabled:opacity-50;
+  @apply border border-[#10D096] text-[#FFFFFF] bg-[#10D096] transition-colors hover:bg-[#0DA678] hover:border-[#0DA678] disabled:opacity-50;
 }
 
 .danger {
-    @apply border border-[#FF316A] text-[#FFFFFF] bg-[#FF316A] transition-colors hover:bg-[#E4003F] hover:border-[#E4003F] disabled:opacity-50;
+  @apply border border-[#FF316A] text-[#FFFFFF] bg-[#FF316A] transition-colors hover:bg-[#E4003F] hover:border-[#E4003F] disabled:opacity-50;
 }
 
 .warning {
-    @apply border border-[#FFAA04] text-[#FFFFFF] bg-[#FFAA04] transition-colors hover:bg-[#C28100] hover:border-[#C28100] disabled:opacity-50;
+  @apply border border-[#FFAA04] text-[#FFFFFF] bg-[#FFAA04] transition-colors hover:bg-[#C28100] hover:border-[#C28100] disabled:opacity-50;
 }
 
 .info {
-    @apply border border-[#129199] text-[#FFFFFF] bg-[#129199] transition-colors hover:bg-[#0E6D73] hover:border-[#0E6D73] disabled:opacity-50;
+  @apply border border-[#129199] text-[#FFFFFF] bg-[#129199] transition-colors hover:bg-[#0E6D73] hover:border-[#0E6D73] disabled:opacity-50;
 }
 
 .light {
-    @apply border border-[#EEF0F4] text-[#586A84] bg-[#EEF0F4] transition-colors hover:bg-[#EEF0F4] hover:border-[#EEF0F4] hover:text-[#1D232C] disabled:opacity-50;
+  @apply border border-[#EEF0F4] text-[#586A84] bg-[#EEF0F4] transition-colors hover:bg-[#EEF0F4] hover:border-[#EEF0F4] hover:text-[#1D232C] disabled:opacity-50;
 }
 
 .dark {
-    @apply border border-[#3B4758] text-[#FFFFFF] bg-[#3B4758] transition-colors hover:bg-[#1D232C] hover:border-[#1D232C] disabled:opacity-50;
+  @apply border border-[#3B4758] text-[#FFFFFF] bg-[#3B4758] transition-colors hover:bg-[#1D232C] hover:border-[#1D232C] disabled:opacity-50;
 }
 
 .normal {
-    @apply px-8 py-4 h-32 text-14 rounded-[6px] leading-none;
+  @apply px-2 py-2 h-32 w-32 text-14 leading-none;
 }
 
 .small {
-    @apply px-8 py-2 h-24 text-14 rounded-[6px] leading-none;
+  @apply px-2 py-2 h-24 w-24 text-14 leading-none;
 }
