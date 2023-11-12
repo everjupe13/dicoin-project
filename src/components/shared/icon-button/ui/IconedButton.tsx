@@ -2,11 +2,11 @@ import { clsx } from 'clsx'
 import { ButtonHTMLAttributes, FC } from 'react'
 
 import styles from './IconedButton.module.scss'
-import { ButtonSize, ButtonVariant } from './IconedButton.type'
+import { IconedButtonSize, IconedButtonVariant } from './IconedButton.type'
 
 type Props = ButtonHTMLAttributes<HTMLButtonElement> & {
-  variant?: ButtonVariant
-  size?: ButtonSize
+  variant?: IconedButtonVariant
+  size?: IconedButtonSize
 }
 
 const IconedButton: FC<Props> = ({
