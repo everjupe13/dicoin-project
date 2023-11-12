@@ -1,45 +1,39 @@
 .primary {
-  @apply rounded-full border border-white border-solid text-black bg-white transition-colors hover:bg-green hover:border-green active:bg-green-button-pressed active:border-green-button-pressed disabled:bg-green/50;
-
-  &:hover {
-    svg {
-      @apply fill-white
-    }
-  }
-  svg {
-    @apply transition fill-black
-  }
+  @apply border border-[#319DFF] text-[#FFFFFF] bg-[#319DFF] transition-colors hover:bg-[#0077E4] hover:border-[#0077E4] disabled:opacity-50;
 }
 
 .secondary {
-  @apply rounded-full border transition-colors border-black bg-black text-white hover:bg-white hover:border-white hover:text-black active:bg-white/80 active:border-white/80 disabled:border-black/50 disabled:bg-black/50 disabled:text-white/50;
+  @apply border border-[#7D8FA9] text-[#FFFFFF] bg-[#7D8FA9] transition-colors hover:bg-[#586A84] hover:border-[#586A84] disabled:opacity-50;
 }
 
-.outlined {
-  @apply rounded-full border border-white border-solid text-white bg-transparent transition-all hover:bg-green hover:border-green hover:text-black active:bg-green-button-pressed active:border-green-button-pressed disabled:bg-green/50;
-
-  &:hover {
-    svg {
-      @apply fill-black
-    }
-  }
-  svg {
-    @apply transition fill-white
-  }
+.success {
+  @apply border border-[#10D096] text-[#FFFFFF] bg-[#10D096] transition-colors hover:bg-[#0DA678] hover:border-[#0DA678] disabled:opacity-50;
 }
 
-a.secondary {
-  @apply hover:bg-green hover:text-white;
+.danger {
+  @apply border border-[#FF316A] text-[#FFFFFF] bg-[#FF316A] transition-colors hover:bg-[#E4003F] hover:border-[#E4003F] disabled:opacity-50;
+}
+
+.warning {
+  @apply border border-[#FFAA04] text-[#FFFFFF] bg-[#FFAA04] transition-colors hover:bg-[#C28100] hover:border-[#C28100] disabled:opacity-50;
+}
+
+.info {
+  @apply border border-[#129199] text-[#FFFFFF] bg-[#129199] transition-colors hover:bg-[#0E6D73] hover:border-[#0E6D73] disabled:opacity-50;
+}
+
+.light {
+  @apply border border-[#EEF0F4] text-[#586A84] bg-[#EEF0F4] transition-colors hover:bg-[#EEF0F4] hover:border-[#EEF0F4] hover:text-[#1D232C] disabled:opacity-50;
+}
+
+.dark {
+  @apply border border-[#3B4758] text-[#FFFFFF] bg-[#3B4758] transition-colors hover:bg-[#1D232C] hover:border-[#1D232C] disabled:opacity-50;
 }
 
 .normal {
-  @apply px-28 py-14 text-14 leading-none;
+  @apply px-8 py-10 h-40 text-14 rounded-[6px] leading-none;
 }
 
-.large {
-  @apply px-40 py-20 text-24 leading-none;
-}
-
-.large-with-small-text {
-  @apply px-40 py-20 text-16 leading-none;
+.small {
+  @apply p-8 h-32 text-14 rounded-[6px] leading-none;
 }
