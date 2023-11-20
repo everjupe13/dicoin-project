@@ -1,4 +1,5 @@
 import { FC } from 'react'
+import { Link } from 'react-router-dom'
 
 import { Button } from '@/components/shared/button'
 import { IconedButton } from '@/components/shared/icon-button'
@@ -6,6 +7,11 @@ import { IconedButton } from '@/components/shared/icon-button'
 export const HomePage: FC = () => {
   return (
     <>
+      <div className="mb-20">
+        <Link to="/protected" className="underline">
+          to protected
+        </Link>
+      </div>
       <p>hello</p>
       <Button variant="info" size="normal" className="mb-10">
         click

@@ -3,7 +3,6 @@ import { Helmet, HelmetProvider } from 'react-helmet-async'
 // import { Route, Routes } from 'react-router-dom'
 import { Outlet } from 'react-router-dom'
 
-import { Layout } from '@/layout/default.tsx'
 import { appTitle } from '@/utils'
 // import { ErrorPage } from '@/pages/ErrorPage'
 // import { HomePage } from '@/pages/HomePage'
@@ -16,9 +15,7 @@ export const Root: FC = () => {
           <title>{appTitle('')}</title>
         </Helmet>
       </HelmetProvider>
-      <Layout>
-        <Outlet />
-      </Layout>
+      <Outlet />
     </>
   )
 }

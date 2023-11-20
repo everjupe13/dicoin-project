@@ -1,6 +1,11 @@
-import { createBrowserRouter } from 'react-router-dom'
+import {
+  createBrowserRouter,
+  createRoutesFromElements,
+  Route
+} from 'react-router-dom'
 
 import { AuthLayout } from '@/layout/auth'
+import { DefaultLayout } from '@/layout/default'
 import { AboutPage } from '@/pages/AboutPage'
 import { ErrorPage } from '@/pages/ErrorPage'
 import { HomePage } from '@/pages/HomePage'
@@ -8,39 +13,24 @@ import { SigninPage } from '@/pages/SigninPage'
 import { SignupPage } from '@/pages/SignupPage'
 import { Root } from '@/Root'
 
-export const routes = [
-  {
-    path: '',
-    element: <Root />,
-    errorElement: <ErrorPage />,
-    children: [
-      {
-        index: true,
-        element: <HomePage />
-      },
-      {
-        path: '/about',
-        element: <AboutPage />
-      }
-    ]
-  },
-  {
-    path: '/auth',
-    element: <AuthLayout />,
-    errorElement: <ErrorPage />,
-    children: [
-      {
-        path: '/auth/signin',
-        element: <SigninPage />
-      },
-      {
-        path: '/auth/signup',
-        element: <SignupPage />
-      }
-    ]
-  }
-]
+import { ProtectedRoute } from './ui/ProtectedRoute'
 
-const router = createBrowserRouter(routes)
+const router = createBrowserRouter(
+  createRoutesFromElements(
+    <Route path="/" element={<Root />} errorElement={<ErrorPage />}>
+      <Route element={<DefaultLayout />}>
+        <Route index element={<HomePage />} />
+        <Route path="/about" element={<AboutPage />} />
+        <Route element={<ProtectedRoute user={false} />}>
+          <Route path="/protected" element={<div>i am protected</div>} />
+        </Route>
+      </Route>
+      <Route element={<AuthLayout />}>
+        <Route path="/auth/signin" element={<SigninPage />} />
+        <Route path="/auth/signup" element={<SignupPage />} />
+      </Route>
+    </Route>
+  )
+)
 
 export default router
