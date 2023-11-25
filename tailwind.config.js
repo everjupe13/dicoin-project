@@ -1,3 +1,4 @@
+/** @type {import('tailwindcss').Config} */
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const plugin = require('tailwindcss/plugin')
 
@@ -73,8 +74,6 @@ module.exports = {
       sm: { max: '767.99px' },
       xs: { max: '575.99px' },
     },
-
-    fontSize: false,
 
     colors: {
       transparent: 'transparent',

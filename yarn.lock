@@ -3831,10 +3831,10 @@ uri-js@^4.2.2:
   dependencies:
     punycode "^2.1.0"
 
-use-breakpoint@^3.1.1:
-  version "3.1.1"
-  resolved "https://registry.yarnpkg.com/use-breakpoint/-/use-breakpoint-3.1.1.tgz#2750f36b77e3032d70b902ecdfac4b02cc4f5768"
-  integrity sha512-zJ2a9sqdiOnsYwjZryOuq+SIDRP2vWsl7iWDUJ7Xid9t29zF1oLZjkEE+uRooPB/98YT+784rCFIvmKhV6VqLg==
+use-breakpoint@^4.0.1:
+  version "4.0.1"
+  resolved "https://registry.yarnpkg.com/use-breakpoint/-/use-breakpoint-4.0.1.tgz#1bbb57afb65f5b592ca15660c6906948f85d7fdc"
+  integrity sha512-Fa5Duxv3BY3bw8kmj/lmryTETXVUmBQeYJpBgPJ2yJRiIaGVG8rlMNKQE+JS2rywCZHWaggVUz+ytbr7sH/yyg==
 
 use-sync-external-store@1.2.0:
   version "1.2.0"
