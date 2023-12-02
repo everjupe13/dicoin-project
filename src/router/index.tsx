@@ -13,7 +13,8 @@ import { SigninPage } from '@/pages/SigninPage'
 import { SignupPage } from '@/pages/SignupPage'
 import { Root } from '@/Root'
 
-import { ProtectedRoute } from './ui/ProtectedRoute'
+import { ProtectedRouteAuth } from './ui/ProtectedRouteAuth'
+import { ProtectedRouteUser } from './ui/ProtectedRouteUser'
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -21,13 +22,17 @@ const router = createBrowserRouter(
       <Route element={<DefaultLayout />}>
         <Route index element={<HomePage />} />
         <Route path="/about" element={<AboutPage />} />
-        <Route element={<ProtectedRoute user={false} />}>
+      </Route>
+      <Route element={<ProtectedRouteUser isProtectedActive />}>
+        <Route element={<DefaultLayout />}>
           <Route path="/protected" element={<div>i am protected</div>} />
         </Route>
       </Route>
-      <Route element={<AuthLayout />}>
-        <Route path="/auth/signin" element={<SigninPage />} />
-        <Route path="/auth/signup" element={<SignupPage />} />
+      <Route element={<ProtectedRouteAuth isProtectedActive />}>
+        <Route element={<AuthLayout />}>
+          <Route path="/auth/signin" element={<SigninPage />} />
+          <Route path="/auth/signup" element={<SignupPage />} />
+        </Route>
       </Route>
     </Route>
   )
