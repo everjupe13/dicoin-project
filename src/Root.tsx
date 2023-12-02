@@ -4,6 +4,8 @@ import { Outlet } from 'react-router-dom'
 
 import { appTitle } from '@/app/core'
 
+import { AuthContainer } from './components/features/auth-container'
+
 export const Root: FC = () => {
   return (
     <>
@@ -12,7 +14,9 @@ export const Root: FC = () => {
           <title>{appTitle('')}</title>
         </Helmet>
       </HelmetProvider>
-      <Outlet />
+      <AuthContainer>
+        <Outlet />
+      </AuthContainer>
     </>
   )
 }
