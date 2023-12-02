@@ -1,16 +1,21 @@
 import { clsx } from 'clsx'
 import { FC, ReactElement } from 'react'
+
 // import { NavLink } from 'react-router-dom'
+import { useAuthStore } from '@/components/features/auth-container'
 
 type Props = {
   children?: string | ReactElement | JSX.Element | JSX.Element[]
 }
 
 const Header: FC<Props> = () => {
-  const imageUrl = ''
+  const userData = useAuthStore(state => state.userData)
+  const imageUrl = userData?.photoURL || ''
+  const displayedName = userData?.displayName
+
   return (
     <header className="flex w-full rounded-12 bg-[#1D232C] px-25 py-20">
-      <div className="ml-auto">
+      <div className="ml-auto flex items-center gap-x-10">
         <div
           className={clsx(
             'flex h-40 w-40 items-center justify-center overflow-hidden rounded-full bg-lightgray',
@@ -23,6 +28,9 @@ const Header: FC<Props> = () => {
             className={clsx('block w-full object-cover', !imageUrl && 'hidden')}
           />
         </div>
+        {displayedName && (
+          <div className="font-bold text-white text-16">{displayedName}</div>
+        )}
       </div>
     </header>
   )
