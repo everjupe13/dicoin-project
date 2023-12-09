@@ -11,6 +11,7 @@ import { ErrorPage } from '@/pages/ErrorPage'
 import { HomePage } from '@/pages/HomePage'
 import { SigninPage } from '@/pages/SigninPage'
 import { SignupPage } from '@/pages/SignupPage'
+import { SubscribersPage } from '@/pages/SubscribersPage'
 import { Root } from '@/Root'
 
 import { ProtectedRouteAuth } from './ui/ProtectedRouteAuth'
@@ -22,6 +23,7 @@ const router = createBrowserRouter(
       <Route element={<DefaultLayout />}>
         <Route index element={<HomePage />} />
         <Route path="/about" element={<AboutPage />} />
+        <Route path="/subscribers" element={<SubscribersPage />} />
       </Route>
       <Route element={<ProtectedRouteUser isProtectedActive />}>
         <Route element={<DefaultLayout />}>
