@@ -32,7 +32,7 @@ const Header: FC<Props> = () => {
       <div className="flex items-center gap-x-10">
         <div
           className={clsx(
-            'flex h-40 w-40 items-center justify-center overflow-hidden rounded-full bg-lightgray',
+            'flex h-40 w-40 items-center justify-center overflow-hidden rounded-full bg-grey-900',
             !imageUrl && 'animate-pulse'
           )}
         >

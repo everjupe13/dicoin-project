@@ -14,7 +14,6 @@ const CheckBox: FC<Props> = ({ children, className, disabled }) => {
     <>
       <label className={clsx('flex items-center gap-9', className)}>
         <input
-          // onClick={changeClass}
           onChange={handleInputChange}
           type="checkbox"
           checked={value}
@@ -23,10 +22,10 @@ const CheckBox: FC<Props> = ({ children, className, disabled }) => {
         />
         <span
           className={clsx(
-            'flex h-18 w-18 items-center justify-center rounded-[2px] border border-[#7D8FA9] bg-transparent transition-all',
+            'flex h-18 w-18 items-center justify-center rounded-[2px] border border-grey-600 bg-transparent transition-all',
             'peer-disabled:opacity-50',
-            'peer-checked:border-[#319DFF] peer-checked:bg-[#319DFF]',
-            'peer-checked:peer-disabled:border-[#7D8FA9] peer-checked:peer-disabled:bg-[#7D8FA9]'
+            'peer-checked:border-blue-600 peer-checked:bg-blue-600',
+            'peer-checked:peer-disabled:border-grey-600 peer-checked:peer-disabled:bg-grey-600'
           )}
         >
           <CheckIcon />
