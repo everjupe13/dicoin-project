@@ -7,6 +7,7 @@ import {
 import { AuthLayout } from '@/layout/auth'
 import { DefaultLayout } from '@/layout/default'
 import { AboutPage } from '@/pages/AboutPage'
+import { AnalyticsPage } from '@/pages/AnalyticsPage'
 import { ErrorPage } from '@/pages/ErrorPage'
 import { HomePage } from '@/pages/HomePage'
 import { SigninPage } from '@/pages/SigninPage'
@@ -27,6 +28,7 @@ const router = createBrowserRouter(
       </Route>
       <Route element={<ProtectedRouteUser isProtectedActive />}>
         <Route element={<DefaultLayout />}>
+          <Route path="/analytics" element={<AnalyticsPage />} />
           <Route path="/protected" element={<div>i am protected</div>} />
         </Route>
       </Route>
