@@ -1,14 +1,22 @@
 import { initializeApp } from 'firebase/app'
 import {
-  AuthError,
+  type AuthError,
+  browserLocalPersistence,
   getAuth,
   GoogleAuthProvider,
-  OAuthCredential,
+  type OAuthCredential,
+  onAuthStateChanged,
+  setPersistence,
   signInWithPopup,
-  UserCredential
+  type User,
+  type UserCredential
 } from 'firebase/auth'
 
-// TODO: Replace the following with your app's Firebase project configuration
+import type {
+  FirebaseAuthError,
+  FirebaseUserCredentials
+} from './firebase.types'
+
 const firebaseConfig = {
   apiKey: 'AIzaSyB4maes2N9qN72FI3aRks0lQgBVbC_I2So',
   authDomain: 'dicoin-web.firebaseapp.com',
@@ -19,13 +27,23 @@ const firebaseConfig = {
 }
 
 const app = initializeApp(firebaseConfig)
-const auth = getAuth(app)
+export const auth = getAuth(app)
 
-const provider = new GoogleAuthProvider()
+export const onAuthChanged = (f: (user?: User | null) => void) =>
+  onAuthStateChanged(auth, f)
 
-export const openGoogleAuthPopup = async () => {
+const googleAuthProvider = new GoogleAuthProvider()
+
+export const openGoogleAuthPopup = async (): Promise<
+  FirebaseUserCredentials | FirebaseAuthError
+> => {
   try {
-    const result: UserCredential = await signInWithPopup(auth, provider)
+    await setPersistence(auth, browserLocalPersistence)
+
+    const result: UserCredential = await signInWithPopup(
+      auth,
+      googleAuthProvider
+    )
     const credential: OAuthCredential | null =
       GoogleAuthProvider.credentialFromResult(result)
 
@@ -38,14 +56,13 @@ export const openGoogleAuthPopup = async () => {
     }
   } catch (error: unknown) {
     const typedError = error as AuthError
-    const errorCode = typedError.code
-    const errorMessage = typedError.message
-    // The email of the user's account used.
-    const email = typedError.customData.email
     // The AuthCredential type that was used.
     const credential = GoogleAuthProvider.credentialFromError(typedError)
 
-    console.error(errorCode, errorMessage, email, credential)
-    return { error: errorMessage }
+    return {
+      errorMessage: typedError?.message,
+      errorCode: typedError?.code,
+      errorData: { email: typedError?.customData?.email, credential }
+    }
   }
 }

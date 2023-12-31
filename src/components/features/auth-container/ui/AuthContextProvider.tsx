@@ -1,6 +1,6 @@
 import { FC, ReactNode } from 'react'
 
-import { openGoogleAuthPopup } from '@/api/auth/auth.service'
+import { openGoogleAuthPopup } from '@/api/auth/firebase.service'
 
 import { AuthContext, AuthContextType } from '../model/context'
 import { useAuthStore } from '../model/store'
@@ -25,7 +25,8 @@ const AuthContextProvider: FC<Props> = ({ children }) => {
     },
     openGoogleAuthPopup: async () => {
       const authResult = await openGoogleAuthPopup()
-      if (!authResult.error && authResult.user) {
+
+      if ('user' in authResult && authResult.user) {
         setUserData(authResult.user)
       }
     }

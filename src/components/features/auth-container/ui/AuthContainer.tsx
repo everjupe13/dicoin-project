@@ -1,5 +1,8 @@
-import { FC, ReactNode } from 'react'
+import { FC, ReactNode, useEffect } from 'react'
 
+import { useAuth } from '@/api/auth'
+
+import { useAuthStore } from '../model/store'
 import AuthContextProvider from './AuthContextProvider'
 
 type Props = {
@@ -7,6 +10,16 @@ type Props = {
 }
 
 const AuhtContainer: FC<Props> = ({ children }) => {
+  const { onAuthChanged } = useAuth()
+  const { setUserData } = useAuthStore()
+  useEffect(() => {
+    onAuthChanged(user => {
+      if (user) {
+        setUserData(user)
+      }
+    })
+  }, [])
+
   return <AuthContextProvider>{children}</AuthContextProvider>
 }
 
