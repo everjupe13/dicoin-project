@@ -2,7 +2,9 @@ import { FC } from 'react'
 import { Link } from 'react-router-dom'
 
 import { Button } from '@/components/shared/button'
+import { CheckBox } from '@/components/shared/checkbox'
 import { IconedButton } from '@/components/shared/icon-button'
+// import { Radio } from '@/components/shared/radio'
 
 export const HomePage: FC = () => {
   return (
@@ -26,6 +28,8 @@ export const HomePage: FC = () => {
       <IconedButton variant="dark" size="small" className="mb-10">
         +
       </IconedButton>
+      <CheckBox>Label</CheckBox>
+      {/* <Radio></Radio> */}
     </>
   )
 }
