@@ -1,25 +1,29 @@
 import { FC, useEffect } from 'react'
 
-import { BillService } from '@/logic/core/application-services/bill-service/bill-service'
-import { BillRepositoryImplementation } from '@/logic/core/repository/bill-repository/bill-repository'
-import { HttpBillController } from '@/logic/infrastructure/controllers/http-bill-controller/http-bill-controller'
-
-const httpBillsService = new HttpBillController(
-  new BillService(new BillRepositoryImplementation())
-)
+import { useBillsList } from '@/store/bills'
 
 export const BillsPage: FC = () => {
+  const { data, isLoading } = useBillsList()
+
   useEffect(() => {
-    const f = async () => {
-      const asd = await httpBillsService.getBillsList()
-      console.log(asd)
+    if (!isLoading) {
+      console.log(data)
     }
-    f()
-  }, [])
+  }, [data, isLoading])
 
   return (
-    <>
-      <p>heeeelllllo bitch</p>
-    </>
+    <div className="grid grid-cols-3 gap-20">
+      {!isLoading && data && (
+        <>
+          {data.map(bill => (
+            <div key={bill.id}>
+              <p>{bill.name}</p>
+              <p>{bill.amount}</p>
+              <p>{bill.updatedAt}</p>
+            </div>
+          ))}
+        </>
+      )}
+    </div>
   )
 }

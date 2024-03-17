@@ -7,13 +7,13 @@ export class Bill {
     readonly updatedAt: string
   ) {}
 
-  getData() {
+  toObject() {
     return {
       id: this.id,
       name: this.name,
       amount: this.amount,
       createdAt: this.createdAt,
-      updated: this.updatedAt
+      updatedAt: this.updatedAt
     }
   }
 }
