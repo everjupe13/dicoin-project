@@ -50,6 +50,7 @@ module.exports = {
     'unicorn/prefer-module': 'off',
     'unicorn/no-null': 'off',
     'unicorn/no-useless-undefined': 'off',
+    'unicorn/no-array-for-each': 'off',
 
     'unicorn/consistent-function-scoping': 'off',
 
