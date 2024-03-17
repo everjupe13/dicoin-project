@@ -7,3 +7,8 @@ export type ButtonedUIThemes =
   | 'info'
   | 'light'
   | 'dark'
+
+export type ApiResponse<T> = {
+  message: string
+  data: T | null
+}
