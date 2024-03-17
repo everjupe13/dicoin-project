@@ -14,9 +14,12 @@ export const Root: FC = () => {
           <title>{appTitle('')}</title>
         </Helmet>
       </HelmetProvider>
-      <AuthContainer>
-        <Outlet />
-      </AuthContainer>
+      <ReactQueryProvider>
+        <AuthContainer>
+          {/* <AuthComponent authViewModel={authViewModel} /> */}
+          <Outlet />
+        </AuthContainer>
+      </ReactQueryProvider>
     </>
   )
 }

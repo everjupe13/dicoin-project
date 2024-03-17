@@ -1,4 +1,4 @@
-import { SubscribersList } from '@/components/enitites/subscribers'
+import { SubscribersList } from '@/components/entities/subscribers'
 
 export const SubscribersPage = () => {
   return (

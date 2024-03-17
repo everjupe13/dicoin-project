@@ -8,6 +8,7 @@ import { AuthLayout } from '@/layout/auth'
 import { DefaultLayout } from '@/layout/default'
 import { AboutPage } from '@/pages/AboutPage'
 import { AnalyticsPage } from '@/pages/AnalyticsPage'
+import { BillsPage } from '@/pages/BillsPage'
 import { ErrorPage } from '@/pages/ErrorPage'
 import { HomePage } from '@/pages/HomePage'
 import { SigninPage } from '@/pages/SigninPage'
@@ -25,6 +26,7 @@ const router = createBrowserRouter(
         <Route index element={<HomePage />} />
         <Route path="/about" element={<AboutPage />} />
         <Route path="/subscribers" element={<SubscribersPage />} />
+        <Route path="/bills" element={<BillsPage />} />
       </Route>
       <Route element={<ProtectedRouteUser isProtectedActive />}>
         <Route element={<DefaultLayout />}>
