@@ -1,9 +1,9 @@
-import { FC } from 'react'
+import { SubscribersList } from '@/components/enitites/subscribers'
 
-export const SubscribersPage: FC = () => {
+export const SubscribersPage = () => {
   return (
     <>
-      <p>subscribers</p>
+      <SubscribersList />
     </>
   )
 }
