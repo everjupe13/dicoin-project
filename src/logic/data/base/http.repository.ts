@@ -7,7 +7,7 @@ type MakeSafeRequestOptions = {
   okIfStatus?: number | number[]
 }
 
-export class HttpBaseRepository {
+export class HttpRepository {
   axios: AxiosInstance
   endpoint: string
   apiHost: string

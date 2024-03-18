@@ -1,6 +1,6 @@
 import { FC, useEffect } from 'react'
 
-import { useBillsList } from '@/store/bills'
+import { useBillsList } from '@/logic/presentation/adapters/bill/useBillsList'
 
 export const BillsPage: FC = () => {
   const { data, isLoading } = useBillsList()

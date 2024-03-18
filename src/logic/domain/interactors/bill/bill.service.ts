@@ -1,5 +1,5 @@
-import { Bill } from '@/logic/core/entities/bill/bill'
-import { BillRepository } from '@/logic/core/repository/bill-repository/bill-repository'
+import { Bill } from '@/logic/domain/entity/bill/bill'
+import { BillRepository } from '@/logic/domain/repository/bill/bill.repository'
 
 export class BillService {
   constructor(readonly billsRepository: BillRepository) {}
