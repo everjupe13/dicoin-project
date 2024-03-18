@@ -1,5 +1,6 @@
 import { FC, useEffect } from 'react'
 
+import { BillTicket } from '@/components/entities/bills'
 import { useBillsList } from '@/logic/presentation/adapters/bill/useBillsList'
 
 export const BillsPage: FC = () => {
@@ -16,11 +17,7 @@ export const BillsPage: FC = () => {
       {!isLoading && data && (
         <>
           {data.map(bill => (
-            <div key={bill.id}>
-              <p>{bill.name}</p>
-              <p>{bill.amount}</p>
-              <p>{bill.updatedAt}</p>
-            </div>
+            <BillTicket key={bill.id} bill={bill} />
           ))}
         </>
       )}
