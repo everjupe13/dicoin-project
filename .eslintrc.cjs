@@ -51,7 +51,7 @@ module.exports = {
     'unicorn/no-null': 'off',
     'unicorn/no-useless-undefined': 'off',
     'unicorn/no-array-for-each': 'off',
-
+    'unicorn/no-static-only-class': 'off',
     'unicorn/consistent-function-scoping': 'off',
 
     'no-unused-vars': 'off',
