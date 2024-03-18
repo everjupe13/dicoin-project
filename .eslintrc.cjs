@@ -50,8 +50,13 @@ module.exports = {
     'unicorn/prefer-module': 'off',
     'unicorn/no-null': 'off',
     'unicorn/no-useless-undefined': 'off',
+    'unicorn/no-array-for-each': 'off',
+    'unicorn/no-static-only-class': 'off',
+    'unicorn/consistent-function-scoping': 'off',
 
     'no-unused-vars': 'off',
+
+    '@typescript-eslint/no-explicit-any' : 'off',
     '@typescript-eslint/no-unused-vars': [
       'error',
       {

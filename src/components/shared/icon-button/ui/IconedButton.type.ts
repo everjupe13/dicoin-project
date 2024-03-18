@@ -1,11 +1,5 @@
-export type ButtonVariant =
-  | 'primary'
-  | 'secondary'
-  | 'success'
-  | 'danger'
-  | 'warning'
-  | 'info'
-  | 'light'
-  | 'dark'
+import { ButtonedUIThemes } from '@/shared/types/themes'
 
-export type ButtonSize = 'normal' | 'small'
+export type IconedButtonVariant = ButtonedUIThemes
+
+export type IconedButtonSize = 'normal' | 'small'

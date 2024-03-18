@@ -1,5 +1,3 @@
-export const APP_NAME = 'ONSIDE studio'
-
 // export const urlQueryParamsToObject = params => {
 //   const result = {}
 
@@ -9,10 +7,6 @@ export const APP_NAME = 'ONSIDE studio'
 
 //   return result
 // }
-
-export const appTitle = (title: string) => {
-  return [title, APP_NAME].filter(Boolean).join(' — ')
-}
 
 // const _separateThousands = numberString => {
 //   const withTrailingZeros = numberString.replaceAll(/\d(?=(\d{3})+\.)/g, '$& ')
@@ -26,3 +20,5 @@ export const appTitle = (title: string) => {
 // export const formatRuble = number => {
 //   return `${separateThousands(number || 0)} ₽`
 // }
+
+const _a = 'a'
