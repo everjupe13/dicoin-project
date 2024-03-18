@@ -1,7 +1,7 @@
-import { Guard } from '../../utils/guard'
+import { Guard } from '@/logic/domain/utils/guard/guard'
 
 export class BillValidator {
   validateId(id: any) {
-    return Guard.isSignificantString(id)
+    return Guard.isNumber(id)
   }
 }
