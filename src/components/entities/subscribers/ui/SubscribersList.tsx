@@ -22,7 +22,7 @@ const SubscribersList = () => {
     SubscribersResponseType['data'] | null
   >(null)
 
-  const [fetchError, setFetchError] = useState<
+  const [_fetchError, setFetchError] = useState<
     SubscribersResponseType['error'] | null
   >(null)
 
