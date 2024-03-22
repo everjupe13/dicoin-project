@@ -3,18 +3,17 @@ import { joinURL } from 'ufo'
 
 import { ENV } from '@/app/constants/environment'
 
-type MakeSafeRequestOptions = {
-  okIfStatus?: number | number[]
-}
+import { HttpSafeRequestOptions } from './http.types'
+import { HttpResponseGuard, HttpResponseResult } from './http.utils'
 
 export class HttpRepository {
   axios: AxiosInstance
   endpoint: string
   apiHost: string
 
-  constructor() {
+  constructor(endpoint?: string) {
     this.axios = axios
-    this.endpoint = ''
+    this.endpoint = endpoint || ''
     // this.apiHost = ENV.API_HOST
     this.apiHost = ENV.APP_URL
   }
@@ -43,21 +42,32 @@ export class HttpRepository {
 
   async makeSafeRequest<TResponse>(
     axiosConfig: AxiosRequestConfig,
-    { okIfStatus = 200 }: MakeSafeRequestOptions = {}
+    { additionalStatusCodes }: HttpSafeRequestOptions = {}
   ) {
-    let ok = false
+    const buildOptionsForGuard = () => {
+      return {
+        ...(additionalStatusCodes
+          ? {
+              additionalStatusCodes: Array.isArray(additionalStatusCodes)
+                ? additionalStatusCodes
+                : Number.isInteger(additionalStatusCodes)
+                ? [additionalStatusCodes]
+                : undefined
+            }
+          : {})
+      }
+    }
+
     try {
       const { status, data } = await this.axios.request<TResponse>(axiosConfig)
 
-      if (Number.isInteger(okIfStatus)) {
-        ok = okIfStatus === status
-      } else if (Array.isArray(okIfStatus)) {
-        ok = okIfStatus.includes(status)
+      if (HttpResponseGuard.isSatisfiedByCode(status, buildOptionsForGuard())) {
+        return HttpResponseResult.successed<TResponse>(data)
       }
 
-      return { ok, data }
+      return HttpResponseResult.failed()
     } catch {
-      return { ok, errors: null }
+      return HttpResponseResult.failed()
     }
   }
 }
