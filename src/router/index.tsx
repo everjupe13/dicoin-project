@@ -13,6 +13,7 @@ import { ErrorPage } from '@/pages/ErrorPage'
 import { HomePage } from '@/pages/HomePage'
 import { SigninPage } from '@/pages/SigninPage'
 import { SignupPage } from '@/pages/SignupPage'
+import { SpendingsPage } from '@/pages/SpendingsPage'
 import { SubscribersPage } from '@/pages/SubscribersPage'
 import { Root } from '@/Root'
 
@@ -27,11 +28,13 @@ const router = createBrowserRouter(
         <Route path="/about" element={<AboutPage />} />
         <Route path="/subscribers" element={<SubscribersPage />} />
         <Route path="/bills" element={<BillsPage />} />
+        <Route path="/spendings" element={<SpendingsPage />} />
       </Route>
       <Route element={<ProtectedRouteUser isProtectedActive />}>
         <Route element={<DefaultLayout />}>
           <Route path="/analytics" element={<AnalyticsPage />} />
           <Route path="/protected" element={<div>i am protected</div>} />
+          {/* <Route path="/spendings" element={<SpendingsPage />} /> */}
         </Route>
       </Route>
       <Route element={<ProtectedRouteAuth isProtectedActive />}>
