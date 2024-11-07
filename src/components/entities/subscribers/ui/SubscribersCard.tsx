@@ -1,6 +1,6 @@
 import { FC } from 'react'
 
-import { formadDate } from '@/utils/date-time'
+import { formatDate } from '@/utils/date-time'
 
 type Props = {
   id: string
@@ -22,7 +22,7 @@ const SubscribersCard: FC<Props> = props => {
           <div className="font-bold">{props.displayName}</div>
           <div>{props.name}</div>
           <div>{props.email}</div>
-          <div>{formadDate(props.userDate)}</div>
+          <div>{formatDate(props.userDate)}</div>
         </div>
       </div>
     </li>

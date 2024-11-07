@@ -185,7 +185,8 @@ module.exports = {
 
     fontFamily: {
       sans: ['Gilroy', ...fallbackSansSerifFonts],
-      hauora: ['Hauora', ...fallbackSansSerifFonts]
+      hauora: ['Hauora', ...fallbackSansSerifFonts],
+      inter: ['Inter', ...fallbackSansSerifFonts]
     }
   }
 }

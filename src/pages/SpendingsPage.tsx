@@ -1,79 +1,25 @@
-import { SpendingList } from '@/spendings/spendings-list/spendings-list'
+import { ISpendings } from '@/api/types/ISpendings'
+import { mapSpendings } from '@/components/spendings/spendings-card'
+import { SpendingsList } from '@/components/spendings/spendings-list'
+import { formatDate } from '@/utils/date-time'
+
+const MOCK_DATA: ISpendings[] = Array.from({ length: 11 * 3 * 3 }).map(
+  (_data, index) => ({
+    id: index,
+    name: `Оплата подписки ${index + 1}`,
+    withdrawal_type: Math.round(Math.random()) ? 'repeated' : 'manual',
+    withdrawal_date: `${String(index).padStart(2, '0')}.07.2020`,
+    created_at: formatDate(Date.now()),
+    updated_at: formatDate(Date.now()),
+    cost: 1000.53
+  })
+)
 
 export function SpendingsPage() {
+  const spendingsData = mapSpendings(MOCK_DATA.slice(0, 6))
   return (
-    <div
-      style={{
-        display: 'grid',
-        gap: '40px',
-        gridTemplateColumns: 'repeat(auto-fill, minmax(339px, 1fr))'
-      }}
-    >
-      <SpendingList
-        items={[
-          {
-            id: 5,
-            name: 'Оплата подписки',
-            withdrawal_type: 'repeated',
-            withdrawal_date: '07.07.2020',
-            created_at: '',
-            updated_at: '',
-            cost: 1000.53
-          }
-        ]}
-      />
-      <SpendingList
-        items={[
-          {
-            id: 5,
-            name: 'Оплата подписки',
-            withdrawal_type: 'repeated',
-            withdrawal_date: '07.07.2020',
-            created_at: '',
-            updated_at: '',
-            cost: 1000.53
-          }
-        ]}
-      />
-      <SpendingList
-        items={[
-          {
-            id: 5,
-            name: 'Оплата подписки',
-            withdrawal_type: 'repeated',
-            withdrawal_date: '07.07.2020',
-            created_at: '',
-            updated_at: '',
-            cost: 1000.53
-          }
-        ]}
-      />
-      <SpendingList
-        items={[
-          {
-            id: 5,
-            name: 'Оплата подписки',
-            withdrawal_type: 'repeated',
-            withdrawal_date: '07.07.2020',
-            created_at: '',
-            updated_at: '',
-            cost: 1000.53
-          }
-        ]}
-      />
-      <SpendingList
-        items={[
-          {
-            id: 5,
-            name: 'Оплата подписки',
-            withdrawal_type: 'repeated',
-            withdrawal_date: '07.07.2020',
-            created_at: '',
-            updated_at: '',
-            cost: 1000.53
-          }
-        ]}
-      />
+    <div>
+      <SpendingsList items={spendingsData} />
     </div>
   )
 }

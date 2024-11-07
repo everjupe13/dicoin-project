@@ -6,7 +6,7 @@ export function plusZero(numberOutZero: number) {
   return String(numberOutZero)
 }
 
-export function formadDate(dateString: string) {
+export function formatDate(dateString: string | number | Date) {
   const date = new Date(dateString)
   return `${plusZero(date.getDay() + 1)}-${plusZero(
     date.getMonth() + 1
