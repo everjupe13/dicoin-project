@@ -1,6 +1,6 @@
 import { FC } from 'react'
 
-import { Pagination } from '../components/pagination/Pagination'
+import { Pagination } from '@/components/shared/pagination'
 
 const DATA = {
   numPage: '2',
