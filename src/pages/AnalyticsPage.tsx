@@ -1,5 +1,12 @@
 import { FC } from 'react'
 
+import { Pagination } from '../components/pagination/Pagination'
+
+const DATA = {
+  numPage: '2',
+  allPages: '11'
+}
+
 const getCurrencySymbol = (
   locale: string | Intl.Locale,
   currency: Intl.NumberFormatOptions['currency']
@@ -17,6 +24,7 @@ const getCurrencySymbol = (
 export const AnalyticsPage: FC = () => {
   return (
     <div>
+      <Pagination numPage={DATA.numPage} allPages={DATA.allPages} />
       <div className="mb-20">
         <h1>Аналитика</h1>
       </div>
