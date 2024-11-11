@@ -1,10 +1,10 @@
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
 import dayjs from 'dayjs'
-import { FC, ReactNode } from 'react'
+import { type ReactNode } from 'react'
 
-type Props = {
-  children: ReactNode
+export interface ReactQueryProviderProps {
+  children?: ReactNode
 }
 
 const queryClient = new QueryClient({
@@ -15,7 +15,7 @@ const queryClient = new QueryClient({
   }
 })
 
-export const ReactQueryProvider: FC<Props> = ({ children }) => {
+export function ReactQueryProvider({ children }: ReactQueryProviderProps) {
   return (
     <QueryClientProvider client={queryClient}>
       {children}
