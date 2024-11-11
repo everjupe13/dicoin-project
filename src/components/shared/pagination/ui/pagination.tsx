@@ -13,8 +13,8 @@ export function Pagination({ allPages, numPage }: PaginationProps) {
   const pages = []
   const currentPage = Number.parseInt(page)
 
-  if (currentPage <= 2) {
-    for (let i = 0; i < 3; i++) {
+  function checkItem(firstNum: number, lastNum: number) {
+    for (let i = firstNum; i < lastNum; i++) {
       pages.push(
         <ButtonPagination
           key={i}
@@ -24,11 +24,9 @@ export function Pagination({ allPages, numPage }: PaginationProps) {
         />
       )
     }
-    pages.push(
-      <ButtonPagination key="dots-1" variant="non-interactive" />,
-      <ButtonPagination key="dots-2" variant="non-interactive" />,
-      <ButtonPagination key="dots-3" variant="non-interactive" />
-    )
+  }
+
+  function lastBtn() {
     pages.push(
       <ButtonPagination
         key={Number.parseInt(allPages) - 1}
@@ -37,117 +35,58 @@ export function Pagination({ allPages, numPage }: PaginationProps) {
         onClick={() => setPage(allPages)}
       />
     )
-  } else if (currentPage >= Number.parseInt(allPages) - 1) {
+  }
+
+  function firstBtn() {
     pages.push(
       <ButtonPagination
         key={0}
         text={'1'}
         active={currentPage === 1}
         onClick={() => setPage('1')}
-      />,
+      />
+    )
+  }
+
+  if (currentPage <= 2) {
+    checkItem(0, 3)
+    pages.push(
       <ButtonPagination key="dots-1" variant="non-interactive" />,
       <ButtonPagination key="dots-2" variant="non-interactive" />,
       <ButtonPagination key="dots-3" variant="non-interactive" />
     )
-    for (
-      let i = Number.parseInt(allPages) - 3;
-      i < Number.parseInt(allPages);
-      i++
-    ) {
-      pages.push(
-        <ButtonPagination
-          key={i}
-          text={(i + 1).toString()}
-          active={currentPage === i + 1}
-          onClick={() => setPage((i + 1).toString())}
-        />
-      )
-    }
+    lastBtn()
+  } else if (currentPage >= Number.parseInt(allPages) - 1) {
+    firstBtn()
+    pages.push(
+      <ButtonPagination key="dots-1" variant="non-interactive" />,
+      <ButtonPagination key="dots-2" variant="non-interactive" />,
+      <ButtonPagination key="dots-3" variant="non-interactive" />
+    )
+    checkItem(Number.parseInt(allPages) - 3, Number.parseInt(allPages))
   } else if (
     currentPage >= Number.parseInt(allPages) - 2 &&
     currentPage <= Number.parseInt(allPages) - 2
   ) {
+    firstBtn()
     pages.push(
-      <ButtonPagination
-        key={0}
-        text={'1'}
-        active={currentPage === 1}
-        onClick={() => setPage(allPages)}
-      />,
       <ButtonPagination key="dots-1" variant="non-interactive" />,
       <ButtonPagination key="dots-2" variant="non-interactive" />
     )
-
-    for (
-      let i = Number.parseInt(allPages) - 4;
-      i < Number.parseInt(allPages);
-      i++
-    ) {
-      pages.push(
-        <ButtonPagination
-          key={i}
-          text={(i + 1).toString()}
-          active={currentPage === i + 1}
-          onClick={() => setPage((i + 1).toString())}
-        />
-      )
-    }
+    checkItem(Number.parseInt(allPages) - 4, Number.parseInt(allPages))
   } else if (currentPage <= 3 && currentPage >= 3) {
-    for (let i = 0; i < 4; i++) {
-      pages.push(
-        <ButtonPagination
-          key={i}
-          text={(i + 1).toString()}
-          active={currentPage === i + 1}
-          onClick={() => setPage((i + 1).toString())}
-        />
-      )
-    }
-
+    checkItem(0, 4)
     pages.push(
       <ButtonPagination key="dots-1" variant="non-interactive" />,
       <ButtonPagination key="dots-2" variant="non-interactive" />
     )
-
-    pages.push(
-      <ButtonPagination
-        key={Number.parseInt(allPages) - 1}
-        text={allPages}
-        active={currentPage === Number.parseInt(allPages)}
-        onClick={() => setPage(allPages)}
-      />
-    )
+    lastBtn()
   } else {
-    pages.push(
-      <ButtonPagination
-        key={0}
-        text={'1'}
-        active={currentPage === 1}
-        onClick={() => setPage(allPages)}
-      />,
-      <ButtonPagination key="dots-1" variant="non-interactive" />
-    )
-
-    for (let i = currentPage - 1; i < currentPage + 2; i++) {
-      pages.push(
-        <ButtonPagination
-          key={i}
-          text={i.toString()}
-          active={currentPage === i}
-          onClick={() => setPage(i.toString())}
-        />
-      )
-    }
-
+    firstBtn()
+    pages.push(<ButtonPagination key="dots-1" variant="non-interactive" />)
+    checkItem(currentPage - 2, currentPage + 1)
     pages.push(<ButtonPagination key="dots-2" variant="non-interactive" />)
-    pages.push(
-      <ButtonPagination
-        key={Number.parseInt(allPages) - 1}
-        text={allPages}
-        active={currentPage === Number.parseInt(allPages)}
-        onClick={() => setPage(allPages)}
-      />
-    )
+    lastBtn()
   }
 
   return <div className="flex justify-center gap-3">{pages}</div>
