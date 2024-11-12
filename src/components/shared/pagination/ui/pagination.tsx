@@ -4,15 +4,21 @@ import { ButtonPagination } from './buttons/button-pagination'
 export interface PaginationProps {
   currentPage: number
   totalPages: number
+  siblingsCount?: number
   onPageChange?: (page: number) => void
 }
 
 export function Pagination({
   currentPage,
   totalPages,
+  siblingsCount,
   onPageChange
 }: PaginationProps) {
-  const paginationPagesList = usePagination({ totalPages, currentPage })
+  const paginationPagesList = usePagination({
+    totalPages,
+    currentPage,
+    siblingsCount
+  })
 
   const determineButtonVariant = (page: string | number) => {
     return page === DOTS_CODE ? 'non-interactive' : 'interactive'
