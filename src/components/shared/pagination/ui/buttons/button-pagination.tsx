@@ -3,7 +3,7 @@ import clsx from 'clsx'
 import styles from './button-pagination.module.scss'
 
 export interface ButtonPaginationProps {
-  text?: string
+  text?: string | number
   variant?: 'interactive' | 'non-interactive'
   active?: boolean
   onClick?: () => void
@@ -24,6 +24,7 @@ export function ButtonPagination({
     <div
       className={clsx(
         'flex h-30 w-29 items-center justify-center rounded-full border border-[#646363] font-medium text-white text-14',
+        isInteractive && 'cursor-pointer',
         active && isInteractive && styles.active,
         styles[variant]
       )}
