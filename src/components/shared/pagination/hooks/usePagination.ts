@@ -35,10 +35,10 @@ export function usePagination({
     const leftSiblingIndex = Math.max(currentPage - siblingsCount, 1)
     const rightSiblingIndex = Math.min(currentPage + siblingsCount, totalPages)
 
-    const isLeftEdgeCollapsed = leftSiblingIndex > 2
-    const isRightPageCollapsed = rightSiblingIndex < totalPages - 2
+    const isLeftEdgeCollapsed = leftSiblingIndex > 3
+    const isRightEdgeCollapsed = rightSiblingIndex < totalPages - 2
 
-    if (!isLeftEdgeCollapsed && isRightPageCollapsed) {
+    if (!isLeftEdgeCollapsed && isRightEdgeCollapsed) {
       const leftEdgeLastNumber = 3 + 2 * siblingsCount
       const rightEdgeFirstNumber = totalPages
 
@@ -49,7 +49,7 @@ export function usePagination({
       ]
     }
 
-    if (isLeftEdgeCollapsed && isRightPageCollapsed) {
+    if (isLeftEdgeCollapsed && isRightEdgeCollapsed) {
       const leftEdgeLastNumber = 1
       const rightEdgeFirstNumber = totalPages
       return [
@@ -61,7 +61,7 @@ export function usePagination({
       ]
     }
 
-    if (isLeftEdgeCollapsed && !isRightPageCollapsed) {
+    if (isLeftEdgeCollapsed && !isRightEdgeCollapsed) {
       const leftEdgeLastNumber = 1
       const rightEdgeFirstNumber = 3 + 2 * siblingsCount
       return [

@@ -20,6 +20,8 @@ export function Pagination({
     siblingsCount
   })
 
+  console.log(paginationPagesList)
+
   const determineButtonVariant = (page: string | number) => {
     return page === DOTS_CODE ? 'non-interactive' : 'interactive'
   }
