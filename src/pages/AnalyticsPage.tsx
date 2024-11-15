@@ -3,8 +3,10 @@ import { FC } from 'react'
 import { Pagination } from '@/components/shared/pagination'
 
 const DATA = {
-  numPage: '2',
-  allPages: '11'
+  currentPage: 2,
+  totalPages: 11,
+  siblingsCount: 1,
+  onPageChange() {}
 }
 
 const getCurrencySymbol = (
@@ -24,7 +26,12 @@ const getCurrencySymbol = (
 export const AnalyticsPage: FC = () => {
   return (
     <div>
-      <Pagination numPage={DATA.numPage} allPages={DATA.allPages} />
+      <Pagination
+        currentPage={DATA.currentPage}
+        totalPages={DATA.totalPages}
+        siblingsCount={DATA.siblingsCount}
+        onPageChange={DATA.onPageChange}
+      />
       <div className="mb-20">
         <h1>Аналитика</h1>
       </div>
