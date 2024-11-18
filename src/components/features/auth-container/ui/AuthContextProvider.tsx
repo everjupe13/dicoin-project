@@ -11,20 +11,10 @@ type Props = {
 const AuthContextProvider: FC<Props> = ({ children }) => {
   const { setUserData } = useAuthStore()
 
-  const logoutActionOne = () => {
-    // console.log('log1')
-  }
-  const logoutActionTwo = () => {
-    // console.log('log2')
-  }
-
   const authProviderContext: AuthContextType = {
-    beforeLogoutHook: () => {
-      logoutActionOne()
-      logoutActionTwo()
-    },
     openGoogleAuthPopup: async () => {
       const authResult = await openGoogleAuthPopup()
+      console.log(authResult)
 
       if ('user' in authResult && authResult.user) {
         setUserData(authResult.user)
