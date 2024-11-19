@@ -18,19 +18,30 @@ const MOCK_DATA: ISpendings[] = Array.from({ length: 11 * 3 * 3 }).map(
   })
 )
 
-export function SpendingsPage() {
-  const spendingsData = mapSpendings(MOCK_DATA)
-  const [currentPage, setCurrentPage] = useState(1)
-  const itemsPerPage = 9
+function fetchSpendingsPaginated(currentPage, itemsPerPage, data) {
   const startIndex = (currentPage - 1) * itemsPerPage
   const endIndex = startIndex + itemsPerPage
+  return data.slice(startIndex, endIndex)
+}
+
+const SPENDINGS_DATA = mapSpendings(MOCK_DATA)
+const ITEMS_PER_PAGE = 9
+const INITIAL_CURRENT_PAGE = 1
+
+export function SpendingsPage() {
+  const [currentPage, setCurrentPage] = useState(INITIAL_CURRENT_PAGE)
+
+  const paginateSpendings = fetchSpendingsPaginated(
+    currentPage,
+    ITEMS_PER_PAGE,
+    SPENDINGS_DATA
+  )
   return (
     <div className="flex flex-col gap-20">
-      <SpendingsList items={spendingsData.slice(startIndex, endIndex)} />
+      <SpendingsList items={paginateSpendings} />
       <Pagination
         currentPage={currentPage}
-        totalPages={Math.ceil(spendingsData.length / itemsPerPage)}
-        siblingsCount={1}
+        totalPages={Math.ceil(SPENDINGS_DATA.length / ITEMS_PER_PAGE)}
         onPageChange={page => setCurrentPage(page)}
       />
     </div>
