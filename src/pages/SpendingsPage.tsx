@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useMemo, useState } from 'react'
 
 import { ISpendings } from '@/api/types/ISpendings'
 import { Pagination } from '@/components/shared/pagination'
@@ -18,30 +18,39 @@ const MOCK_DATA: ISpendings[] = Array.from({ length: 11 * 3 * 3 }).map(
   })
 )
 
-function fetchSpendingsPaginated(currentPage, itemsPerPage, data) {
+function fetchSpendingsPaginated(currentPage: number, itemsPerPage = 9) {
   const startIndex = (currentPage - 1) * itemsPerPage
   const endIndex = startIndex + itemsPerPage
-  return data.slice(startIndex, endIndex)
+
+  return {
+    data: MOCK_DATA.slice(startIndex, endIndex),
+    error: null,
+    pagination: {
+      totalPages: 11,
+      perPage: itemsPerPage,
+      page: currentPage
+    }
+  }
 }
 
-const SPENDINGS_DATA = mapSpendings(MOCK_DATA)
-const ITEMS_PER_PAGE = 9
-const INITIAL_CURRENT_PAGE = 1
-
 export function SpendingsPage() {
-  const [currentPage, setCurrentPage] = useState(INITIAL_CURRENT_PAGE)
+  const [currentPage, setCurrentPage] = useState(1)
 
-  const paginateSpendings = fetchSpendingsPaginated(
-    currentPage,
-    ITEMS_PER_PAGE,
-    SPENDINGS_DATA
+  const paginatedSpendingsResponse = useMemo(
+    () => fetchSpendingsPaginated(currentPage),
+    [currentPage]
+  )
+
+  const spendingsData = useMemo(
+    () => mapSpendings(paginatedSpendingsResponse.data),
+    [paginatedSpendingsResponse.data]
   )
   return (
     <div className="flex flex-col gap-20">
-      <SpendingsList items={paginateSpendings} />
+      <SpendingsList items={spendingsData} />
       <Pagination
         currentPage={currentPage}
-        totalPages={Math.ceil(SPENDINGS_DATA.length / ITEMS_PER_PAGE)}
+        totalPages={paginatedSpendingsResponse.pagination.totalPages}
         onPageChange={page => setCurrentPage(page)}
       />
     </div>
