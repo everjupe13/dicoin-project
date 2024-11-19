@@ -1,6 +1,6 @@
 import { useMemo, useState } from 'react'
 
-import { ISpendings } from '@/api/types/ISpendings'
+import type { ISpendings } from '@/api/types/ISpendings'
 import { Pagination } from '@/components/shared/pagination'
 import { mapSpendings } from '@/components/spendings/spendings-card'
 import { SpendingsList } from '@/components/spendings/spendings-list'
