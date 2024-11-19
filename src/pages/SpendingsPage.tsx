@@ -1,4 +1,7 @@
-import { ISpendings } from '@/api/types/ISpendings'
+import { useMemo, useState } from 'react'
+
+import type { ISpendings } from '@/api/types/ISpendings'
+import { Pagination } from '@/components/shared/pagination'
 import { mapSpendings } from '@/components/spendings/spendings-card'
 import { SpendingsList } from '@/components/spendings/spendings-list'
 import { formatDate } from '@/utils/date-time'
@@ -15,11 +18,41 @@ const MOCK_DATA: ISpendings[] = Array.from({ length: 11 * 3 * 3 }).map(
   })
 )
 
+function fetchSpendingsPaginated(currentPage: number, itemsPerPage = 9) {
+  const startIndex = (currentPage - 1) * itemsPerPage
+  const endIndex = startIndex + itemsPerPage
+
+  return {
+    data: MOCK_DATA.slice(startIndex, endIndex),
+    error: null,
+    pagination: {
+      totalPages: 11,
+      perPage: itemsPerPage,
+      page: currentPage
+    }
+  }
+}
+
 export function SpendingsPage() {
-  const spendingsData = mapSpendings(MOCK_DATA.slice(0, 6))
+  const [currentPage, setCurrentPage] = useState(1)
+
+  const paginatedSpendingsResponse = useMemo(
+    () => fetchSpendingsPaginated(currentPage),
+    [currentPage]
+  )
+
+  const spendingsData = useMemo(
+    () => mapSpendings(paginatedSpendingsResponse.data),
+    [paginatedSpendingsResponse.data]
+  )
   return (
-    <div>
+    <div className="flex flex-col gap-20">
       <SpendingsList items={spendingsData} />
+      <Pagination
+        currentPage={currentPage}
+        totalPages={paginatedSpendingsResponse.pagination.totalPages}
+        onPageChange={page => setCurrentPage(page)}
+      />
     </div>
   )
 }
