@@ -5,8 +5,6 @@ import { Outlet } from 'react-router-dom'
 import { appTitle } from '@/app/core'
 import { ProvidersContainer } from '@/providers/providers-container'
 
-import { AuthContainer } from './components/features/auth-container'
-
 export const Root: FC = () => {
   return (
     <>
@@ -16,9 +14,7 @@ export const Root: FC = () => {
         </Helmet>
       </HelmetProvider>
       <ProvidersContainer>
-        <AuthContainer>
-          <Outlet />
-        </AuthContainer>
+        <Outlet />
       </ProvidersContainer>
     </>
   )

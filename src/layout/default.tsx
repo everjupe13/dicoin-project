@@ -1,8 +1,8 @@
 import { FC, ReactElement } from 'react'
 import { Outlet } from 'react-router-dom'
 
+import { Header } from '@/components/app/header'
 import { Footer } from '@/components/widgets/footer'
-import { Header } from '@/components/widgets/header'
 import { Sidebar } from '@/components/widgets/sidebar'
 
 type Props = {

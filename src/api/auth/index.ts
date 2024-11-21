@@ -1,5 +1,6 @@
+export * from './hooks/useAuth'
+export { auth, beforeAuthChanged, onAuthChanged } from './lib/firebase/service'
 export type {
   FirebaseAuthError,
   FirebaseUserCredentials
-} from './firebase.types'
-export { useAuth } from './useAuth'
+} from './lib/firebase/types'

@@ -1,7 +1,7 @@
 import { FC, useMemo } from 'react'
 import { Navigate, Outlet } from 'react-router-dom'
 
-import { useAuthStore } from '@/components/features/auth-container'
+import { useAuthStore } from '@/providers/auth-provider'
 
 type Props = {
   protectedProperty?: boolean
@@ -12,8 +12,8 @@ export const ProtectedRouteUser: FC<Props> = ({
   protectedProperty,
   isProtectedActive
 }) => {
-  const userData = useAuthStore(state => state.userData)
-  const isAnononymousUser = userData === null
+  const { user } = useAuthStore()
+  const isAnononymousUser = user === null
 
   const isAllowed = useMemo(
     () =>
