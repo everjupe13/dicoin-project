@@ -1,6 +1,7 @@
 import { initializeApp } from 'firebase/app'
 import {
   type AuthError,
+  beforeAuthStateChanged,
   browserLocalPersistence,
   getAuth,
   GoogleAuthProvider,
@@ -12,10 +13,7 @@ import {
   type UserCredential
 } from 'firebase/auth'
 
-import type {
-  FirebaseAuthError,
-  FirebaseUserCredentials
-} from './firebase.types'
+import type { FirebaseAuthError, FirebaseUserCredentials } from './types'
 
 const firebaseConfig = {
   apiKey: 'AIzaSyB4maes2N9qN72FI3aRks0lQgBVbC_I2So',
@@ -31,6 +29,9 @@ export const auth = getAuth(app)
 
 export const onAuthChanged = (f: (user?: User | null) => void) =>
   onAuthStateChanged(auth, f)
+
+export const beforeAuthChanged = (f: () => void) =>
+  beforeAuthStateChanged(auth, f)
 
 const googleAuthProvider = new GoogleAuthProvider()
 
