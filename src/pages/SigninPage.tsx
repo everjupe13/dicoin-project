@@ -1,11 +1,12 @@
 import { FC } from 'react'
 import { Link } from 'react-router-dom'
 
-import { useAuthContext } from '@/components/features/auth-container'
 import { Button } from '@/components/shared/button'
+import { useAuthStore } from '@/providers/auth-provider'
 
 export const SigninPage: FC = () => {
-  const { openGoogleAuthPopup } = useAuthContext()
+  const { authByExternalPopup } = useAuthStore()
+
   return (
     <>
       <p>signin</p>
@@ -13,7 +14,7 @@ export const SigninPage: FC = () => {
         variant="secondary"
         size="normal"
         className="mb-10"
-        onClick={openGoogleAuthPopup}
+        onClick={authByExternalPopup}
       >
         Google
       </Button>

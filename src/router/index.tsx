@@ -34,7 +34,6 @@ const router = createBrowserRouter(
         <Route element={<DefaultLayout />}>
           <Route path="/analytics" element={<AnalyticsPage />} />
           <Route path="/protected" element={<div>i am protected</div>} />
-          {/* <Route path="/spendings" element={<SpendingsPage />} /> */}
         </Route>
       </Route>
       <Route element={<ProtectedRouteAuth isProtectedActive />}>

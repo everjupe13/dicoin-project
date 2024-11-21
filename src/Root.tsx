@@ -3,9 +3,7 @@ import { Helmet, HelmetProvider } from 'react-helmet-async'
 import { Outlet } from 'react-router-dom'
 
 import { appTitle } from '@/app/core'
-import { ReactQueryProvider } from '@/components/features/react-query-provider'
-
-import { AuthContainer } from './components/features/auth-container'
+import { ProvidersContainer } from '@/providers/providers-container'
 
 export const Root: FC = () => {
   return (
@@ -15,11 +13,9 @@ export const Root: FC = () => {
           <title>{appTitle('')}</title>
         </Helmet>
       </HelmetProvider>
-      <ReactQueryProvider>
-        <AuthContainer>
-          <Outlet />
-        </AuthContainer>
-      </ReactQueryProvider>
+      <ProvidersContainer>
+        <Outlet />
+      </ProvidersContainer>
     </>
   )
 }
