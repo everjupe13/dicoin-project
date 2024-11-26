@@ -12,3 +12,8 @@ export type ApiResponse<T> = {
   message: string
   data: T | null
 }
+
+export type SelectOption = {
+  label: string
+  value: string
+}
