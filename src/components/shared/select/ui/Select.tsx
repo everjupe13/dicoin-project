@@ -8,7 +8,7 @@ export interface SelectProps {
   disabled?: boolean
   autocomplete?: string
 
-  onChange: (value: SelectOption | SelectOption[]) => void
+  onChange: (value: SelectOption) => void
   onFocus?: () => void
   onBlur?: () => void
 }

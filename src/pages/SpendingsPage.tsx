@@ -2,6 +2,8 @@ import { useMemo, useState } from 'react'
 
 import type { ISpendings } from '@/api/types/ISpendings'
 import { Pagination } from '@/components/shared/pagination'
+import { SpendingSorting } from '@/components/shared/spending-sorting'
+import { sortSpendings } from '@/components/shared/spending-sorting/utils/Sorting'
 import { mapSpendings } from '@/components/spendings/spendings-card'
 import { SpendingsList } from '@/components/spendings/spendings-list'
 import { formatDate } from '@/utils/date-time'
@@ -18,12 +20,16 @@ const MOCK_DATA: ISpendings[] = Array.from({ length: 11 * 3 * 3 }).map(
   })
 )
 
-function fetchSpendingsPaginated(currentPage: number, itemsPerPage = 9) {
+function fetchSpendingsPaginated(
+  data: ISpendings[],
+  currentPage: number,
+  itemsPerPage = 9
+) {
   const startIndex = (currentPage - 1) * itemsPerPage
   const endIndex = startIndex + itemsPerPage
 
   return {
-    data: MOCK_DATA.slice(startIndex, endIndex),
+    data: data.slice(startIndex, endIndex),
     error: null,
     pagination: {
       totalPages: 11,
@@ -35,24 +41,34 @@ function fetchSpendingsPaginated(currentPage: number, itemsPerPage = 9) {
 
 export function SpendingsPage() {
   const [currentPage, setCurrentPage] = useState(1)
+  const [sortedData, setSortedData] = useState(MOCK_DATA)
 
   const paginatedSpendingsResponse = useMemo(
-    () => fetchSpendingsPaginated(currentPage),
-    [currentPage]
+    () => fetchSpendingsPaginated(sortedData, currentPage),
+    [sortedData, currentPage]
   )
 
   const spendingsData = useMemo(
     () => mapSpendings(paginatedSpendingsResponse.data),
     [paginatedSpendingsResponse.data]
   )
+
+  const handleSortChange = (slug: string) => {
+    const newSortedData = sortSpendings(MOCK_DATA, slug)
+    setSortedData(newSortedData)
+    setCurrentPage(1)
+  }
   return (
-    <div className="flex flex-col gap-20">
-      <SpendingsList items={spendingsData} />
-      <Pagination
-        currentPage={currentPage}
-        totalPages={paginatedSpendingsResponse.pagination.totalPages}
-        onPageChange={page => setCurrentPage(page)}
-      />
+    <div className="flex flex-col gap-5">
+      <SpendingSorting onSortChange={handleSortChange} />
+      <div className="flex flex-col gap-20">
+        <SpendingsList items={spendingsData} />
+        <Pagination
+          currentPage={currentPage}
+          totalPages={paginatedSpendingsResponse.pagination.totalPages}
+          onPageChange={page => setCurrentPage(page)}
+        />
+      </div>
     </div>
   )
 }
