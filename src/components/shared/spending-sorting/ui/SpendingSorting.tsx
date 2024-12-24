@@ -49,8 +49,8 @@ export function SpendingSorting({
         )}
         name="MyName"
         onChange={value => {
-          onSortChange(value.value),
-            console.log('Выбранное значение:', value.value)
+          onSortChange(value.value)
+          console.log('Выбранное значение:', value.value)
         }}
       />
     </div>

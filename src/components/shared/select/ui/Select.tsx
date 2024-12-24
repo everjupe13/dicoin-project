@@ -33,13 +33,16 @@ export function Select({
           const currentOption = options.find(
             option => option.value === e.target.value
           )
+
           if (currentOption !== undefined) {
             onChange(currentOption)
           }
         }}
       >
         {options.map(option => (
-          <option key={option.value}>{option.label}</option>
+          <option key={option.value} value={option.value}>
+            {option.label}
+          </option>
         ))}
       </select>
     </div>
