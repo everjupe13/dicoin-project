@@ -1,4 +1,4 @@
-import { Select } from '../../select'
+import { Select } from '../../../shared/select'
 
 export function SpendingSorting({
   onSortChange
@@ -50,7 +50,6 @@ export function SpendingSorting({
         name="MyName"
         onChange={value => {
           onSortChange(value.value)
-          console.log('Выбранное значение:', value.value)
         }}
       />
     </div>

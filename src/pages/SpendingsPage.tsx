@@ -1,9 +1,10 @@
 import { useMemo, useState } from 'react'
+import { useSearchParams } from 'react-router-dom'
 
 import type { ISpendings } from '@/api/types/ISpendings'
 import { Pagination } from '@/components/shared/pagination'
-import { SpendingSorting } from '@/components/shared/spending-sorting'
-import { sortSpendings } from '@/components/shared/spending-sorting/utils/Sorting'
+import { SpendingSorting } from '@/components/spendings/spending-sorting'
+import { sortSpendings } from '@/components/spendings/spending-sorting/utils/Sorting'
 import { mapSpendings } from '@/components/spendings/spendings-card'
 import { SpendingsList } from '@/components/spendings/spendings-list'
 import { formatDate } from '@/utils/date-time'
@@ -41,7 +42,16 @@ function fetchSpendingsPaginated(
 
 export function SpendingsPage() {
   const [currentPage, setCurrentPage] = useState(1)
-  const [sortedData, setSortedData] = useState(MOCK_DATA)
+  const [sortSlug, setSortSlug] = useState<string | null>(null)
+
+  const [searchParams, setSearchParams] = useSearchParams()
+
+  const sortedData = useMemo(() => {
+    if (!sortSlug) {
+      return MOCK_DATA
+    }
+    return sortSpendings(MOCK_DATA, sortSlug)
+  }, [sortSlug])
 
   const paginatedSpendingsResponse = useMemo(
     () => fetchSpendingsPaginated(sortedData, currentPage),
@@ -54,9 +64,9 @@ export function SpendingsPage() {
   )
 
   const handleSortChange = (slug: string) => {
-    const newSortedData = sortSpendings(MOCK_DATA, slug)
-    setSortedData(newSortedData)
+    setSortSlug(slug)
     setCurrentPage(1)
+    setSearchParams({ slug: slug })
   }
   return (
     <div className="flex flex-col gap-5">
