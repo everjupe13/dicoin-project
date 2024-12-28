@@ -1,28 +1,22 @@
-import { FC, ReactElement } from 'react'
 import { Outlet } from 'react-router-dom'
 
 import { Header } from '@/components/app/header'
-import { Footer } from '@/components/widgets/footer'
-// import { Sidebar } from '@/components/widgets/sidebar'
+import { Sidebar } from '@/components/app/sidebar'
 
-type Props = {
-  children?: string | ReactElement | JSX.Element | JSX.Element[]
-}
-
-const DefaultLayout: FC<Props> = () => {
+export function DefaultLayout() {
   return (
     <>
-      <div className="relative">
-        <Header />
+      <div className="flex flex-1 flex-col">
+        <Header className="flex-shrink-0" />
 
-        {/* <Sidebar /> */}
-        <main className="main relative z-[1] ml-[240px] mt-[100px] w-[calc(100%-240px)] pb-20 pl-0 pr-20 pt-35">
-          <Outlet />
+        <main className="flex flex-grow">
+          <Sidebar className="sticky top-50 h-[calc(100dvh-50px)] w-[190px] flex-grow-0" />
+
+          <div className="flex-grow px-30 py-20">
+            <Outlet />
+          </div>
         </main>
       </div>
-      <Footer />
     </>
   )
 }
-
-export { DefaultLayout }

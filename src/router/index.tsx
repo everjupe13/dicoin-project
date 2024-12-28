@@ -30,6 +30,7 @@ const router = createBrowserRouter(
         <Route path="/bills" element={<BillsPage />} />
         <Route path="/spendings" element={<SpendingsPage />} />
       </Route>
+      {/* TODO поменять местами два нижних компонента что бы стейт не ресетился */}
       <Route element={<ProtectedRouteUser isProtectedActive />}>
         <Route element={<DefaultLayout />}>
           <Route path="/analytics" element={<AnalyticsPage />} />

@@ -85,6 +85,12 @@ module.exports = {
         300: '#07090B'
       },
 
+      background: 'var(--color-background)',
+      foreground: 'var(--color-foreground)',
+      border: {
+        DEFAULT: 'var(--color-border)'
+      },
+
       white: '#FFFFFF',
 
       grey: {

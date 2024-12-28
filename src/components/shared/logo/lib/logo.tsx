@@ -14,6 +14,7 @@ export function Logo({ width = 55, height = 17 }: LogoProps) {
       <img
         src={LogoIconSvg}
         alt={getConfig().appName}
+        className="pointer-events-none"
         width={width}
         height={height}
       />
