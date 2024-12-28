@@ -1,7 +1,7 @@
 import { NavLink } from 'react-router-dom'
 
 import { textSignIn, textSignUp } from '@/shared/const'
-import { utilLocaleString } from '@/shared/util/locale-string'
+import { utilLocaleString } from '@/shared/utils/locale-string'
 
 export interface UserNavigationGuestProps {}
 
