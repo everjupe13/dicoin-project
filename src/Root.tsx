@@ -1,18 +1,18 @@
-import { FC } from 'react'
 import { Helmet, HelmetProvider } from 'react-helmet-async'
 import { Outlet } from 'react-router-dom'
 
-import { appTitle } from '@/app/core'
 import { ProvidersContainer } from '@/providers/providers-container'
+import { utilGetAppTitle } from '@/shared/util/get-app-title'
 
-export const Root: FC = () => {
+export function Root() {
   return (
     <>
       <HelmetProvider>
         <Helmet>
-          <title>{appTitle('')}</title>
+          <title>{utilGetAppTitle()}</title>
         </Helmet>
       </HelmetProvider>
+
       <ProvidersContainer>
         <Outlet />
       </ProvidersContainer>
