@@ -19,8 +19,6 @@ export function Badge({ text, children, variant = 'primary' }: BadgeProps) {
     return null
   }
 
-  console.log(`variant${capitalize(variant)}`)
-
   return (
     <div
       className={clsx(

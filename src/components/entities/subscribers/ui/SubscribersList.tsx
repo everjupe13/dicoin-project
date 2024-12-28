@@ -35,6 +35,7 @@ const SubscribersList = () => {
         setSubscribers(result.data)
       } catch (error) {
         setFetchError(error as AxiosError)
+        // eslint-disable-next-line no-console
         console.error('Error fetching data:', error)
       }
     }

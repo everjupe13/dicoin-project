@@ -1,7 +1,7 @@
 import { type ReactNode, useCallback, useEffect, useState } from 'react'
 
 import { beforeAuthChanged, onAuthChanged, useAuth } from '@/api/auth'
-import type { User } from '@/types/user'
+import type { User } from '@/shared/types'
 
 import { AuthContext, type AuthContextType } from './context'
 

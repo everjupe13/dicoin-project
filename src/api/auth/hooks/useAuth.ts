@@ -1,5 +1,5 @@
+import type { User } from '@/shared/types'
 import type { ApiResponse } from '@/types/api/response'
-import type { User } from '@/types/user'
 
 import { auth, openGoogleAuthPopup } from '../lib/firebase/service'
 
