@@ -18,6 +18,7 @@ export function sortSpendings(
   }
 
   const config = sortMapping[slug]
+
   if (!config) {
     return spendings
   }

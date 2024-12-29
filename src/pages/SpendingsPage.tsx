@@ -41,10 +41,10 @@ function fetchSpendingsPaginated(
 }
 
 export function SpendingsPage() {
-  const [currentPage, setCurrentPage] = useState(1)
-  const [sortSlug, setSortSlug] = useState<string | null>(null)
-
+  const [currentPage, setCurrentPage] = useState<number>(1)
   const [searchParams, setSearchParams] = useSearchParams()
+
+  const sortSlug = searchParams.get('slug') || null
 
   const sortedData = useMemo(() => {
     if (!sortSlug) {
@@ -64,7 +64,6 @@ export function SpendingsPage() {
   )
 
   const handleSortChange = (slug: string) => {
-    setSortSlug(slug)
     setCurrentPage(1)
     setSearchParams({ slug: slug })
   }
