@@ -17,27 +17,24 @@ import { SpendingsPage } from '@/pages/SpendingsPage'
 import { SubscribersPage } from '@/pages/SubscribersPage'
 import { Root } from '@/Root'
 
-import { ProtectedRouteAuth } from './ui/ProtectedRouteAuth'
-import { ProtectedRouteUser } from './ui/ProtectedRouteUser'
+import { ProtectedRoutes } from './lib/ProtectedRoutes'
 
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<Root />} errorElement={<ErrorPage />}>
-      <Route element={<DefaultLayout />}>
-        <Route index element={<HomePage />} />
-        <Route path="/about" element={<AboutPage />} />
-        <Route path="/subscribers" element={<SubscribersPage />} />
-        <Route path="/bills" element={<BillsPage />} />
-        <Route path="/spendings" element={<SpendingsPage />} />
-      </Route>
-      {/* TODO поменять местами два нижних компонента что бы стейт не ресетился */}
-      <Route element={<ProtectedRouteUser isProtectedActive />}>
+      <Route element={<ProtectedRoutes type="logged" />}>
         <Route element={<DefaultLayout />}>
+          <Route index element={<HomePage />} />
+          <Route path="/about" element={<AboutPage />} />
+          <Route path="/subscribers" element={<SubscribersPage />} />
+          <Route path="/bills" element={<BillsPage />} />
+          <Route path="/spendings" element={<SpendingsPage />} />
           <Route path="/analytics" element={<AnalyticsPage />} />
           <Route path="/protected" element={<div>i am protected</div>} />
         </Route>
       </Route>
-      <Route element={<ProtectedRouteAuth isProtectedActive />}>
+
+      <Route element={<ProtectedRoutes type="guest" />}>
         <Route element={<AuthLayout />}>
           <Route path="/auth/signin" element={<SigninPage />} />
           <Route path="/auth/signup" element={<SignupPage />} />
