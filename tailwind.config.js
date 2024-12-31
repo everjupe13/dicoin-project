@@ -62,6 +62,10 @@ module.exports = {
         DEFAULT: 'transparent'
       },
 
+      boxShadow: {
+        modals: 'var(--box-shadow-modals)'
+      },
+
       scale: {
         101: '1.01'
       }
@@ -85,10 +89,18 @@ module.exports = {
         300: '#07090B'
       },
 
-      background: 'var(--color-background)',
+      background: {
+        DEFAULT: 'var(--color-background)',
+
+        modals: 'var(--color-background-modals)',
+        'modals-hover': 'var(--color-background-modals-hover)',
+        'modals-active': 'var(--color-background-modals-active)',
+      },
+
       foreground: 'var(--color-foreground)',
+
       border: {
-        DEFAULT: 'var(--color-border)'
+        DEFAULT: 'var(--color-border)',
       },
 
       white: '#FFFFFF',

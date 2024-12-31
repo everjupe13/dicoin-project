@@ -1,10 +1,36 @@
+import {
+  ArchiveBoxXMarkIcon,
+  PencilIcon,
+  Square2StackIcon,
+  TrashIcon
+} from '@heroicons/react/16/solid'
 import { FC } from 'react'
 import { Link } from 'react-router-dom'
 
 import { Button } from '@/components/shared/button'
 import { CheckBox } from '@/components/shared/checkbox'
-import { IconedButton } from '@/components/shared/icon-button'
 // import { Radio } from '@/components/shared/radio'
+import { DropdownMenu } from '@/components/shared/dropdown-menu'
+import { IconedButton } from '@/components/shared/icon-button'
+
+const data = [
+  {
+    label: 'Edit',
+    icon: <PencilIcon />
+  },
+  {
+    label: 'Duplicate',
+    icon: <Square2StackIcon />
+  },
+  {
+    label: 'Archive',
+    icon: <ArchiveBoxXMarkIcon />
+  },
+  {
+    label: 'Delete',
+    icon: <TrashIcon />
+  }
+]
 
 export const HomePage: FC = () => {
   return (
@@ -29,6 +55,10 @@ export const HomePage: FC = () => {
         +
       </IconedButton>
       <CheckBox>Label</CheckBox>
+
+      <div className="my-20">
+        <DropdownMenu items={data} label="Options" />
+      </div>
       {/* <Radio></Radio> */}
     </>
   )
