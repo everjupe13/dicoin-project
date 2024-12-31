@@ -1,22 +1,20 @@
-import { ArrowRightStartOnRectangleIcon } from '@heroicons/react/16/solid'
 import clsx from 'clsx'
 
-import { DropdownMenu } from '@/components/shared/dropdown-menu'
+import {
+  DropdownMenu,
+  DropdownMenuProps
+} from '@/components/shared/dropdown-menu'
 import { User } from '@/shared/types'
 
 export interface UserNavigationLoggedProps {
   user: User
+  userNavigation?: DropdownMenuProps['items']
 }
 
-const userNavigation = [
-  {
-    label: 'Выйти',
-    icon: <ArrowRightStartOnRectangleIcon />,
-    onClick: () => console.log('Выйти')
-  }
-]
-
-export function UserNavigationLogged({ user }: UserNavigationLoggedProps) {
+export function UserNavigationLogged({
+  user,
+  userNavigation = []
+}: UserNavigationLoggedProps) {
   return (
     <DropdownMenu items={userNavigation} gap={2}>
       <div className="flex items-center gap-x-6">

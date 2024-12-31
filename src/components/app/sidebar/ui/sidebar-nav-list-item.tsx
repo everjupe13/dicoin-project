@@ -24,7 +24,7 @@ export function SidebarNavListItem({
   return (
     <li
       className={clsx(
-        'flex h-32 flex-col',
+        'flex h-40 flex-col',
         'rounded-8 font-medium text-white text-14',
         active && 'bg-[#27272a]',
         'transition duration-200 hover:bg-[#27272a] hover:opacity-90',

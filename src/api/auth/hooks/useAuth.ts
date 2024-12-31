@@ -29,6 +29,7 @@ export function useAuth(): UseAuthInterface {
 
   const logout = async () => {
     await auth.signOut()
+    window.location.reload()
   }
 
   return {

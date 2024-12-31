@@ -25,7 +25,6 @@
     "@tanstack/react-query-devtools": "^5.28.4",
     "@types/react-router-dom": "^5.3.3",
     "axios": "^1.6.2",
-    "caniuse-lite": "^1.0.30001597",
     "clsx": "^2.0.0",
     "dayjs": "^1.11.10",
     "firebase": "^10.7.0",

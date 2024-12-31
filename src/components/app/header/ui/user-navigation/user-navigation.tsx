@@ -1,14 +1,22 @@
 import { User } from '@/shared/types'
 
 import { UserNavigationGuest } from './user-navigation-guest'
-import { UserNavigationLogged } from './user-navigation-logged'
+import {
+  UserNavigationLogged,
+  UserNavigationLoggedProps
+} from './user-navigation-logged'
 
 export interface UserNavigationProps {
   user?: User | null
   loading?: boolean
+  userNavigation?: UserNavigationLoggedProps['userNavigation']
 }
 
-export function UserNavigation({ user, loading }: UserNavigationProps) {
+export function UserNavigation({
+  user,
+  loading,
+  userNavigation
+}: UserNavigationProps) {
   const isAuth = !!user
 
   return (
@@ -16,7 +24,9 @@ export function UserNavigation({ user, loading }: UserNavigationProps) {
       {loading && <></>}
       {!loading && (
         <>
-          {isAuth && <UserNavigationLogged user={user} />}
+          {isAuth && (
+            <UserNavigationLogged user={user} userNavigation={userNavigation} />
+          )}
           {!isAuth && <UserNavigationGuest />}
         </>
       )}

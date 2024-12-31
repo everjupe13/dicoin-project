@@ -1,3 +1,4 @@
+import { ArrowRightStartOnRectangleIcon } from '@heroicons/react/16/solid'
 import clsx from 'clsx'
 
 import { Logo } from '@/components/shared/logo'
@@ -10,7 +11,15 @@ export interface HeaderProps {
 }
 
 export function Header({ className }: HeaderProps) {
-  const { user, loading: userLoading } = useAuthStore()
+  const { user, loading: userLoading, logout } = useAuthStore()
+
+  const userNavigation = [
+    {
+      label: 'Выйти',
+      icon: <ArrowRightStartOnRectangleIcon />,
+      onClick: () => logout?.()
+    }
+  ]
 
   return (
     <header
@@ -19,14 +28,18 @@ export function Header({ className }: HeaderProps) {
         className
       )}
     >
-      <div className="container h-full py-10">
+      <div className="h-full px-25 py-10">
         <div className="flex h-full items-center justify-between">
-          <div className="flex-shrink-0">
+          <div className="w-[var(--aside-column-width)] flex-shrink-0">
             <Logo />
           </div>
 
           <div className="flex-shrink-0">
-            <UserNavigation user={user} loading={userLoading} />
+            <UserNavigation
+              user={user}
+              loading={userLoading}
+              userNavigation={userNavigation}
+            />
           </div>
         </div>
       </div>
