@@ -11,11 +11,13 @@ import { AnalyticsPage } from '@/pages/AnalyticsPage'
 import { BillsPage } from '@/pages/BillsPage'
 import { ErrorPage } from '@/pages/ErrorPage'
 import { HomePage } from '@/pages/HomePage'
+import { ProfilePage } from '@/pages/ProfilePage'
 import { SigninPage } from '@/pages/SigninPage'
 import { SignupPage } from '@/pages/SignupPage'
 import { SpendingsPage } from '@/pages/SpendingsPage'
 import { SubscribersPage } from '@/pages/SubscribersPage'
 import { Root } from '@/Root'
+import { ROUTES } from '@/shared/const'
 
 import { ProtectedRoutes } from './lib/ProtectedRoutes'
 
@@ -25,10 +27,13 @@ const router = createBrowserRouter(
       <Route element={<ProtectedRoutes type="logged" />}>
         <Route element={<DefaultLayout />}>
           <Route index element={<HomePage />} />
-          <Route path="/about" element={<AboutPage />} />
+          <Route path={ROUTES.ABOUT} element={<AboutPage />} />
+          <Route path={ROUTES.SPENDINGS} element={<SpendingsPage />} />
+          <Route path={ROUTES.PROFILE} element={<ProfilePage />} />
+
+          {/* TODO убрать страницы / рефактор */}
           <Route path="/subscribers" element={<SubscribersPage />} />
           <Route path="/bills" element={<BillsPage />} />
-          <Route path="/spendings" element={<SpendingsPage />} />
           <Route path="/analytics" element={<AnalyticsPage />} />
           <Route path="/protected" element={<div>i am protected</div>} />
         </Route>
@@ -36,8 +41,8 @@ const router = createBrowserRouter(
 
       <Route element={<ProtectedRoutes type="guest" />}>
         <Route element={<AuthLayout />}>
-          <Route path="/auth/signin" element={<SigninPage />} />
-          <Route path="/auth/signup" element={<SignupPage />} />
+          <Route path={ROUTES.AUTH.SIGN_IN} element={<SigninPage />} />
+          <Route path={ROUTES.AUTH.SIGN_UP} element={<SignupPage />} />
         </Route>
       </Route>
     </Route>

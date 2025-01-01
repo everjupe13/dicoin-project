@@ -1,7 +1,7 @@
 import { ReactNode } from 'react'
 
-export interface DropdownMenuItemProps {
-  label?: string | ReactNode
+export interface SidebarItem {
+  label: string
   icon?: ReactNode
   link?: string
   onClick?: () => void

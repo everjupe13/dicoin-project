@@ -3,6 +3,7 @@ import clsx from 'clsx'
 
 import { Logo } from '@/components/shared/logo'
 import { useAuthStore } from '@/providers/auth-provider'
+import { ROUTES } from '@/shared/const'
 
 import { UserNavigation } from '../ui/user-navigation/user-navigation'
 
@@ -14,6 +15,10 @@ export function Header({ className }: HeaderProps) {
   const { user, loading: userLoading, logout } = useAuthStore()
 
   const userNavigation = [
+    {
+      label: 'Профиль',
+      link: ROUTES.PROFILE
+    },
     {
       label: 'Выйти',
       icon: <ArrowRightStartOnRectangleIcon />,

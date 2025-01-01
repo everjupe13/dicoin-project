@@ -3,6 +3,9 @@ import { ChevronDownIcon } from '@heroicons/react/16/solid'
 import { clsx } from 'clsx'
 import { AnimatePresence } from 'framer-motion'
 import { ReactNode } from 'react'
+import { useNavigate } from 'react-router-dom'
+
+import { ROUTES } from '@/shared/const'
 
 import { DropdownMenuItemProps } from '../types'
 import { MotionItemsWrapper } from './motion-items-wrapper'
@@ -24,6 +27,12 @@ export function DropdownMenu({
   items,
   gap = 5
 }: DropdownMenuProps) {
+  const navigate = useNavigate()
+  const handleItemNavigate = (item: DropdownMenuItemProps) => {
+    item.onClick?.()
+    navigate(item.link || ROUTES.HOME)
+  }
+
   return (
     <Menu>
       {({ open }) => (
@@ -75,7 +84,11 @@ export function DropdownMenu({
                         'group flex h-34 w-full items-center gap-10 rounded-6 px-8 data-[focus]:bg-white/10',
                         '[&>svg]:h-16 [&>svg]:w-16 [&>svg]:fill-white/30'
                       )}
-                      onClick={item?.onClick}
+                      onClick={
+                        item.link
+                          ? () => handleItemNavigate(item)
+                          : () => item.onClick?.()
+                      }
                     >
                       {item.icon}
                       {item.label}

@@ -3,7 +3,11 @@ export const ROUTES = {
   AUTH: {
     SIGN_IN: '/auth/signin',
     SIGN_UP: '/auth/signup'
-  }
+  },
+  PROFILE: '/profile',
+  ABOUT: '/about',
+  BALANCE: '/balance',
+  SPENDINGS: '/spendings'
 }
 
 export const SEARCH_PARAMS = {
