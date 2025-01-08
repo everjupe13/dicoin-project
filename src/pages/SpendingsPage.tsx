@@ -3,10 +3,10 @@ import { useSearchParams } from 'react-router-dom'
 
 import type { ISpendings } from '@/api/types/ISpendings'
 import { Pagination } from '@/components/shared/pagination'
-import { SpendingSorting } from '@/components/spendings/spending-sorting'
-import { sortSpendings } from '@/components/spendings/spending-sorting/utils/Sorting'
 import { mapSpendings } from '@/components/spendings/spendings-card'
 import { SpendingsList } from '@/components/spendings/spendings-list'
+import { SpendingsSorting } from '@/components/spendings/spendings-sorting'
+import { sortSpendings } from '@/components/spendings/spendings-sorting/utils/Sorting'
 import { formatDate } from '@/utils/date-time'
 
 const MOCK_DATA: ISpendings[] = Array.from({ length: 11 * 3 * 3 }).map(
@@ -41,7 +41,7 @@ function fetchSpendingsPaginated(
 }
 
 export function SpendingsPage() {
-  const [currentPage, setCurrentPage] = useState<number>(1)
+  const [currentPage, setCurrentPage] = useState(1)
   const [searchParams, setSearchParams] = useSearchParams()
 
   const sortSlug = searchParams.get('slug') || null
@@ -69,7 +69,7 @@ export function SpendingsPage() {
   }
   return (
     <div className="flex flex-col gap-5">
-      <SpendingSorting onSortChange={handleSortChange} />
+      <SpendingsSorting onSortChange={handleSortChange} />
       <div className="flex flex-col gap-20">
         <SpendingsList items={spendingsData} />
         <Pagination
