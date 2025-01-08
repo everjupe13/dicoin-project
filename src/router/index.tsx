@@ -11,6 +11,7 @@ import { AnalyticsPage } from '@/pages/AnalyticsPage'
 import { BillsPage } from '@/pages/BillsPage'
 import { ErrorPage } from '@/pages/ErrorPage'
 import { HomePage } from '@/pages/HomePage'
+import { NotFoundErrorPage } from '@/pages/NotFoundErrorPage'
 import { ProfilePage } from '@/pages/ProfilePage'
 import { SigninPage } from '@/pages/SigninPage'
 import { SignupPage } from '@/pages/SignupPage'
@@ -23,10 +24,10 @@ import { ProtectedRoutes } from './lib/ProtectedRoutes'
 
 const router = createBrowserRouter(
   createRoutesFromElements(
-    <Route path="/" element={<Root />} errorElement={<ErrorPage />}>
+    <Route element={<Root />} errorElement={<ErrorPage />}>
       <Route element={<ProtectedRoutes type="logged" />}>
         <Route element={<DefaultLayout />}>
-          <Route index element={<HomePage />} />
+          <Route path="/" element={<HomePage />} />
           <Route path={ROUTES.ABOUT} element={<AboutPage />} />
           <Route path={ROUTES.SPENDINGS} element={<SpendingsPage />} />
           <Route path={ROUTES.PROFILE} element={<ProfilePage />} />
@@ -36,6 +37,8 @@ const router = createBrowserRouter(
           <Route path="/bills" element={<BillsPage />} />
           <Route path="/analytics" element={<AnalyticsPage />} />
           <Route path="/protected" element={<div>i am protected</div>} />
+
+          <Route path="*" element={<NotFoundErrorPage />}></Route>
         </Route>
       </Route>
 

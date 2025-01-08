@@ -35,7 +35,7 @@ export function DropdownMenu() {
     <Menu>
       <MenuButton
         className={clsx(
-          'data-[hover]:bg-gray-700 data-[open]:bg-gray-700 inline-flex items-center gap-2 rounded-6 bg-background-modals px-12 py-6 text-sm/6 font-semibold text-white shadow-inner shadow-white/10 focus:outline-none data-[focus]:outline-1 data-[focus]:outline-white'
+          'inline-flex items-center gap-2 rounded-6 bg-background-modals px-12 py-6 text-sm/6 font-semibold text-white shadow-inner shadow-white/10 focus:outline-none data-[hover]:bg-gray-700 data-[open]:bg-gray-700 data-[focus]:outline-1 data-[focus]:outline-white'
         )}
       >
         Options

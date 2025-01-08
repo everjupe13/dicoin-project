@@ -4,6 +4,7 @@
 
 @layer theme {
   :root {
+    // --color-background: theme ('colors.zinc.900');
     --color-background: #141414;
     --color-foreground: #222222;
 
@@ -23,7 +24,7 @@
 
 @layer base {
   body {
-    @apply min-h-[100dvh] overscroll-none bg-background;
+    @apply min-h-[100dvh] bg-background;
   }
 
   .root {

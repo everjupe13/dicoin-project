@@ -20,7 +20,7 @@ export function UserNavigationLogged({
       <div className="flex items-center gap-x-6">
         <div
           className={clsx(
-            'flex h-28 w-28 items-center justify-center overflow-hidden rounded-full border border-border bg-grey-900 p-2',
+            'bg-grey-900 flex h-28 w-28 items-center justify-center overflow-hidden rounded-full border border-border p-2',
             !user?.photoURL && 'animate-pulse'
           )}
         >
