@@ -21,16 +21,53 @@ const MOCK_DATA: ISpendings[] = Array.from({ length: 11 * 3 * 3 }).map(
   })
 )
 
-function fetchSpendingsPaginated(
-  data: ISpendings[],
-  currentPage: number,
-  itemsPerPage = 9
-) {
+const MOCK_SORTING = [
+  {
+    slug: 'price',
+    label: 'Стоимость',
+    type: 'select',
+    values: [
+      {
+        slug: 'price-ascending',
+        label: 'По возрастанию списания'
+      },
+      {
+        slug: 'price-descending',
+        label: 'По убыванию списания'
+      }
+    ]
+  },
+  {
+    slug: 'withdrawal-date',
+    label: 'Дата списания',
+    type: 'select',
+    values: [
+      {
+        slug: 'withdrawal-date-ascending',
+        label: 'По возрастанию даты'
+      },
+      {
+        slug: 'withdrawal-date-descending',
+        label: 'По убыванию даты'
+      }
+    ]
+  }
+]
+
+function fetchSpendingsPaginated({
+  currentPage = 1,
+  itemsPerPage = 9,
+  sorting: _sorting
+}: {
+  currentPage?: number
+  itemsPerPage?: number
+  sorting?: string | null
+} = {}) {
   const startIndex = (currentPage - 1) * itemsPerPage
   const endIndex = startIndex + itemsPerPage
 
   return {
-    data: data.slice(startIndex, endIndex),
+    data: MOCK_DATA.slice(startIndex, endIndex),
     error: null,
     pagination: {
       totalPages: 11,
@@ -54,7 +91,7 @@ export function SpendingsPage() {
   }, [sortSlug])
 
   const paginatedSpendingsResponse = useMemo(
-    () => fetchSpendingsPaginated(sortedData, currentPage),
+    () => fetchSpendingsPaginated({ currentPage, sorting: sortSlug }),
     [sortedData, currentPage]
   )
 
@@ -69,7 +106,10 @@ export function SpendingsPage() {
   }
   return (
     <div className="flex flex-col gap-5">
-      <SpendingsSorting onSortChange={handleSortChange} />
+      <SpendingsSorting
+        sortingData={MOCK_SORTING}
+        onSortChange={handleSortChange}
+      />
       <div className="flex flex-col gap-20">
         <SpendingsList items={spendingsData} />
         <Pagination
