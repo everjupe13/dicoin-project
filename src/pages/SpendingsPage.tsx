@@ -109,6 +109,7 @@ export function SpendingsPage() {
       <SpendingsSorting
         sortingData={MOCK_SORTING}
         onSortChange={handleSortChange}
+        currentSlug={sortSlug}
       />
       <div className="flex flex-col gap-20">
         <SpendingsList items={spendingsData} />

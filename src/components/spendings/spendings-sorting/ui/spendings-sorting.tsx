@@ -13,21 +13,28 @@ interface MockSortingProps {
 interface SpendingsSortingProps {
   sortingData: MockSortingProps[]
   onSortChange?: (slug: string) => void
+  currentSlug?: string | null
 }
 
 export function SpendingsSorting({
   sortingData,
-  onSortChange
+  onSortChange,
+  currentSlug
 }: SpendingsSortingProps) {
+  const options = sortingData.flatMap(data =>
+    data.values.map(value => ({
+      label: value.label,
+      value: value.slug
+    }))
+  )
+
+  const selectedOption =
+    options.find(option => option.value === currentSlug) || undefined
   return (
     <div>
       <Select
-        options={sortingData.flatMap(data =>
-          data.values.map(value => ({
-            label: value.label,
-            value: value.slug
-          }))
-        )}
+        options={options}
+        selected={selectedOption}
         onChange={value => {
           onSortChange?.(value.value)
         }}
