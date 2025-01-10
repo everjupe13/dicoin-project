@@ -6,7 +6,6 @@ import { Pagination } from '@/components/shared/pagination'
 import { mapSpendings } from '@/components/spendings/spendings-card'
 import { SpendingsList } from '@/components/spendings/spendings-list'
 import { SpendingsSorting } from '@/components/spendings/spendings-sorting'
-import { sortSpendings } from '@/components/spendings/spendings-sorting/utils/Sorting'
 import { formatDate } from '@/utils/date-time'
 
 const MOCK_DATA: ISpendings[] = Array.from({ length: 11 * 3 * 3 }).map(
@@ -77,22 +76,17 @@ function fetchSpendingsPaginated({
   }
 }
 
+const sorting = 'slug'
+
 export function SpendingsPage() {
   const [currentPage, setCurrentPage] = useState(1)
   const [searchParams, setSearchParams] = useSearchParams()
 
-  const sortSlug = searchParams.get('slug') || null
-
-  const sortedData = useMemo(() => {
-    if (!sortSlug) {
-      return MOCK_DATA
-    }
-    return sortSpendings(MOCK_DATA, sortSlug)
-  }, [sortSlug])
+  const sortSlug = searchParams.get(sorting) || null
 
   const paginatedSpendingsResponse = useMemo(
     () => fetchSpendingsPaginated({ currentPage, sorting: sortSlug }),
-    [sortedData, currentPage]
+    [currentPage]
   )
 
   const spendingsData = useMemo(
@@ -102,7 +96,7 @@ export function SpendingsPage() {
 
   const handleSortChange = (slug: string) => {
     setCurrentPage(1)
-    setSearchParams({ slug: slug })
+    setSearchParams(prev => ({ ...Object.fromEntries(prev), slug }))
   }
   return (
     <div className="flex flex-col gap-5">

@@ -1,17 +1,8 @@
-import { Select } from '../../../shared/select'
-
-interface MockSortingProps {
-  slug: string
-  label: string
-  type: string
-  values: {
-    slug: string
-    label: string
-  }[]
-}
+import { SortingProps } from '@/api/types/SortingProps'
+import { Select } from '@/components/shared/select'
 
 interface SpendingsSortingProps {
-  sortingData: MockSortingProps[]
+  sortingData: SortingProps[]
   onSortChange?: (slug: string) => void
   currentSlug?: string | null
 }
@@ -21,6 +12,10 @@ export function SpendingsSorting({
   onSortChange,
   currentSlug
 }: SpendingsSortingProps) {
+  if (sortingData.length === 0) {
+    return null
+  }
+
   const options = sortingData.flatMap(data =>
     data.values.map(value => ({
       label: value.label,
@@ -28,8 +23,9 @@ export function SpendingsSorting({
     }))
   )
 
-  const selectedOption =
-    options.find(option => option.value === currentSlug) || undefined
+  const selectedOption = currentSlug
+    ? options.find(option => option.value === currentSlug)
+    : undefined
   return (
     <div>
       <Select
