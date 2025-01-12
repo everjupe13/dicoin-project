@@ -1,1 +1,1 @@
-export { SpendingsSorting } from './ui/spendings-sorting'
+export * from './ui/spendings-sorting'

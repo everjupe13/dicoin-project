@@ -76,7 +76,7 @@ function fetchSpendingsPaginated({
   }
 }
 
-const sorting = 'slug'
+const sorting = 'sorting'
 
 export function SpendingsPage() {
   const [currentPage, setCurrentPage] = useState(1)
@@ -86,7 +86,7 @@ export function SpendingsPage() {
 
   const paginatedSpendingsResponse = useMemo(
     () => fetchSpendingsPaginated({ currentPage, sorting: sortSlug }),
-    [currentPage]
+    [currentPage, sortSlug]
   )
 
   const spendingsData = useMemo(
@@ -96,7 +96,7 @@ export function SpendingsPage() {
 
   const handleSortChange = (slug: string) => {
     setCurrentPage(1)
-    setSearchParams(prev => ({ ...Object.fromEntries(prev), slug }))
+    setSearchParams(prev => ({ ...Object.fromEntries(prev), [sorting]: slug }))
   }
   return (
     <div className="flex flex-col gap-5">

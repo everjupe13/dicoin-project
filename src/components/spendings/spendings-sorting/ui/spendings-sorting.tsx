@@ -1,8 +1,8 @@
-import { SortingProps } from '@/api/types/SortingProps'
+import { ISorting } from '@/api/types/ISorting'
 import { Select } from '@/components/shared/select'
 
 interface SpendingsSortingProps {
-  sortingData: SortingProps[]
+  sortingData: ISorting[]
   onSortChange?: (slug: string) => void
   currentSlug?: string | null
 }
@@ -22,6 +22,10 @@ export function SpendingsSorting({
       value: value.slug
     }))
   )
+
+  if (options.length === 0) {
+    return null
+  }
 
   const selectedOption = currentSlug
     ? options.find(option => option.value === currentSlug)
