@@ -1,6 +1,6 @@
 import axios, { AxiosError, AxiosRequestConfig, AxiosResponse } from 'axios'
 
-const basePath = 'http://176.53.163.14:3000/spending'
+const basePath = 'http://176.53.163.14:3000'
 
 export const apiClient = {
   async get<T>(

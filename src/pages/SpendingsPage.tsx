@@ -1,56 +1,57 @@
-import { useMemo, useState } from 'react'
+import { useEffect, useState } from 'react'
 
+import { apiClient } from '@/api'
 import type { ISpendings } from '@/api/types/ISpendings'
 import { Pagination } from '@/components/shared/pagination'
 import { mapSpendings } from '@/components/spendings/spendings-card'
+import { SpendingsCardProps } from '@/components/spendings/spendings-card'
 import { SpendingsList } from '@/components/spendings/spendings-list'
-import { formatDate } from '@/utils/date-time'
-
-const MOCK_DATA: ISpendings[] = Array.from({ length: 11 * 3 * 3 }).map(
-  (_data, index) => ({
-    id: index,
-    name: `Оплата подписки ${index + 1}`,
-    withdrawal_type: Math.round(Math.random()) ? 'repeated' : 'manual',
-    withdrawal_date: `${String(index).padStart(2, '0')}.07.2020`,
-    created_at: formatDate(Date.now()),
-    updated_at: formatDate(Date.now()),
-    cost: 1000.53
-  })
-)
-
-function fetchSpendingsPaginated(currentPage: number, itemsPerPage = 9) {
-  const startIndex = (currentPage - 1) * itemsPerPage
-  const endIndex = startIndex + itemsPerPage
-
-  return {
-    data: MOCK_DATA.slice(startIndex, endIndex),
-    error: null,
-    pagination: {
-      totalPages: 11,
-      perPage: itemsPerPage,
-      page: currentPage
-    }
-  }
-}
 
 export function SpendingsPage() {
   const [currentPage, setCurrentPage] = useState(1)
+  const [spendingsData, setSpendingsData] = useState<SpendingsCardProps[]>([])
+  const [totalPages, setTotalPages] = useState(1)
+  const [isLoading, setIsLoading] = useState(false)
+  const [error, setError] = useState<string | null>(null)
 
-  const paginatedSpendingsResponse = useMemo(
-    () => fetchSpendingsPaginated(currentPage),
-    [currentPage]
-  )
+  useEffect(() => {
+    async function fetchSpendings() {
+      setIsLoading(true)
 
-  const spendingsData = useMemo(
-    () => mapSpendings(paginatedSpendingsResponse.data),
-    [paginatedSpendingsResponse.data]
-  )
+      const { data, error } = await apiClient.get<{
+        data: Partial<ISpendings>[]
+        pagination: {
+          page: number
+          per_page: number
+          total_items: number
+          total_pages: number
+        }
+      }>('/spending', {
+        params: { page: currentPage, per_page: 10 }
+      })
+
+      if (error) {
+        setError(error.message)
+      }
+      if (data) {
+        setSpendingsData(mapSpendings(data.data || []))
+        setTotalPages(data.pagination.total_pages || 1)
+      }
+
+      setIsLoading(false)
+    }
+
+    fetchSpendings()
+  }, [currentPage])
+
   return (
     <div className="flex flex-col gap-20">
-      <SpendingsList items={spendingsData} />
+      {isLoading && <div>Загрузка...</div>}
+      {error && <div>Ошибка: {error}</div>}
+      {!isLoading && !error && <SpendingsList items={spendingsData} />}
       <Pagination
         currentPage={currentPage}
-        totalPages={paginatedSpendingsResponse.pagination.totalPages}
+        totalPages={totalPages}
         onPageChange={page => setCurrentPage(page)}
       />
     </div>
