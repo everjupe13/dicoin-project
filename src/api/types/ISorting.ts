@@ -1,4 +1,4 @@
-export interface SortingProps {
+export interface ISorting {
   slug: string
   label: string
   type: string
