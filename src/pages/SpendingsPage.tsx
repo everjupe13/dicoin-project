@@ -1,56 +1,71 @@
-import { useMemo, useState } from 'react'
+import { useEffect, useState } from 'react'
 
+import { apiClient } from '@/api'
 import type { ISpendings } from '@/api/types/ISpendings'
+import { ApiResponse } from '@/app/types'
 import { Pagination } from '@/components/shared/pagination'
 import { mapSpendings } from '@/components/spendings/spendings-card'
+import { SpendingsCardProps } from '@/components/spendings/spendings-card'
 import { SpendingsList } from '@/components/spendings/spendings-list'
-import { formatDate } from '@/utils/date-time'
 
-const MOCK_DATA: ISpendings[] = Array.from({ length: 11 * 3 * 3 }).map(
-  (_data, index) => ({
-    id: index,
-    name: `Оплата подписки ${index + 1}`,
-    withdrawal_type: Math.round(Math.random()) ? 'repeated' : 'manual',
-    withdrawal_date: `${String(index).padStart(2, '0')}.07.2020`,
-    created_at: formatDate(Date.now()),
-    updated_at: formatDate(Date.now()),
-    cost: 1000.53
-  })
-)
-
-function fetchSpendingsPaginated(currentPage: number, itemsPerPage = 9) {
-  const startIndex = (currentPage - 1) * itemsPerPage
-  const endIndex = startIndex + itemsPerPage
-
-  return {
-    data: MOCK_DATA.slice(startIndex, endIndex),
-    error: null,
-    pagination: {
-      totalPages: 11,
-      perPage: itemsPerPage,
-      page: currentPage
-    }
-  }
+interface IPagination {
+  page: number
+  per_page: number
+  total_items: number
+  total_pages: number
 }
 
 export function SpendingsPage() {
   const [currentPage, setCurrentPage] = useState(1)
+  const [spendingsData, setSpendingsData] = useState<SpendingsCardProps[]>([])
+  const [isLoading, setIsLoading] = useState(false)
+  const [error, setError] = useState<string | null>(null)
+  const [paginationData, setPaginationData] = useState({
+    page: 0,
+    per_page: 10,
+    total_items: 0,
+    total_pages: 1
+  })
 
-  const paginatedSpendingsResponse = useMemo(
-    () => fetchSpendingsPaginated(currentPage),
-    [currentPage]
-  )
+  useEffect(() => {
+    let ignor = false
+    async function fetchSpendings() {
+      if (!ignor) {
+        setIsLoading(true)
 
-  const spendingsData = useMemo(
-    () => mapSpendings(paginatedSpendingsResponse.data),
-    [paginatedSpendingsResponse.data]
-  )
+        const { data, error } = await apiClient.get<
+          ApiResponse<ISpendings[], IPagination>
+        >('/spending', {
+          params: { page: currentPage, per_page: paginationData.per_page }
+        })
+
+        if (error) {
+          setError(error.message)
+        }
+        if (data) {
+          setSpendingsData(mapSpendings(data.data || []))
+          setPaginationData(data.pagination || paginationData)
+        }
+
+        setIsLoading(false)
+      }
+    }
+
+    fetchSpendings()
+
+    return () => {
+      ignor = true
+    }
+  }, [currentPage])
+
   return (
     <div className="flex flex-col gap-20">
-      <SpendingsList items={spendingsData} />
+      {isLoading && <div>Загрузка...</div>}
+      {error && <div>Ошибка: {error}</div>}
+      {!isLoading && !error && <SpendingsList items={spendingsData} />}
       <Pagination
         currentPage={currentPage}
-        totalPages={paginatedSpendingsResponse.pagination.totalPages}
+        totalPages={paginationData.total_pages}
         onPageChange={page => setCurrentPage(page)}
       />
     </div>
