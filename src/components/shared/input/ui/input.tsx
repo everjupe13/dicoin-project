@@ -81,9 +81,9 @@ export const Input = forwardRef(function Input(
           'text-base/6 text-zinc-950 placeholder:text-zinc-500 sm:text-sm/6 dark:text-white',
           'rounded-8 border-2  focus:outline-none',
           'bg-transparent dark:bg-white/5',
-          'data-[focus]:border-[#3b82f6]',
-          'data-[invalid]:border-red-500',
-          'data-[disabled]:border-zinc-950/20',
+          'data-[focus]:border-[#3b82f6] data-[focus]:dark:border-[#3b82f6]',
+          'data-[invalid]:border-red-500 data-[invalid]:data-[hover]:border-red-500 data-[invalid]:dark:border-red-500 data-[invalid]:data-[hover]:dark:border-red-500',
+          'data-[disabled]:border-zinc-950/20 dark:data-[hover]:data-[disabled]:border-white/15 data-[disabled]:dark:border-white/15 data-[disabled]:dark:bg-white/[2.5%]',
           'dark:[color-scheme:dark]'
         ])}
       />
