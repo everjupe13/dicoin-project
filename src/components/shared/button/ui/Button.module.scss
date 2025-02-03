@@ -23,7 +23,7 @@
 }
 
 .light {
-  @apply border border-[#EEF0F4] text-grey-700 bg-[#EEF0F4] transition-colors hover:bg-[#EEF0F4] hover:border-[#EEF0F4] hover:text-[#1D232C] disabled:opacity-50;
+  @apply border border-[#EEF0F4] text-gray-700 bg-[#EEF0F4] transition-colors hover:bg-[#EEF0F4] hover:border-[#EEF0F4] hover:text-[#1D232C] disabled:opacity-50;
 }
 
 .dark {

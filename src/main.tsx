@@ -18,5 +18,6 @@ ReactDOM.createRoot(document.querySelector('#root')!).render(
 )
 
 Array.from({ length: 5 }).forEach(_ => {
+  // eslint-disable-next-line no-console
   console.log(v4())
 })

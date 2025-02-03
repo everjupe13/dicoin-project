@@ -21,13 +21,19 @@ to run in preview prod mode
    yarn run build && yarn run prod
 ```
 
+## upcoming features
+
+* support for storybook / ui page
+* docs for git / components(modules) naming / etc
+* pwa
+
 ## maintainers
 
-this project is being developed us:
+this project is being developed and supported by:
 
 - [bkrvdf](https://t.me/toomoresouls)
 - [mr.Daniloper](https://t.me/Mr_Daniloper)
 
-stay pruned, stupid 🎃
+project started at 02.11.2023 🎃
 
 *...will be supplemented...*

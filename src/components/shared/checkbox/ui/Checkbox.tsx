@@ -22,7 +22,7 @@ const CheckBox: FC<Props> = ({ children, className, disabled }) => {
         />
         <span
           className={clsx(
-            'flex h-18 w-18 items-center justify-center rounded-[2px] border border-grey-600 bg-transparent transition-all',
+            'border-grey-600 flex h-18 w-18 items-center justify-center rounded-[2px] border bg-transparent transition-all',
             'peer-disabled:opacity-50',
             'peer-checked:border-blue-600 peer-checked:bg-blue-600',
             'peer-checked:peer-disabled:border-grey-600 peer-checked:peer-disabled:bg-grey-600'

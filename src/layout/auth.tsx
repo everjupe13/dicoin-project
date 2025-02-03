@@ -1,11 +1,6 @@
-import { FC, ReactElement } from 'react'
 import { Outlet } from 'react-router-dom'
 
-type Props = {
-  children?: string | ReactElement | JSX.Element | JSX.Element[]
-}
-
-const AuthLayout: FC<Props> = () => {
+export function AuthLayout() {
   return (
     <>
       <main className="relatvie main z-[1] ml-[240px] mt-[100px]">
@@ -16,5 +11,3 @@ const AuthLayout: FC<Props> = () => {
     </>
   )
 }
-
-export { AuthLayout }

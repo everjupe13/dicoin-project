@@ -1,5 +1,5 @@
+import type { User } from '@/shared/types'
 import type { ApiResponse } from '@/types/api/response'
-import type { User } from '@/types/user'
 
 import { auth, openGoogleAuthPopup } from '../lib/firebase/service'
 
@@ -29,6 +29,7 @@ export function useAuth(): UseAuthInterface {
 
   const logout = async () => {
     await auth.signOut()
+    window.location.reload()
   }
 
   return {
