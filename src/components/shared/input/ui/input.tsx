@@ -77,7 +77,7 @@ export const Input = forwardRef(function Input(
               '[&::-webkit-datetime-edit-meridiem-field]:p-0'
             ],
 
-          'rounded-lg relative block w-full appearance-none px-5 py-9 sm:px-11 sm:py-5',
+          'rounded-lg relative block w-full appearance-none px-12 py-9 sm:px-11 sm:py-5',
           'text-base/6 text-zinc-950 placeholder:text-zinc-500 sm:text-sm/6 dark:text-white',
           'rounded-8 border-2  focus:outline-none',
           'bg-transparent dark:bg-white/5',
