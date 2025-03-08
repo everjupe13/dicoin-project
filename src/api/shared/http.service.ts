@@ -1,7 +1,7 @@
 import axios, { AxiosInstance, AxiosRequestConfig } from 'axios'
 import { joinURL } from 'ufo'
 
-import { ENV } from '@/app/constants/environment'
+import { ENV } from '@/shared/const'
 
 type MakeSafeRequestOptions = {
   okIfStatus?: number | number[]

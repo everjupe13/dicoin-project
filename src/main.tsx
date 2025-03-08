@@ -1,8 +1,5 @@
-import '@/assets/styles/scss/index.scss'
-import '@/assets/styles/scss/tailwind.scss'
-import '@/assets/styles/scss/fonts.scss'
-import '@/assets/styles/scss/custom-scrollbars.scss'
-import '@/app/plugins'
+import '@/plugins/global-scripts'
+import '@/plugins/global-styles'
 
 import React from 'react'
 import ReactDOM from 'react-dom/client'
@@ -18,5 +15,6 @@ ReactDOM.createRoot(document.querySelector('#root')!).render(
 )
 
 Array.from({ length: 5 }).forEach(_ => {
+  // eslint-disable-next-line no-console
   console.log(v4())
 })

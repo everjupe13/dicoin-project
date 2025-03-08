@@ -1,33 +1,37 @@
 {
-  "name": "dicoin-app",
+  "name": "dicoin-app-frontend",
   "private": true,
-  "version": "0.1.1",
+  "version": "1.1.0",
   "type": "module",
+  "author": "Ilya Bakirov | Danil Andreev",
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
     "preview": "vite preview",
-    "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
-    "lint:fix": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0 --fix",
+    "lint": "eslint . --ext ts,tsx --report-unused-disable-directives",
+    "lint:fix": "yarn run lint --fix",
     "type-check": "npx tsc --noEmit",
     "prepare": "husky"
   },
-  "author": "Ilya Bakirov | Danil Andreev",
   "lint-staged": {
-    "*.{js,ts,tsx,jsx}": ["yarn run lint:fix"]
+    "*.{js,ts,tsx,jsx}": [
+      "yarn run lint:fix"
+    ]
   },
   "dependencies": {
+    "@headlessui/react": "^2.2.0",
+    "@heroicons/react": "^2.2.0",
     "@tanstack/react-query": "^5.28.4",
     "@tanstack/react-query-devtools": "^5.28.4",
     "@types/react-router-dom": "^5.3.3",
     "axios": "^1.6.2",
-    "caniuse-lite": "^1.0.30001597",
     "clsx": "^2.0.0",
     "dayjs": "^1.11.10",
     "firebase": "^10.7.0",
     "husky": "^9.1.7",
     "lint-staged": "^15.2.10",
     "lodash-es": "^4.17.21",
+    "motion": "^11.15.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-helmet": "^6.1.0",
@@ -66,7 +70,7 @@
     "prettier-plugin-tailwindcss": "^0.4.1",
     "sass": "^1.64.1",
     "tailwind-merge": "^2.0.0",
-    "tailwindcss": "^3.3.3",
+    "tailwindcss": "^3.4.17",
     "typescript": "^5.0.2",
     "vite": "^4.4.5"
   },

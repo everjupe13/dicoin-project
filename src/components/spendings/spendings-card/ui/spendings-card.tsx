@@ -1,6 +1,6 @@
 import { Badge } from '@/components/shared/badge'
-import { formatPrice } from '@/utils/price'
-import { isDefined } from '@/utils/validate'
+import { utilGetFormattedPrice } from '@/shared/utils/get-formatted-price'
+import { utilIsDefined } from '@/shared/utils/validate'
 
 export interface SpendingsCardProps {
   id: number
@@ -34,10 +34,12 @@ export function SpendingsCard({
           </div>
         </div>
 
-        {isDefined(cost) && (
+        {utilIsDefined(cost) && (
           <div className="flex items-center justify-between border-t border-[#696969] py-5">
             <p className="font-inter font-medium text-16">Сумма</p>
-            <p className="font-inter font-bold text-22">{formatPrice(cost)}</p>
+            <p className="font-inter font-bold text-22">
+              {utilGetFormattedPrice(cost)}
+            </p>
           </div>
         )}
       </div>
