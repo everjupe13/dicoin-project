@@ -1,8 +1,9 @@
 {
-  "name": "dicoin-app",
+  "name": "dicoin-app-frontend",
   "private": true,
   "version": "1.1.0",
   "type": "module",
+  "author": "Ilya Bakirov | Danil Andreev",
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
@@ -12,7 +13,6 @@
     "type-check": "npx tsc --noEmit",
     "prepare": "husky"
   },
-  "author": "Ilya Bakirov | Danil Andreev",
   "lint-staged": {
     "*.{js,ts,tsx,jsx}": [
       "yarn run lint:fix"
