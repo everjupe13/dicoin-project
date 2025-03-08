@@ -4,6 +4,7 @@ import {
   Route
 } from 'react-router-dom'
 
+import { App } from '@/App'
 import { AuthLayout } from '@/layout/auth'
 import { DefaultLayout } from '@/layout/default'
 import { AboutPage } from '@/pages/AboutPage'
@@ -17,14 +18,13 @@ import { SigninPage } from '@/pages/SigninPage'
 import { SignupPage } from '@/pages/SignupPage'
 import { SpendingsPage } from '@/pages/SpendingsPage'
 import { SubscribersPage } from '@/pages/SubscribersPage'
-import { Root } from '@/Root'
 import { ROUTES } from '@/shared/const'
 
 import { ProtectedRoutes } from './lib/ProtectedRoutes'
 
 const router = createBrowserRouter(
   createRoutesFromElements(
-    <Route element={<Root />} errorElement={<ErrorPage />}>
+    <Route element={<App />} errorElement={<ErrorPage />}>
       <Route element={<ProtectedRoutes type="logged" />}>
         <Route element={<DefaultLayout />}>
           <Route path="/" element={<HomePage />} />

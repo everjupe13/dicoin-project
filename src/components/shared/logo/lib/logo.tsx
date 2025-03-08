@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 
-import LogoIconSvg from '@/assets/svg/logo-frame.svg'
+import LogoIconSvg from '@/assets/icons/logo-frame.svg'
 import { getConfig } from '@/shared/const'
 
 export interface LogoProps {

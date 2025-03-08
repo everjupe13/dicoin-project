@@ -1,5 +1,5 @@
+import { HttpApiResponse } from '@/api/types'
 import type { User } from '@/shared/types'
-import type { ApiResponse } from '@/types/api/response'
 
 import { auth, openGoogleAuthPopup } from '../lib/firebase/service'
 
@@ -8,7 +8,7 @@ export interface UseAuthInterface {
   // с логином и паролем
   // authByLogin: () => Promise<void>
 
-  authByGooglePopup: () => Promise<ApiResponse<User>>
+  authByGooglePopup: () => Promise<HttpApiResponse<User>>
   logout: () => Promise<void>
 }
 

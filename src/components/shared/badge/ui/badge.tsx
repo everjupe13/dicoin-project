@@ -1,7 +1,7 @@
 import clsx from 'clsx'
 import { ReactNode } from 'react'
 
-import { capitalize } from '@/utils/strings'
+import { utilGetCapitalizeString } from '@/shared/utils/get-capitalize-string'
 
 import type { BadgeVariant } from '../types/enums'
 import styles from './badge.module.scss'
@@ -23,7 +23,7 @@ export function Badge({ text, children, variant = 'primary' }: BadgeProps) {
     <div
       className={clsx(
         'inline-flex max-w-max rounded-6 px-10 py-7',
-        styles[`variant${capitalize(variant)}`]
+        styles[`variant${utilGetCapitalizeString(variant)}`]
       )}
     >
       <p className="font-inter font-medium text-10">{content}</p>
