@@ -16,12 +16,12 @@ import {
 import type { FirebaseAuthError, FirebaseUserCredentials } from './types'
 
 const firebaseConfig = {
-  apiKey: 'AIzaSyB4maes2N9qN72FI3aRks0lQgBVbC_I2So',
-  authDomain: 'dicoin-web.firebaseapp.com',
-  projectId: 'dicoin-web',
-  storageBucket: 'dicoin-web.appspot.com',
-  messagingSenderId: '41462100831',
-  appId: '1:41462100831:web:f54022a1767638bd0d7cea'
+  apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
+  authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
+  projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
+  storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID,
+  appId: import.meta.env.VITE_FIREBASE_APP_ID
 }
 
 const app = initializeApp(firebaseConfig)
