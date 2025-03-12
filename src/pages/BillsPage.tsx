@@ -8,6 +8,7 @@ export const BillsPage: FC = () => {
 
   useEffect(() => {
     if (!isLoading) {
+      // eslint-disable-next-line no-console
       console.log(data)
     }
   }, [data, isLoading])

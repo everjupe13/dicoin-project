@@ -1,7 +1,7 @@
 import { type ReactNode, useCallback, useEffect, useState } from 'react'
 
 import { beforeAuthChanged, onAuthChanged, useAuth } from '@/api/auth'
-import type { User } from '@/types/user'
+import type { User } from '@/shared/types'
 
 import { AuthContext, type AuthContextType } from './context'
 
@@ -12,7 +12,7 @@ export interface AuthProviderProps {
 export function AuthProvider({ children }: AuthProviderProps) {
   const [user, setUser] = useState<User | null>(null)
   const [loading, setLoading] = useState(true)
-  const { authByGooglePopup } = useAuth()
+  const { authByGooglePopup, logout } = useAuth()
 
   const authByExternalPopup = useCallback(async () => {
     const userResponse = await authByGooglePopup()
@@ -28,7 +28,8 @@ export function AuthProvider({ children }: AuthProviderProps) {
     user,
     loading,
 
-    authByExternalPopup
+    authByExternalPopup,
+    logout
   }
 
   useEffect(() => {

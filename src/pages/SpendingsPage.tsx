@@ -4,7 +4,7 @@ import type { ISpendings } from '@/api/types/ISpendings'
 import { Pagination } from '@/components/shared/pagination'
 import { mapSpendings } from '@/components/spendings/spendings-card'
 import { SpendingsList } from '@/components/spendings/spendings-list'
-import { formatDate } from '@/utils/date-time'
+import { utilGetFormattedDate } from '@/shared/utils/get-formatted-date'
 
 const MOCK_DATA: ISpendings[] = Array.from({ length: 11 * 3 * 3 }).map(
   (_data, index) => ({
@@ -12,8 +12,8 @@ const MOCK_DATA: ISpendings[] = Array.from({ length: 11 * 3 * 3 }).map(
     name: `Оплата подписки ${index + 1}`,
     withdrawal_type: Math.round(Math.random()) ? 'repeated' : 'manual',
     withdrawal_date: `${String(index).padStart(2, '0')}.07.2020`,
-    created_at: formatDate(Date.now()),
-    updated_at: formatDate(Date.now()),
+    created_at: utilGetFormattedDate(Date.now()),
+    updated_at: utilGetFormattedDate(Date.now()),
     cost: 1000.53
   })
 )

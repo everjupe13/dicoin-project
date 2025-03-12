@@ -1,6 +1,6 @@
 import { HttpStatusCode } from 'axios'
 
-import { ApiResponse } from '@/app/types'
+import type { HttpApiResponse } from '@/api/types'
 import { HttpRepository } from '@/logic/data/base/http.repository'
 import { Bill } from '@/logic/domain/entity/bill/bill'
 import { BillRepository } from '@/logic/domain/repository/bill/bill.repository'
@@ -17,7 +17,7 @@ export class HttpBillRepository
   }
 
   async getBillsList(): Promise<Bill[]> {
-    const { data, status } = await this.axios.get<ApiResponse<IBillApi[]>>(
+    const { data, status } = await this.axios.get<HttpApiResponse<IBillApi[]>>(
       this.getPath('/api/v1/data/bills/bills.json')
     )
 
