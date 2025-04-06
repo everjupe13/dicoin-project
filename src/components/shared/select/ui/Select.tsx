@@ -1,50 +1,124 @@
+import { Menu, MenuButton } from '@headlessui/react'
+import { ChevronDownIcon, XMarkIcon } from '@heroicons/react/16/solid'
+import clsx from 'clsx'
+import { SyntheticEvent, useState } from 'react'
+
 import { type SelectOption } from '../types'
+import { SelectContent } from './SelectContent'
+import { SelectItem } from './SelectItem'
 
 export interface SelectProps {
   options: SelectOption[]
-  selected?: SelectOption | SelectOption[]
-  name?: string
-  multiple?: boolean
-  disabled?: boolean
-  autocomplete?: string
+  selected?: SelectOption | string | null
 
-  onChange: (value: SelectOption) => void
+  name?: string
+  disabled?: boolean
+
+  showClear?: boolean
+
+  placeholder?: string
+  emptyContentLabel?: string
+
+  onChange: (value: SelectOption | null) => void
   onFocus?: () => void
   onBlur?: () => void
 }
 
 export function Select({
-  options,
+  options = [],
   selected,
+
   name,
   disabled,
-  autocomplete,
+
+  showClear = true,
+
+  placeholder = 'Не выбрано',
+  emptyContentLabel = 'Нет доступных опций',
+
   onChange
 }: SelectProps) {
-  return (
-    <div className="w-[250px] rounded-6 bg-[#3d3d3d] p-8">
-      <select
-        className="w-full bg-[#3d3d3d]"
-        name={name}
-        disabled={disabled}
-        autoComplete={autocomplete}
-        value={Array.isArray(selected) ? undefined : selected?.value}
-        onChange={e => {
-          const currentOption = options.find(
-            option => option.value === e.target.value
-          )
+  const [activeOption, setActiveOption] = useState<SelectOption | null>(() =>
+    selected
+      ? options.find(option =>
+          typeof selected === 'string'
+            ? option.value === selected
+            : option.value === selected.value
+        ) || null
+      : null
+  )
 
-          if (currentOption !== undefined) {
-            onChange(currentOption)
-          }
-        }}
+  const isEmpty = options.length === 0
+  const isSelected = Boolean(activeOption)
+
+  const handleActiveChange = (value: SelectOption['value']) => {
+    const newActiveOption = options.find(
+      option => option.value === value
+    ) as SelectOption
+
+    setActiveOption(newActiveOption)
+    onChange?.(newActiveOption)
+  }
+
+  const handleClear = (e: SyntheticEvent) => {
+    e.preventDefault()
+
+    setActiveOption(null)
+    onChange?.(null)
+  }
+
+  return (
+    <Menu>
+      <MenuButton
+        className={clsx(
+          'flex min-w-[210px] items-stretch gap-10 rounded-6 px-12 py-6',
+          'bg-background-modals data-[hover]:bg-background-modals-hover data-[open]:bg-background-modals-active',
+          'font-medium text-white text-14',
+          'focus:outline-none data-[focus]:outline-1 data-[focus]:outline-white'
+        )}
+        disabled={disabled}
+        name={name}
+      >
+        <span
+          className={clsx(
+            'flex flex-grow items-center text-left',
+            !isSelected && 'text-white/60'
+          )}
+        >
+          {activeOption?.label || placeholder}
+        </span>
+        <span className="flex items-stretch gap-x-2">
+          {showClear && (
+            <span
+              className="flex-basis-[16px] group flex flex-shrink-0 flex-grow-0 items-center"
+              onClick={handleClear}
+            >
+              <XMarkIcon className="h-16 w-16 fill-white/60 transition group-hover:fill-white" />
+            </span>
+          )}
+          <span className="flex-basis-[16px] group flex flex-shrink-0 flex-grow-0 items-center">
+            <ChevronDownIcon className="h-16 w-16 fill-white/60 transition group-hover:fill-white" />
+          </span>
+        </span>
+      </MenuButton>
+
+      <SelectContent
+        showEmpty={true}
+        isEmpty={isEmpty}
+        emptyContentLabel={emptyContentLabel}
       >
         {options.map(option => (
-          <option key={option.value} value={option.value}>
-            {option.label}
-          </option>
+          <SelectItem
+            key={option.value}
+            label={option.label}
+            value={option.value}
+            selected={
+              activeOption ? activeOption.value === option.value : false
+            }
+            onChange={handleActiveChange}
+          />
         ))}
-      </select>
-    </div>
+      </SelectContent>
+    </Menu>
   )
 }

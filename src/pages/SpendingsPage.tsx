@@ -6,7 +6,6 @@ import { Pagination } from '@/components/shared/pagination'
 import { mapSpendings } from '@/components/spendings/spendings-card'
 import { SpendingsList } from '@/components/spendings/spendings-list'
 import { SpendingsSorting } from '@/components/spendings/spendings-sorting'
-import { sortSpendings } from '@/components/spendings/spendings-sorting/utils/Sorting'
 import { utilGetFormattedDate } from '@/shared/utils/get-formatted-date'
 
 const MOCK_DATA: ISpendings[] = Array.from({ length: 11 * 3 * 3 }).map(

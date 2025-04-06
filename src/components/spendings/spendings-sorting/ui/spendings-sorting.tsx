@@ -1,5 +1,5 @@
 import { ISorting } from '@/api/types/ISorting'
-import { Select } from '@/components/shared/select'
+import { Select, SelectOption } from '@/components/shared/select'
 
 interface SpendingsSortingProps {
   sortingData: ISorting[]
@@ -30,14 +30,19 @@ export function SpendingsSorting({
   const selectedOption = currentSlug
     ? options.find(option => option.value === currentSlug)
     : undefined
+
+  const onSelectChange = (option: SelectOption | null) => {
+    if (option) {
+      onSortChange?.(option.value)
+    }
+  }
   return (
     <div>
       <Select
         options={options}
         selected={selectedOption}
-        onChange={value => {
-          onSortChange?.(value.value)
-        }}
+        onChange={onSelectChange}
+        showClear={false}
       />
     </div>
   )
