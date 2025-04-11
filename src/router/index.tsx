@@ -18,6 +18,7 @@ import { SigninPage } from '@/pages/SigninPage'
 import { SignupPage } from '@/pages/SignupPage'
 import { SpendingsPage } from '@/pages/SpendingsPage'
 import { SubscribersPage } from '@/pages/SubscribersPage'
+import { TemporaryUIPage } from '@/pages/TemporaryUIPage'
 import { ROUTES } from '@/shared/const'
 
 import { ProtectedRoutes } from './lib/ProtectedRoutes'
@@ -31,6 +32,8 @@ const router = createBrowserRouter(
           <Route path={ROUTES.ABOUT} element={<AboutPage />} />
           <Route path={ROUTES.SPENDINGS} element={<SpendingsPage />} />
           <Route path={ROUTES.PROFILE} element={<ProfilePage />} />
+
+          <Route path="/storybook" element={<TemporaryUIPage />} />
 
           {/* TODO убрать страницы / рефактор */}
           <Route path="/subscribers" element={<SubscribersPage />} />
