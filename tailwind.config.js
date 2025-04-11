@@ -85,6 +85,13 @@ module.exports = {
 
         white: '#ffffff',
 
+        text: {
+          DEFAULT: 'var(--color-text-base)',
+
+          base: 'var(--color-text-base)',
+          strong: 'var(--color-text-strong)',
+        },
+
         background: {
           DEFAULT: 'var(--color-background)',
 
