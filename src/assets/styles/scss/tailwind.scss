@@ -5,6 +5,9 @@
 @layer theme {
   :root {
     // --color-background: theme ('colors.zinc.900');
+    --color-typo-strong: #0b0809;
+    --color-typo-base: #71717b;
+
     --color-background: #141414;
     --color-foreground: #222222;
 
@@ -20,11 +23,18 @@
 
     --box-shadow-modals: 0 0 2px 0 rgba(0, 0, 0, .30), 0 4px 16px 0 rgba(0, 0, 0, .30);
   }
+
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --color-text-strong: #ffffff;
+      --color-text-base: #9f9fa9;
+    }
+  }
 }
 
 @layer base {
   body {
-    @apply min-h-[100dvh] bg-background;
+    @apply min-h-[100dvh] bg-background text-text-base;
   }
 
   .root {
