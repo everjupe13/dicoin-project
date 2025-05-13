@@ -6,7 +6,7 @@ import {
 } from '@headlessui/react'
 import { ReactNode } from 'react'
 
-import { NavbarItem } from '@/components/shared/navbar'
+import { NavbarItem } from '@/components/app/navbar'
 
 import { CloseMenuIcon } from './close-menu-icon'
 

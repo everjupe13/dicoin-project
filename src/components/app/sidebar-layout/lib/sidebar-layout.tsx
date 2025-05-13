@@ -1,6 +1,6 @@
 import { ReactNode, useState } from 'react'
 
-import { NavbarItem } from '@/components/shared/navbar'
+import { NavbarItem } from '@/components/app/navbar'
 
 import { MobileSidebar } from '../ui/mobile-sidebar'
 import { OpenMenuIcon } from '../ui/open-menu-icon'
