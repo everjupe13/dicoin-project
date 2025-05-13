@@ -19,13 +19,13 @@ jobs:
           node-version: 22
 
       - name: Install deps
-        run: npm ci
+        run: yarn install --immutable --immutable-cache --check-cache
 
       - name: Lint
-        run: npm run lint
+        run: yarn run lint
 
       - name: Type Check
-        run: npm run type-check
+        run: yarn run type-check
 
       # - name: Run tests
       #   run: npm test
