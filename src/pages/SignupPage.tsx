@@ -1,11 +1,15 @@
 import { FC } from 'react'
 
-import { Auth } from '@/components/modules/auth'
+import { AuthFormSingUp } from '@/components/modules/auth/lib/AuthFormSignup'
+import { AuthFormWrapper } from '@/components/modules/auth/lib/AuthFormWrapper'
+import { textSignUp } from '@/shared/const'
 
 export const SignupPage: FC = () => {
   return (
     <>
-      <Auth></Auth>
+      <AuthFormWrapper title={textSignUp}>
+        <AuthFormSingUp />
+      </AuthFormWrapper>
     </>
   )
 }
