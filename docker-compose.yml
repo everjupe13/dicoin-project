@@ -2,9 +2,8 @@ version: '3.8'
 
 services:
   frontend:
-    build:
-      context: .
-    container_name: ghcr.io/everjupe13/dicoin-app-frontend:latest
+    image: ghcr.io/everjupe13/dicoin-app-frontend:latest
+    container_name: dicoin-frontend
     ports:
       - "3000:80"
     restart: unless-stopped
