@@ -1,24 +1,20 @@
-import { utilLocaleString } from '@/shared/utils/locale-string'
+import clsx from 'clsx'
+import { ReactNode } from 'react'
 
-interface titleAuth {
-  ru: string
-  en: string
-}
-
-export interface AuthProps {
-  title?: titleAuth
-  children?: React.ReactNode
+export interface AuthFormWrapperProps {
+  title?: string
+  children?: ReactNode
   className?: string
 }
 
-export function AuthFormWrapper(_props: AuthProps) {
+export function AuthFormWrapper({ title, children }: AuthFormWrapperProps) {
   return (
-    <section className="w-full max-w-[380px] p-2">
+    <section className={clsx('w-full max-w-[380px] p-2')}>
       <div>
         <h1 className="font-semibold text-text text-24 dark:text-white">
-          {utilLocaleString(_props.title)}
+          {title}
         </h1>
-        {_props.children}
+        {children}
       </div>
     </section>
   )

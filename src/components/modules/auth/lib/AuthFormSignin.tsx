@@ -1,13 +1,13 @@
-import { Button } from '@/components/shared/button'
-import { CheckBox } from '@/components/shared/checkbox'
-import { Label } from '@/components/shared/fieldset'
-import { Form, FormField } from '@/components/shared/form'
-import { Input, InputGroup } from '@/components/shared/input'
+// import { Button } from '@/components/shared/button'
+// import { Checkbox } from '@/components/shared/checkbox'
+// import { Label } from '@/components/shared/fieldset'
+// import { Form, FormField } from '@/components/shared/form'
+// import { Input, InputGroup } from '@/components/shared/input'
 
 export function AuthFormSignIn() {
   return (
     <section>
-      <Form>
+      {/* <Form>
         <FormField>
           <InputGroup>
             <Label>Email</Label>
@@ -19,7 +19,7 @@ export function AuthFormSignIn() {
           </InputGroup>
           <div className="flex justify-between">
             <div className="flex">
-              <CheckBox />
+              <Checkbox />
               <span>Remember me</span>
             </div>
             <a href="#" className=" text-white underline">
@@ -34,7 +34,7 @@ export function AuthFormSignIn() {
             </a>
           </div>
         </FormField>
-      </Form>
+      </Form> */}
     </section>
   )
 }

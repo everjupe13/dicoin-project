@@ -35,7 +35,7 @@ export const NavbarItem = forwardRef(function NavbarItem(
     // Trailing icon (down chevron or similar)
     'data-[slot=icon]:last:[&:not(:nth-child(2))]:*:ml-auto data-[slot=icon]:last:[&:not(:nth-child(2))]:*:size-16 sm:data-[slot=icon]:last:[&:not(:nth-child(2))]:*:size-20',
     // Avatar
-    'data-[slot=avatar]:*:-m-2 data-[slot=avatar]:*:size-24 data-[slot=avatar]:*:[--avatar-radius:theme(borderRadius.DEFAULT)] data-[slot=avatar]:*:[--ring-opacity:10%] sm:data-[slot=avatar]:*:size-28',
+    'data-[slot=avatar]:*:-m-2 data-[slot=avatar]:*:size-24 data-[slot=avatar]:*:[--avatar-radius:theme(borderRadius.full)] data-[slot=avatar]:*:[--ring-opacity:10%] sm:data-[slot=avatar]:*:size-28',
     // Hover
     'data-[hover]:bg-zinc-950/5 data-[slot=icon]:*:data-[hover]:fill-zinc-950',
     // Active

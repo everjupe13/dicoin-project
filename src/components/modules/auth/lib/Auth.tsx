@@ -1,8 +1,8 @@
-import { Button } from '@/components/shared/button'
-import { CheckBox } from '@/components/shared/checkbox'
-import { Label } from '@/components/shared/fieldset'
-import { Form, FormField } from '@/components/shared/form'
-import { Input, InputGroup } from '@/components/shared/input'
+// import { Button } from '@/components/shared/button'
+// import { Checkbox } from '@/components/shared/checkbox'
+// import { Label } from '@/components/shared/fieldset'
+// import { Form, FormField } from '@/components/shared/form'
+// import { Input, InputGroup } from '@/components/shared/input'
 import { textAuthFormTitle } from '@/shared/const'
 import { utilLocaleString } from '@/shared/utils/locale-string'
 
@@ -50,7 +50,7 @@ export function Auth(_props: AuthProps) {
         </h1>
       </div>
 
-      <Form>
+      {/* <Form>
         <FormField>
           <InputGroup>
             <Label>Email</Label>
@@ -77,7 +77,7 @@ export function Auth(_props: AuthProps) {
             </a>
           </div>
         </FormField>
-      </Form>
+      </Form> */}
       {/* <p>signin</p> */}
       {/* <Button
         variant="secondary"
