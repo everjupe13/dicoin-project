@@ -10,7 +10,7 @@ export function AuthLayout() {
       </main> */}
 
       <main className="flex min-h-dvh flex-col p-8">
-        <div className="lg:rounded-lg lg:shadow-xs flex grow items-center justify-center p-40 lg:bg-white lg:ring-1 lg:ring-zinc-950/5 md:p-24 dark:lg:bg-zinc-900 dark:lg:ring-white/10">
+        <div className="lg:ring-1ring-zinc-950/5 flex grow items-center justify-center  rounded-10 p-6 lg:p-10 dark:bg-zinc-900 dark:ring-white/10">
           <Outlet />
         </div>
       </main>

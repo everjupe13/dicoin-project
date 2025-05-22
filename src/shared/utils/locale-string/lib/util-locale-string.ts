@@ -4,7 +4,7 @@ import type { LocaleCodes, LocaleString } from '@/shared/types'
 export const utilLocaleString = (
   value?: LocaleString | string | null,
   lang?: LocaleCodes
-) => {
+): string => {
   if (!value) {
     return ''
   }
@@ -12,7 +12,7 @@ export const utilLocaleString = (
   const langCode = lang || getConfig().lang
 
   if (value instanceof String) {
-    return value
+    return value as string
   }
 
   if (value instanceof Object) {

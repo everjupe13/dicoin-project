@@ -1,6 +1,8 @@
-import { Label } from '@/components/shared/fieldset'
-import { Form, FormField } from '@/components/shared/form'
-import { Input, InputGroup } from '@/components/shared/input'
+// import { Button } from '@/components/shared/button'
+// import { Checkbox } from '@/components/shared/checkbox'
+// import { Label } from '@/components/shared/fieldset'
+// import { Form, FormField } from '@/components/shared/form'
+// import { Input, InputGroup } from '@/components/shared/input'
 import { textAuthFormTitle } from '@/shared/const'
 import { utilLocaleString } from '@/shared/utils/locale-string'
 
@@ -41,21 +43,41 @@ export interface AuthProps {
 
 export function Auth(_props: AuthProps) {
   return (
-    <section className="w-full max-w-[380px]">
+    <section className="w-full max-w-[380px] p-2">
       <div>
-        <h1 className="font-semibold text-zinc-950 text-24 dark:text-white">
+        <h1 className="font-semibold text-text text-24 dark:text-white">
           {utilLocaleString(textAuthFormTitle)}
         </h1>
       </div>
 
-      <Form>
+      {/* <Form>
         <FormField>
           <InputGroup>
             <Label>Email</Label>
             <Input />
           </InputGroup>
+          <InputGroup>
+            <Label>Password</Label>
+            <Input />
+          </InputGroup>
+          <div className="flex justify-between">
+            <div className="flex">
+              <CheckBox />
+              <span>Remember me</span>
+            </div>
+            <a href="#" className=" text-white underline">
+              Forgot password?
+            </a>
+          </div>
+          <Button>Login</Button>
+          <div>
+            <span>Don’t have an account?</span>
+            <a href="#" className="ml-5 text-white underline">
+              Sign up
+            </a>
+          </div>
         </FormField>
-      </Form>
+      </Form> */}
       {/* <p>signin</p> */}
       {/* <Button
         variant="secondary"
