@@ -9,13 +9,13 @@ import { AuthLayout } from '@/layout/auth'
 import { DefaultLayout } from '@/layout/default'
 import { AboutPage } from '@/pages/AboutPage'
 import { AnalyticsPage } from '@/pages/AnalyticsPage'
+import { SignInPage } from '@/pages/auth/SignInPage'
+import { SignUpPage } from '@/pages/auth/SignUpPage'
 import { BillsPage } from '@/pages/BillsPage'
 import { ErrorPage } from '@/pages/ErrorPage'
 import { HomePage } from '@/pages/HomePage'
 import { NotFoundErrorPage } from '@/pages/NotFoundErrorPage'
 import { ProfilePage } from '@/pages/ProfilePage'
-import { SigninPage } from '@/pages/SigninPage'
-import { SignupPage } from '@/pages/SignupPage'
 import { SpendingsPage } from '@/pages/SpendingsPage'
 import { SubscribersPage } from '@/pages/SubscribersPage'
 import { TemporaryUIPage } from '@/pages/TemporaryUIPage'
@@ -47,8 +47,8 @@ const router = createBrowserRouter(
 
       <Route element={<ProtectedRoutes type="guest" />}>
         <Route element={<AuthLayout />}>
-          <Route path={ROUTES.AUTH.SIGN_IN} element={<SigninPage />} />
-          <Route path={ROUTES.AUTH.SIGN_UP} element={<SignupPage />} />
+          <Route path={ROUTES.AUTH.SIGN_IN} element={<SignInPage />} />
+          <Route path={ROUTES.AUTH.SIGN_UP} element={<SignUpPage />} />
         </Route>
       </Route>
     </Route>

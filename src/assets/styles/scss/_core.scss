@@ -19,3 +19,61 @@
 :root {
    --link-gradient: linear-gradient(90deg, #f5ce62, #e85a19);
 }
+
+:root {
+   --tw-color-zinc-600: theme(colors.zinc.600);
+   --tw-color-zinc-700: theme(colors.zinc.700);
+   --tw-color-zinc-900: theme(colors.zinc.900);
+   --tw-color-zinc-950: theme(colors.zinc.950);
+
+   --tw-color-cyan-300: theme(colors.cyan.300);
+   --tw-color-cyan-400: theme(colors.cyan.400);
+
+   --tw-color-sky-500: theme(colors.sky.500);
+   --tw-color-sky-600: theme(colors.sky.600);
+
+   --tw-color-blue-600: theme(colors.blue.600);
+   --tw-color-blue-700: theme(colors.blue.700);
+
+   --tw-color-indigo-500: theme(colors.indigo.500);
+   --tw-color-indigo-600: theme(colors.indigo.600);
+
+   --tw-color-violet-500: theme(colors.violet.500);
+   --tw-color-violet-600: theme(colors.violet.600);
+
+   --tw-color-purple-500: theme(colors.purple.500);
+   --tw-color-purple-600: theme(colors.purple.600);
+
+   --tw-color-fuchsia-500: theme(colors.fuchsia.500);
+   --tw-color-fuchsia-600: theme(colors.fuchsia.600);
+
+   --tw-color-pink-500: theme(colors.pink.500);
+   --tw-color-pink-600: theme(colors.pink.600);
+
+   --tw-color-rose-500: theme(colors.rose.500);
+   --tw-color-rose-600: theme(colors.rose.600);
+
+   --tw-color-teal-600: theme(colors.teal.600);
+   --tw-color-teal-700: theme(colors.teal.700);
+
+   --tw-color-emerald-600: theme(colors.emerald.600);
+   --tw-color-emerald-700: theme(colors.emerald.700);
+
+   --tw-color-green-600: theme(colors.green.600);
+   --tw-color-green-700: theme(colors.green.700);
+
+   --tw-color-lime-300: theme(colors.lime.300);
+   --tw-color-lime-400: theme(colors.lime.400);
+
+   --tw-color-yellow-300: theme(colors.yellow.300);
+   --tw-color-yellow-400: theme(colors.yellow.400);
+
+   --tw-color-amber-400: theme(colors.amber.400);
+   --tw-color-amber-500: theme(colors.amber.500);
+
+   --tw-color-orange-500: theme(colors.orange.500);
+   --tw-color-orange-600: theme(colors.orange.600);
+
+   --tw-color-red-600: theme(colors.red.600);
+   --tw-color-red-700: theme(colors.red.700);
+}

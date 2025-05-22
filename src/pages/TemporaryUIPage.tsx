@@ -1,13 +1,13 @@
-import { FormField } from '@/components/shared/form'
-import { Input } from '@/components/shared/input'
+// import { FormField } from '@/components/shared/form'
+// import { Input } from '@/components/shared/input'
 
 // TODO заменить на storybook
 export function TemporaryUIPage() {
   return (
     <div className="spacy-y-12">
-      <FormField label="Лейбл для инпута">
+      {/* <FormField  label="Лейбл для инпута">
         <Input type="text" placeholder="Введите текст суки, почему я пустой" />
-      </FormField>
+      </FormField> */}
     </div>
   )
 }
