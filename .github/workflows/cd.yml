@@ -90,6 +90,9 @@ jobs:
             -d text="⚙️ *Deployment started* for *${{ env.IMAGE_NAME }}*.\nPipeline: $PIPELINE_URL" \
             -d parse_mode=Markdown
 
+      - name: Checkout the repo
+        uses: actions/checkout@v4
+
       - name: Copy docker-compose file to server
         uses: appleboy/scp-action@v1
         with:
