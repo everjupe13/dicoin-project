@@ -1,0 +1,128 @@
+name: Frontend CD
+
+on:
+  workflow_run:
+    workflows: Frontend CI
+    branches: master
+    types: completed
+
+env:
+  REGISTRY: ghcr.io
+  IMAGE_NAME: ${{ github.repository_owner }}/dicoin-app-frontend
+  TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+  TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+  PIPELINE_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+
+jobs:
+  build_and_push_to_ghcr:
+    name: Push Docker images to GitHub Container Registry
+    runs-on: ubuntu-latest
+
+    if: ${{ github.ref == 'refs/heads/master' }}
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+
+    steps:
+      - name: Notify Telegram: Build started
+        run: |
+          curl -s -X POST https://api.telegram.org/bot$TELEGRAM_BOT_TOKEN/sendMessage \
+            -d chat_id=$TELEGRAM_CHAT_ID \
+            -d text="🚀 *Build started* for *${{ env.IMAGE_NAME }}*.\nPipeline: $PIPELINE_URL" \
+            -d parse_mode=Markdown
+
+      - name: Checkout the repo
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: yarn
+
+      - name: Install deps
+        run: yarn install --immutable --immutable-cache --check-cache
+
+      - name: Setup Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Login to GitHub Container Registry
+        uses: docker/login-action@v3
+        with:
+          registry: ${{ env.REGISTRY }}
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Build and push image
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          file: Dockerfile
+          push: true
+          tags: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:latest
+          build-args: |
+            ${{ vars.BUILD_ENVS }}
+
+      - name: Notify Telegram: Build succeeded
+        if: success()
+        run: |
+          curl -s -X POST https://api.telegram.org/bot$TELEGRAM_BOT_TOKEN/sendMessage \
+            -d chat_id=$TELEGRAM_CHAT_ID \
+            -d text="✅ *Build succeeded* for *${{ env.IMAGE_NAME }}*.\nPipeline: $PIPELINE_URL" \
+            -d parse_mode=Markdown
+
+      - name: Notify Telegram: Build failed
+        if: failure()
+        run: |
+          curl -s -X POST https://api.telegram.org/bot$TELEGRAM_BOT_TOKEN/sendMessage \
+            -d chat_id=$TELEGRAM_CHAT_ID \
+            -d text="❌ *Build failed* for *${{ env.IMAGE_NAME }}*.\nPipeline: $PIPELINE_URL" \
+            -d parse_mode=Markdown
+
+  deploy:
+    name: Deployment to server
+    needs: build_and_push_to_ghcr
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Notify Telegram: Deployment started
+        run: |
+          curl -s -X POST https://api.telegram.org/bot$TELEGRAM_BOT_TOKEN/sendMessage \
+            -d chat_id=$TELEGRAM_CHAT_ID \
+            -d text="⚙️ *Deployment started* for *${{ env.IMAGE_NAME }}*.\nPipeline: $PIPELINE_URL" \
+            -d parse_mode=Markdown
+
+      - name: Copy docker-compose file to server
+        uses: appleboy/scp-action@v1
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USER }}
+          key: ${{ secrets.SSH_KEY }}
+          source: "./docker-compose.yml"
+          target: "/home/dicoin-app/frontend/docker-compose.yml"
+
+      - name: SSH deploy on server
+        uses: appleboy/ssh-action@v1
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USER }}
+          key: ${{ secrets.SSH_KEY }}
+          script: |
+            cd /home/dicoin-app/frontend
+            docker pull ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:latest
+            docker compose down
+            docker compose up -d
+
+      - name: Notify Telegram: Deployment succeeded
+        if: success()
+        run: |
+          curl -s -X POST https://api.telegram.org/bot$TELEGRAM_BOT_TOKEN/sendMessage \
+            -d chat_id=$TELEGRAM_CHAT_ID \
+            -d text="✅ *Deployment succeeded* for *${{ env.IMAGE_NAME }}*.\nPipeline: $PIPELINE_URL" \
+            -d parse_mode=Markdown
+
+      - name: Notify Telegram: Deployment failed
+        if: failure()
+        run: |
+          curl -s -X POST https://api.telegram.org/bot$TELEGRAM_BOT_TOKEN/sendMessage \
+            -d chat_id=$TELEGRAM_CHAT_ID \
+            -d text="❌ *Deployment failed* for *${{ env.IMAGE_NAME }}*.\nPipeline: $PIPELINE_URL" \
+            -d parse_mode=Markdown

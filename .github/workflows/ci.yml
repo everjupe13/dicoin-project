@@ -21,10 +21,10 @@ jobs:
       - name: Install deps
         run: yarn install --immutable --immutable-cache --check-cache
 
-      - name: Lint
+      - name: Run ESLint
         run: yarn run lint
 
-      - name: Type Check
+      - name: Run Type Check
         run: yarn run type-check
 
       # - name: Run tests

@@ -1,9 +1,9 @@
 type EnvironmentType = {
-  API_HOST: string
+  API_URL: string
   APP_URL: string
 }
 
 export const ENV: EnvironmentType = {
-  API_HOST: import.meta.env.VITE_API_HOST,
+  API_URL: import.meta.env.VITE_API_URL,
   APP_URL: import.meta.env.VITE_APP_URL
 }

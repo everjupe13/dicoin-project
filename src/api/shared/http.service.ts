@@ -15,7 +15,7 @@ export class HttpService {
   constructor(endpoint: string) {
     this.axios = axios
     this.endpoint = endpoint
-    this.apiHost = ENV.API_HOST
+    this.apiHost = ENV.API_URL
   }
 
   /**

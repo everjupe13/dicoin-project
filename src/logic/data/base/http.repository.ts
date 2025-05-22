@@ -15,7 +15,7 @@ export class HttpRepository {
     this.axios = axios
     this.endpoint = endpoint || ''
     // this.apiHost = ENV.API_HOST
-    this.apiHost = ENV.APP_URL
+    this.apiHost = ENV.API_URL
   }
 
   setEndpoint(endpoint: string) {

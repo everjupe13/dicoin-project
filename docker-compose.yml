@@ -1,0 +1,23 @@
+version: '3.8'
+
+services:
+  frontend:
+    build:
+      context: .
+    container_name: dicoin-frontend
+    ports:
+      - "3000:80"
+    restart: unless-stopped
+    networks:
+      - dicoin-frontend-net
+    healthcheck:
+      test: ["CMD", "wget", "-q", "--spider", "http://localhost"]
+      interval: 30s
+      timeout: 3s
+      retries: 3
+      start_period: 10s
+
+networks:
+  frontend_net:
+    name: dicoin-frontend-net
+    driver: bridge
