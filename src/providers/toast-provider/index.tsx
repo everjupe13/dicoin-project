@@ -1,1 +1,1 @@
-export { ProvidersToast } from './lib/provider'
+export { useToast } from './lib/provider'

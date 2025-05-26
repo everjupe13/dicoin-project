@@ -1,37 +1,50 @@
 import { clsx } from 'clsx'
-import { useState } from 'react'
 
+import { ToastOptions } from '../index'
 import styles from './toast-notification.module.scss'
 
-interface ToastProps {
-  severity?: 'success' | 'warn' | 'error'
-  summary?: string
-  detail?: string
+export interface ToastNotificationProps extends ToastOptions {
+  closable?: boolean | undefined
+  life?: number | undefined
+  onRemove: () => void
 }
 
-export function ToastNotification({ toast }: { toast: ToastProps }) {
-  const [close, setClose] = useState(false)
+export function ToastNotification({
+  severity = 'error',
+  summary,
+  detail,
+  onRemove
+}: ToastNotificationProps) {
   return (
     <>
       <div
         className={clsx(
           `relative min-h-10 w-[300px]  rounded-5 p-10 `,
-          close ? 'hidden' : 'block',
-          toast.severity && styles[toast.severity]
+          severity && styles[severity]
         )}
       >
         <div>
-          <header>{toast.summary}</header>
+          <header>{summary}</header>
           <img src="" alt="" />
         </div>
         <div>
-          <span>{toast.detail}</span>
+          <span>{detail}</span>
         </div>
-        <button
-          className=" absolute right-10 top-5"
-          onClick={() => setClose(true)}
-        >
-          X
+        <button className=" absolute right-10 top-5" onClick={() => onRemove()}>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            strokeWidth={1.5}
+            stroke="currentColor"
+            className="size-6"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="M6 18 18 6M6 6l12 12"
+            />
+          </svg>
         </button>
       </div>
     </>
