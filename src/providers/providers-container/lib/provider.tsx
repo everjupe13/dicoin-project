@@ -2,7 +2,7 @@ import { type ReactNode } from 'react'
 
 import { AuthProvider } from '@/providers/auth-provider'
 import { ReactQueryProvider } from '@/providers/react-query'
-import { ToastProvider } from '@/providers/toast-provider/lib/provider'
+import { ToastProvider } from '@/providers/toast-provider'
 
 export interface ProvidersContainerProps {
   children?: ReactNode

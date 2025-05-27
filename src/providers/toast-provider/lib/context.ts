@@ -1,11 +1,11 @@
 import { createContext } from 'react'
 
-import { ToastOptions } from '@/components/shared/toast'
+import { ToastProviderProps } from './provider'
 
 export interface ToastContextType {
-  add: (toast: ToastOptions) => void
-  remove?: (toast: ToastOptions) => void
-  removeAll?: (toast: ToastOptions) => void
+  add: (toast: ToastProviderProps) => void
+  remove?: (id: number) => void
+  removeAll?: (toast: ToastProviderProps) => void
 }
 
 export const ToastContext = createContext<ToastContextType | null>(null)
