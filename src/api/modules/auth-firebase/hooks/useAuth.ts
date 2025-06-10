@@ -12,7 +12,7 @@ export interface UseAuthInterface {
   logout: () => Promise<void>
 }
 
-export function useAuth(): UseAuthInterface {
+export function useAuth() {
   const authByGooglePopup = async () => {
     const authResult = await openGoogleAuthPopup()
 

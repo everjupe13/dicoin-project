@@ -15,7 +15,7 @@ const signupSchema = z.object({
 
 type FormSchema = z.infer<typeof signupSchema>
 
-export function AuthFormSingUp() {
+export function AuthFormSignUp() {
   const [formData] = useState<FormSchema>({
     email: '',
     fullName: '',
@@ -27,7 +27,7 @@ export function AuthFormSingUp() {
   const { mutateAsync: login } = loginMutation
 
   const handleSubmit = async (payload: FormSchema) => {
-    const { error, data } = await login({
+    const { error, data, message } = await login({
       email: payload.email,
       password: payload.password
     })
@@ -35,7 +35,7 @@ export function AuthFormSingUp() {
     if (error) {
       toast.add({
         type: 'error',
-        message: error
+        message: message
         // message: error.message,
         // detail: error.detail
       })
