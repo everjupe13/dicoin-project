@@ -1,10 +1,11 @@
 import { useState } from 'react'
 import { z } from 'zod'
 
-// import { useAuth } from '@/api/modules/auth'
+import { useAuth } from '@/api/modules/auth'
 import { Button } from '@/components/shared/button'
 import { Checkbox } from '@/components/shared/checkbox'
 import { Form, FormField, FormInput } from '@/components/shared/form'
+import { useToast } from '@/providers/toast-provider'
 
 const signupSchema = z.object({
   email: z.string().email('Невалидный email'),
@@ -21,27 +22,35 @@ export function AuthFormSingUp() {
     password: ''
   })
 
-  // const { mutateAsync: login } = useAuth()
+  const toast = useToast()
+  const { loginMutation } = useAuth()
+  const { mutateAsync: login } = loginMutation
 
-  const handleSubmit = async (_data: FormSchema) => {
-    // const { error } = await login()
-    // if (error) {
-    //   toast.add({
-    //     type: 'error',
-    //     message: error.message,
-    //     detail: error.detail
-    //   })
-    // }
-    // console.log('Submit:', data)
+  const handleSubmit = async (payload: FormSchema) => {
+    const { error, data } = await login({
+      email: payload.email,
+      password: payload.password
+    })
+
+    if (error) {
+      toast.add({
+        type: 'error',
+        message: error
+        // message: error.message,
+        // detail: error.detail
+      })
+    }
+
+    console.log('Submit:', data)
   }
 
   return (
     <section>
       <Form
-        onSubmit={handleSubmit}
         schema={signupSchema}
         options={{ values: formData }}
         className="space-y-32"
+        onSubmit={handleSubmit}
       >
         <div className="space-y-32">
           <FormField name="email" label="Email">
