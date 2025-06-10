@@ -7,6 +7,9 @@
   "printWidth": 80,
   "tabWidth": 2,
   "htmlWhitespaceSensitivity": "ignore",
+
   "plugins": ["prettier-plugin-tailwindcss"],
-  "tailwindConfig": "./tailwind.config.js"
+  "tailwindStylesheet": "./assets/css/main.css",
+  "tailwindFunctions": ["clsx"],
+  "tailwindPreserveWhitespace": true
 }

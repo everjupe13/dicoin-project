@@ -30,7 +30,7 @@ export function SelectContent({
       className={clsx(
         'z-[100]',
         'flex flex-col items-stretch gap-y-4',
-        'min-w-[210px] rounded-6 border border-white/5 p-6',
+        'rounded-6 min-w-[210px] border border-white/5 p-6',
         'bg-background-modals shadow-modals',
         'font-medium text-white text-14',
         'origin-top transition duration-100 ease-out',

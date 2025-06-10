@@ -22,7 +22,7 @@ export function SpendingsCard({
   }
 
   return (
-    <article className="flex min-h-[219px] max-w-[700px] items-stretch rounded-5 bg-[#3d3d3d] px-20 py-25">
+    <article className="rounded-5 py-25 flex min-h-[219px] max-w-[700px] items-stretch bg-[#3d3d3d] px-20">
       <div className="flex w-full flex-col justify-between">
         <div className="mb-20">
           <div className="mb-15">

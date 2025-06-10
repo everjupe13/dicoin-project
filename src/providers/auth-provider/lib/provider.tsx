@@ -1,56 +1,30 @@
-import { type ReactNode, useCallback, useEffect, useState } from 'react'
+import { type ReactNode, useEffect } from 'react'
 
-import {
-  beforeAuthChanged,
-  onAuthChanged,
-  useAuth
-} from '@/api/modules/auth-firebase'
-import type { User } from '@/shared/types'
+import { useAuthStore } from '@/components/modules/auth'
 
-import { AuthContext, type AuthContextType } from './context'
+// TODO react query request
+// import { useUserStore } from '@/components/modules/user'
+import { AuthContext } from './context'
 
 export interface AuthProviderProps {
   children?: ReactNode
 }
 
 export function AuthProvider({ children }: AuthProviderProps) {
-  const [user, setUser] = useState<User | null>(null)
-  const [loading, setLoading] = useState(true)
-  const { authByGooglePopup, logout } = useAuth()
-
-  const authByExternalPopup = useCallback(async () => {
-    const userResponse = await authByGooglePopup()
-
-    if (userResponse.data) {
-      return userResponse.data
-    }
-
-    return null
-  }, [authByGooglePopup])
-
-  const contextValue: AuthContextType = {
-    user,
-    loading,
-
-    authByExternalPopup,
-    logout
-  }
+  const { init: initAuth, isInited: isAuthInited } = useAuthStore()
+  const isInited = isAuthInited
 
   useEffect(() => {
-    beforeAuthChanged(() => {
-      setLoading(true)
-    })
+    const getUser = async () => {
+      await initAuth()
+    }
 
-    onAuthChanged(user => {
-      setLoading(false)
+    getUser()
+  }, [initAuth, isAuthInited])
 
-      if (user) {
-        setUser(user)
-      }
-    })
-  }, [])
+  if (!isInited) {
+    return null
+  }
 
-  return (
-    <AuthContext.Provider value={contextValue}>{children}</AuthContext.Provider>
-  )
+  return <AuthContext.Provider value={{}}>{children}</AuthContext.Provider>
 }

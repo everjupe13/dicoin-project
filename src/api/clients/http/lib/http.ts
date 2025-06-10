@@ -1,6 +1,6 @@
 import axios, { type AxiosRequestConfig, type AxiosResponse } from 'axios'
 
-import type { HttpApiResponse } from '@/api/types'
+import type { HttpApiResponse, HttpApiSuccessResponse } from '@/api/types'
 import { ENV } from '@/shared/const'
 
 async function makeRequest<T>(
@@ -29,8 +29,10 @@ async function makeRequest<T>(
   }
 
   try {
-    const response: AxiosResponse<T> = await axios.request(config)
-    return { data: response.data, error: null, message: '' }
+    const { data }: AxiosResponse<HttpApiSuccessResponse<T>> =
+      await axios.request(config)
+
+    return { data: data.data, error: null, message: data.message }
   } catch (error) {
     if (axios.isAxiosError(error)) {
       return { data: null, error: error, message: 'Что-то пошло не так' }

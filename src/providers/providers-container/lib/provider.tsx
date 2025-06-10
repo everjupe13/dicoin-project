@@ -1,5 +1,6 @@
 import { type ReactNode } from 'react'
 
+import { AuthProvider } from '@/providers/auth-provider'
 import { ReactQueryProvider } from '@/providers/react-query'
 import { ToastProvider } from '@/providers/toast-provider'
 
@@ -10,7 +11,9 @@ export interface ProvidersContainerProps {
 export function ProvidersContainer({ children }: ProvidersContainerProps) {
   return (
     <ReactQueryProvider>
-      <ToastProvider>{children}</ToastProvider>
+      <ToastProvider>
+        <AuthProvider>{children}</AuthProvider>
+      </ToastProvider>
     </ReactQueryProvider>
   )
 }

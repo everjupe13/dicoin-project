@@ -15,7 +15,7 @@ export function Description({ className, ...props }: DescriptionProps) {
       {...props}
       className={clsx(
         className,
-        'data-disabled:opacity-50 text-text-base text-16 sm:text-14'
+        'data-disabled:opacity-50 text-base/6 text-zinc-500 sm:text-sm/6 dark:text-zinc-400'
       )}
     />
   )

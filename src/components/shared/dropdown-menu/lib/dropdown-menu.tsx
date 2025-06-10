@@ -39,7 +39,7 @@ export function DropdownMenu({
         <>
           <MenuButton
             className={clsx(
-              'flex items-center gap-10 rounded-6 px-12 py-6',
+              'rounded-6 flex items-center gap-10 px-12 py-6',
               'bg-background-modals data-[hover]:bg-background-modals-hover data-[open]:bg-background-modals-active',
               'font-medium text-white text-14',
               'focus:outline-none data-[focus]:outline-1 data-[focus]:outline-white'
@@ -70,7 +70,7 @@ export function DropdownMenu({
                 className={clsx(
                   'z-[100]',
                   'flex flex-col items-stretch gap-y-4',
-                  'w-[210px] rounded-6 border border-white/5 p-6',
+                  'rounded-6 w-[210px] border border-white/5 p-6',
                   'bg-background-modals shadow-modals',
                   'font-medium text-white text-14',
                   'origin-top-right',
@@ -81,7 +81,7 @@ export function DropdownMenu({
                   <MenuItem key={itemIdx}>
                     <button
                       className={clsx(
-                        'group flex h-34 w-full items-center gap-10 rounded-6 px-8 data-[focus]:bg-white/10',
+                        'h-34 rounded-6 group flex w-full items-center gap-10 px-8 data-[focus]:bg-white/10',
                         '[&>svg]:h-16 [&>svg]:w-16 [&>svg]:fill-white/30'
                       )}
                       onClick={

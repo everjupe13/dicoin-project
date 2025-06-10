@@ -27,7 +27,7 @@ export function MobileSidebar({ open, close, children }: MobileSidebarProps) {
         transition
         className="fixed inset-y-0 w-full max-w-[320px] p-8 transition duration-300 ease-in-out data-[closed]:-translate-x-full"
       >
-        <div className="flex h-full flex-col rounded-8 bg-white shadow-sm ring-1 ring-zinc-950/5 dark:bg-zinc-900 dark:ring-white/10">
+        <div className="rounded-8 flex h-full flex-col bg-white shadow-sm ring-1 ring-zinc-950/5 dark:bg-zinc-900 dark:ring-white/10">
           <div className="-mb-12 px-16 pt-12">
             <CloseButton as={NavbarItem} aria-label="Close navigation">
               <CloseMenuIcon />

@@ -46,7 +46,7 @@ const SubscribersList = () => {
   return (
     <div>
       {subscribers ? (
-        <ul className="flex flex-col gap-30">
+        <ul className="gap-30 flex flex-col">
           {subscribers.map(item => (
             <SubscribersCard
               key={item.id}

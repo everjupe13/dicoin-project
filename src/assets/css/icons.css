@@ -1,0 +1,100 @@
+@utility pi-ui {
+  &::before {
+    content: '';
+    display: inline-block;
+    width: 1em;
+    height: 1em;
+    mask-size: contain;
+    background-color: currentColor;
+    mask-repeat: no-repeat;
+    mask-position: center;
+    mask-size: contain;
+    -webkit-mask-repeat: no-repeat;
+    -webkit-mask-position: center;
+    -webkit-mask-size: contain;
+  }
+}
+
+@utility pi-ui-window {
+  &::before {
+    mask-image: url('~/assets/icons/window.svg');
+  }
+}
+
+@utility pi-ui-door {
+  &::before {
+    mask-image: url('~/assets/icons/door.svg');
+  }
+}
+
+@utility pi-ui-furniture {
+  &::before {
+    mask-image: url('~/assets/icons/furniture.svg');
+  }
+}
+
+@utility pi-ui-construction {
+  &::before {
+    mask-image: url('~/assets/icons/construction.svg');
+  }
+}
+
+@utility pi-ui-floor {
+  &::before {
+    mask-image: url('~/assets/icons/floor.svg');
+  }
+}
+
+@utility pi-ui-paint {
+  &::before {
+    mask-image: url('~/assets/icons/paint.svg');
+  }
+}
+
+@utility pi-ui-vice {
+  &::before {
+    mask-image: url('~/assets/icons/vice.svg');
+  }
+}
+
+@utility pi-ui-doors {
+  &::before {
+    mask-image: url('~/assets/icons/i-doors.svg');
+  }
+}
+
+@utility pi-ui-windows {
+  &::before {
+    mask-image: url('~/assets/icons/i-windows.svg');
+  }
+}
+
+@utility pi-ui-furniture2 {
+  &::before {
+    mask-image: url('~/assets/icons/i-furniture.svg');
+  }
+}
+
+@utility pi-ui-aluminum {
+  &::before {
+    mask-image: url('~/assets/icons/i-aluminum.svg');
+  }
+}
+
+@utility pi-ui-paint2 {
+  &::before {
+    mask-image: url('~/assets/icons/i-paint.svg');
+  }
+}
+
+@utility pi-ui-fitting {
+  &::before {
+    mask-image: url('~/assets/icons/i-fitting.svg');
+  }
+}
+
+@utility pi-ui-sale {
+  &::before {
+    mask-image: url('~/assets/icons/i-sale.svg');
+  }
+}

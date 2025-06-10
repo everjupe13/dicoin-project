@@ -1,0 +1,63 @@
+@utility scrollbar-hidden {
+  scrollbar-width: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+@utility scrollbar-thin {
+  scrollbar-width: thin;
+
+  &::-webkit-scrollbar {
+    width: 4px;
+    height: 8px;
+  }
+}
+
+@utility scrollbar-primary {
+  scrollbar-color: var(--color-cyan-500) transparent;
+
+  &::-webkit-scrollbar-track {
+    background: var(--color-slate-50);
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: var(--color-cyan-500);
+    border-radius: 10px;
+    border: 2px solid transparent;
+    background-clip: content-box;
+  }
+
+  &::-webkit-scrollbar-thumb:hover {
+    background-color: color-mix(
+      in srgb,
+      var(--color-cyan-500) 80%,
+      var(--color-black)
+    );
+  }
+}
+
+@utility scrollbar-red {
+  scrollbar-color: var(--color-orange-700) transparent;
+
+  &::-webkit-scrollbar-thumb:hover {
+    background-color: color-mix(
+      in srgb,
+      var(--color-orange-700) 80%,
+      var(--color-black)
+    );
+  }
+
+  &::-webkit-scrollbar-thumb:hover {
+    background-color: color-mix(
+      in srgb,
+      var(--color-orange-700) 80%,
+      var(--color-black)
+    );
+  }
+}
+
+@utility overscroll-contain {
+  overscroll-behavior: contain;
+}

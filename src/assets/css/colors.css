@@ -1,0 +1,31 @@
+@theme {
+  --color-*: initial;
+
+  --color-orange-300: oklch(0.87 0.1088 74.41); /* #FEC980 */
+  --color-orange-500: oklch(0.72 0.1686 52.5); /* #F5822A */
+  --color-orange-700: oklch(0.66 0.2084 33.89); /* #F54F2A */
+
+  /* TODO добавили цвета cyan -50, -100, -200 не по UI kit т.к. 
+    трех цветов из кита не хватает для сайдбара
+  */
+  --color-cyan-50: oklch(0.91 0.0378 202.7); /* #C4E8EB */
+  --color-cyan-100: oklch(0.88 0.043 203.71); /* #b8e1e5 */
+  --color-cyan-200: oklch(0.85 0.0551 204.84); /* #A4D9DF */
+  /*  */
+  --color-cyan-300: oklch(0.79 0.0855 203.19); /* #74CCD4 */
+  --color-cyan-500: oklch(0.67 0.1013 206.88); /* #31A5B3 */
+  --color-cyan-700: oklch(0.58 0.09986 207.2434); /* #008B99 */
+
+  --color-slate-50: oklch(0.98 0.0017 247.84); /* #F7F8F9 */
+  --color-slate-100: oklch(0.95 0.0045 214.33); /* #EAEEEF */
+  --color-slate-200: oklch(0.95 0.0097 204.91); /* #E9F2F3 */
+  --color-slate-300: oklch(0.9 0.0077 228.86); /* #D9DFE2 */
+  --color-slate-400: oklch(0.76 0.0115 234.88); /* #A9B1B6 */
+  --color-slate-500: oklch(0.7 0.0055 228.85); /* #9B9FA1 */
+  --color-slate-600: oklch(0.53 0.0058 228.9); /* #696D6F */
+  --color-slate-700: oklch(0.47 0.0053 214.35); /* #575B5C */
+  --color-slate-900: oklch(0.3 0 0); /* #2D2D2D */
+
+  --color-black: #000;
+  --color-white: #fff;
+}

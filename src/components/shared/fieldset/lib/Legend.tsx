@@ -16,7 +16,7 @@ export function Legend({ className, ...props }: LegendProps) {
       {...props}
       className={clsx(
         className,
-        'data-disabled:opacity-50 font-semibold text-text-strong text-14 sm:text-16'
+        'data-disabled:opacity-50 text-base/6 font-semibold text-zinc-950 sm:text-sm/6 dark:text-white'
       )}
     />
   )

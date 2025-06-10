@@ -11,9 +11,9 @@ export function CheckboxGroup({ className, ...props }: CheckboxGroupProps) {
       className={clsx(
         className,
         // Basic groups
-        'space-y-12',
+        'space-y-3',
         // With descriptions
-        'has-data-[slot=description]:space-y-24 has-data-[slot=description]:**:data-[slot=label]:font-medium'
+        'has-data-[slot=description]:space-y-6 has-data-[slot=description]:**:data-[slot=label]:font-medium'
       )}
     />
   )

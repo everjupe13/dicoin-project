@@ -2,8 +2,8 @@
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const plugin = require('tailwindcss/plugin')
 
-const toPX = values => Object.fromEntries(values.map(v => [+v, `${v}px`]))
-const object0to100px = toPX(Array.from({ length: 101 }).map((_, i) => +i))
+// const toPX = values => Object.fromEntries(values.map(v => [+v, `${v}px`]))
+// const object0to100px = toPX(Array.from({ length: 101 }).map((_, i) => +i))
 
 const fallbackSansSerifFonts = [
   '-apple-system',
@@ -226,15 +226,15 @@ module.exports = {
     //   }
     // },
 
-    spacing: object0to100px,
+    // spacing: object0to100px,
 
     borderWidth: {
       DEFAULT: '1px',
-      ...object0to100px
+      // ...object0to100px
     },
 
     borderRadius: {
-      ...object0to100px,
+      // ...object0to100px,
       full: '9999px'
     },
 

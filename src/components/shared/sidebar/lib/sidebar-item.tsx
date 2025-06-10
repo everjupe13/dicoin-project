@@ -25,7 +25,7 @@ export const SidebarItem = forwardRef(function SidebarItem(
 ) {
   const classes = clsx(
     // Base
-    'flex w-full items-center gap-12 rounded-8 px-8 sm:py-10 text-left sm:text-base/6 font-medium text-zinc-950 py-8 text-sm/5',
+    'rounded-8 flex w-full items-center gap-12 px-8 py-8 text-left text-sm/5 font-medium text-zinc-950 sm:py-10 sm:text-base/6',
     // Leading icon/icon-only
     'data-[slot=icon]:*:size-20 data-[slot=icon]:*:shrink-0 data-[slot=icon]:*:fill-zinc-500 sm:data-[slot=icon]:*:size-24',
     // Trailing icon (down chevron or similar)
@@ -50,7 +50,7 @@ export const SidebarItem = forwardRef(function SidebarItem(
       {current && (
         <motion.span
           layoutId="current-indicator"
-          className="absolute inset-y-8 -left-16 w-3 rounded-r-2 bg-zinc-950 dark:bg-white"
+          className="rounded-r-2 absolute inset-y-8 -left-16 w-3 bg-zinc-950 dark:bg-white"
         />
       )}
       {'href' in props ? (

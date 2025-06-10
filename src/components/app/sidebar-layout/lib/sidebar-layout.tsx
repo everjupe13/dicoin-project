@@ -45,7 +45,7 @@ export function SidebarLayout({
 
       {/* Content */}
       <main className="flex min-w-0 flex-1 flex-col pb-8 pl-[var(--aside-left-column-width,250px)] pr-8 pt-8 md:min-w-[none] md:pl-0 md:pr-0 md:pt-0">
-        <div className="grow rounded-8 bg-white p-40 shadow-sm ring-1 ring-zinc-950/5 md:rounded-0 md:bg-transparent md:p-24 md:shadow-none md:ring-0 dark:bg-zinc-900 dark:ring-white/10 dark:md:bg-transparent">
+        <div className="rounded-8 md:rounded-0 grow bg-white p-40 shadow-sm ring-1 ring-zinc-950/5 md:bg-transparent md:p-24 md:shadow-none md:ring-0 dark:bg-zinc-900 dark:ring-white/10 dark:md:bg-transparent">
           <div className="mx-auto max-w-[1152px]">{children}</div>
         </div>
       </main>

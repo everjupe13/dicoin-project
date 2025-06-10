@@ -15,7 +15,7 @@ export function SelectContentEmpty({
     <MenuItem disabled={true}>
       <div
         className={clsx(
-          'group pointer-events-none flex h-34 w-full select-none items-center justify-center px-8 opacity-60',
+          'h-34 group pointer-events-none flex w-full select-none items-center justify-center px-8 opacity-60',
           className
         )}
       >

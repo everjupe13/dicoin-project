@@ -13,6 +13,8 @@ export interface UseAuthInterface {
 }
 
 export function useAuth() {
+  const init = async () => {}
+
   const authByGooglePopup = async () => {
     const authResult = await openGoogleAuthPopup()
 
@@ -33,6 +35,7 @@ export function useAuth() {
   }
 
   return {
+    init,
     authByGooglePopup,
     logout
   }

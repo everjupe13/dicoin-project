@@ -71,7 +71,7 @@ export function Select({
     <Menu>
       <MenuButton
         className={clsx(
-          'flex min-w-[210px] items-stretch gap-10 rounded-6 px-12 py-6',
+          'rounded-6 flex min-w-[210px] items-stretch gap-10 px-12 py-6',
           'bg-background-modals data-[hover]:bg-background-modals-hover data-[open]:bg-background-modals-active',
           'font-medium text-white text-14',
           'focus:outline-none data-[focus]:outline-1 data-[focus]:outline-white'

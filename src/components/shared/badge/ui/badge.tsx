@@ -4,7 +4,7 @@ import { ReactNode } from 'react'
 import { utilGetCapitalizeString } from '@/shared/utils/get-capitalize-string'
 
 import type { BadgeVariant } from '../types/enums'
-import styles from './badge.module.scss'
+import styles from './badge.module.css'
 
 export interface BadgeProps {
   text?: string
@@ -22,7 +22,7 @@ export function Badge({ text, children, variant = 'primary' }: BadgeProps) {
   return (
     <div
       className={clsx(
-        'inline-flex max-w-max rounded-6 px-10 py-7',
+        'rounded-6 inline-flex max-w-max px-10 py-7',
         styles[`variant${utilGetCapitalizeString(variant)}`]
       )}
     >

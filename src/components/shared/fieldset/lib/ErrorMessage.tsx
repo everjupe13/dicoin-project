@@ -15,7 +15,7 @@ export function ErrorMessage({ className, ...props }: ErrorMessageProps) {
       {...props}
       className={clsx(
         className,
-        'data-disabled:opacity-50 text-red-600 text-16 sm:text-14 dark:text-red-500'
+        'data-disabled:opacity-50 text-base/6 text-red-600 sm:text-sm/6 dark:text-red-500'
       )}
     />
   )

@@ -28,7 +28,7 @@ export function SelectItem({
     <MenuItem disabled={disabled}>
       <button
         className={clsx(
-          'group flex h-34 w-full items-center gap-7 rounded-6 px-8',
+          'h-34 rounded-6 group flex w-full items-center gap-7 px-8',
           selected ? 'bg-white/15' : 'data-[focus]:bg-white/10',
           disabled && '',
           className

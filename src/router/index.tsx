@@ -9,6 +9,7 @@ import { AuthLayout } from '@/layout/auth'
 import { DefaultLayout } from '@/layout/default'
 import { AboutPage } from '@/pages/AboutPage'
 import { AnalyticsPage } from '@/pages/AnalyticsPage'
+import { ResetPasswordPage } from '@/pages/auth/ResetPasswordPage'
 import { SignInPage } from '@/pages/auth/SignInPage'
 import { SignUpPage } from '@/pages/auth/SignUpPage'
 import { BillsPage } from '@/pages/BillsPage'
@@ -49,6 +50,10 @@ const router = createBrowserRouter(
         <Route element={<AuthLayout />}>
           <Route path={ROUTES.AUTH.SIGN_IN} element={<SignInPage />} />
           <Route path={ROUTES.AUTH.SIGN_UP} element={<SignUpPage />} />
+          <Route
+            path={ROUTES.AUTH.RESET_PASSWORD}
+            element={<ResetPasswordPage />}
+          />
         </Route>
       </Route>
     </Route>

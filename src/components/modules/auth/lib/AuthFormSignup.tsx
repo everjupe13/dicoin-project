@@ -1,11 +1,14 @@
 import { useState } from 'react'
+import { useNavigate } from 'react-router'
 import { z } from 'zod'
 
 import { useAuth } from '@/api/modules/auth'
 import { Button } from '@/components/shared/button'
 import { Checkbox } from '@/components/shared/checkbox'
 import { Form, FormField, FormInput } from '@/components/shared/form'
+import { Text, TextLink } from '@/components/shared/text'
 import { useToast } from '@/providers/toast-provider'
+import { ROUTES } from '@/shared/const'
 
 const signupSchema = z.object({
   email: z.string().email('Невалидный email'),
@@ -22,18 +25,23 @@ export function AuthFormSignUp() {
     password: ''
   })
 
+  const navigate = useNavigate()
   const toast = useToast()
-  const { loginMutation } = useAuth()
-  const { mutateAsync: login } = loginMutation
+  const { signupMutation } = useAuth()
+  const { mutateAsync: signUp, isPending } = signupMutation
 
   const handleSubmit = async (payload: FormSchema) => {
-    const { error, data, message } = await login({
+    const {
+      error,
+      data: _data,
+      message
+    } = await signUp({
       email: payload.email,
       password: payload.password
     })
 
     if (error) {
-      toast.add({
+      return toast.add({
         type: 'error',
         message: message
         // message: error.message,
@@ -41,7 +49,16 @@ export function AuthFormSignUp() {
       })
     }
 
-    console.log('Submit:', data)
+    if (!error) {
+      toast.add({
+        type: 'success',
+        message: message
+        // message: error.message,
+        // detail: error.detail
+      })
+
+      navigate(ROUTES.AUTH.SIGN_IN)
+    }
   }
 
   return (
@@ -49,35 +66,33 @@ export function AuthFormSignUp() {
       <Form
         schema={signupSchema}
         options={{ values: formData }}
-        className="space-y-32"
+        className="grid w-full max-w-sm grid-cols-1 gap-8"
         onSubmit={handleSubmit}
       >
-        <div className="space-y-32">
-          <FormField name="email" label="Email">
-            <FormInput />
-          </FormField>
+        <FormField name="email" label="Email">
+          <FormInput />
+        </FormField>
 
-          <FormField name="fullName" label="Ваше имя">
-            <FormInput />
-          </FormField>
+        <FormField name="fullName" label="Имя">
+          <FormInput />
+        </FormField>
 
-          <FormField name="password" label="Пароль">
-            <FormInput type="password" />
-          </FormField>
-        </div>
+        <FormField name="password" label="Пароль">
+          <FormInput type="password" />
+        </FormField>
 
         <div className="flex justify-between">
-          <div className="flex">
-            <Checkbox label="Подписаться на рассылку" name="subscribe" />
-          </div>
+          <Checkbox label="Подписаться на рассылку новостей" name="subscribe" />
         </div>
-        <Button>Create account</Button>
-        <div>
-          <span>Уже есть аккаунт?</span>
-          <a href="/auth/signin" className="ml-5 text-white underline">
-            Войдите
-          </a>
-        </div>
+
+        <Button disabled={isPending} type="submit">
+          Зарегистрироваться
+        </Button>
+
+        <Text>
+          Уже есть аккаунт?{' '}
+          <TextLink to={ROUTES.AUTH.SIGN_IN}>Войдите</TextLink>
+        </Text>
       </Form>
     </section>
   )

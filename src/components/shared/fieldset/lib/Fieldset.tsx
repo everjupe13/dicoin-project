@@ -17,7 +17,7 @@ export function Fieldset({
       {...props}
       className={clsx(
         className,
-        '*:data-[slot=text]:mt-4 [&>*+[data-slot=control]]:mt-24'
+        '*:data-[slot=text]:mt-1 [&>*+[data-slot=control]]:mt-6'
       )}
     />
   )
