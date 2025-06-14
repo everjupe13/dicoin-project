@@ -9,7 +9,7 @@ export function NavbarSection({ className, ...props }: NavbarSectionProps) {
 
   return (
     <LayoutGroup id={id}>
-      <div {...props} className={clsx(className, 'flex items-center gap-12')} />
+      <div {...props} className={clsx(className, 'flex items-center gap-3')} />
     </LayoutGroup>
   )
 }

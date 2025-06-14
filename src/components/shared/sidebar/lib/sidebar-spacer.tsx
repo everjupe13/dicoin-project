@@ -8,7 +8,7 @@ export function SidebarSpacer({ className, ...props }: SidebarSpacerProps) {
     <div
       aria-hidden="true"
       {...props}
-      className={clsx(className, 'mt-32 flex-1')}
+      className={clsx(className, 'mt-8 flex-1')}
     />
   )
 }

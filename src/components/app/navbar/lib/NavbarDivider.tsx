@@ -8,7 +8,7 @@ export function NavbarDivider({ className, ...props }: NavbarDividerProps) {
     <div
       aria-hidden="true"
       {...props}
-      className={clsx(className, 'h-24 w-1 bg-zinc-950/10 dark:bg-white/10')}
+      className={clsx(className, 'h-6 w-px bg-zinc-950/10 dark:bg-white/10')}
     />
   )
 }

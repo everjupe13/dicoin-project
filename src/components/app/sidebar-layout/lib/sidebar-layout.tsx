@@ -19,11 +19,9 @@ export function SidebarLayout({
   const [showSidebar, setShowSidebar] = useState(false)
 
   return (
-    <div className="relative isolate flex min-h-svh w-full bg-zinc-100 [--aside-left-column-width:250px] md:flex-col md:bg-white dark:bg-zinc-950 dark:md:bg-zinc-900">
+    <div className="max-lg:flex-col relative isolate flex min-h-svh w-full bg-white lg:bg-zinc-100 dark:bg-zinc-900 dark:lg:bg-zinc-950">
       {/* Sidebar on desktop */}
-      <div className="fixed inset-y-0 left-0 w-[var(--aside-left-column-width,250px)] md:hidden">
-        {sidebar}
-      </div>
+      <div className="max-lg:hidden fixed inset-y-0 left-0 w-64">{sidebar}</div>
 
       {/* Sidebar on mobile */}
       <MobileSidebar open={showSidebar} close={() => setShowSidebar(false)}>
@@ -31,8 +29,8 @@ export function SidebarLayout({
       </MobileSidebar>
 
       {/* Navbar on mobile */}
-      <header className="hidden items-center px-16 md:flex">
-        <div className="py-10">
+      <header className="flex items-center px-4 lg:hidden">
+        <div className="py-2.5">
           <NavbarItem
             onClick={() => setShowSidebar(true)}
             aria-label="Open navigation"
@@ -44,9 +42,9 @@ export function SidebarLayout({
       </header>
 
       {/* Content */}
-      <main className="flex min-w-0 flex-1 flex-col pb-8 pl-[var(--aside-left-column-width,250px)] pr-8 pt-8 md:min-w-[none] md:pl-0 md:pr-0 md:pt-0">
-        <div className="rounded-8 md:rounded-0 grow bg-white p-40 shadow-sm ring-1 ring-zinc-950/5 md:bg-transparent md:p-24 md:shadow-none md:ring-0 dark:bg-zinc-900 dark:ring-white/10 dark:md:bg-transparent">
-          <div className="mx-auto max-w-[1152px]">{children}</div>
+      <main className="flex flex-1 flex-col pb-2 lg:min-w-0 lg:pl-64 lg:pr-2 lg:pt-2">
+        <div className="lg:rounded-lg lg:shadow-xs grow p-6 lg:bg-white lg:p-10 lg:ring-1 lg:ring-zinc-950/5 dark:lg:bg-zinc-900 dark:lg:ring-white/10">
+          <div className="mx-auto max-w-6xl">{children}</div>
         </div>
       </main>
     </div>

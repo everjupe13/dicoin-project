@@ -18,17 +18,17 @@ export interface MobileSidebarProps {
 
 export function MobileSidebar({ open, close, children }: MobileSidebarProps) {
   return (
-    <Dialog open={open} onClose={close} className="hidden md:block">
+    <Dialog open={open} onClose={close} className="lg:hidden">
       <DialogBackdrop
         transition
-        className="fixed inset-0 bg-black/30 transition data-[closed]:opacity-0 data-[enter]:duration-300 data-[leave]:duration-200 data-[enter]:ease-out data-[leave]:ease-in"
+        className="data-closed:opacity-0 data-enter:duration-300 data-enter:ease-out data-leave:duration-200 data-leave:ease-in fixed inset-0 bg-black/30 transition"
       />
       <DialogPanel
         transition
-        className="fixed inset-y-0 w-full max-w-[320px] p-8 transition duration-300 ease-in-out data-[closed]:-translate-x-full"
+        className="data-closed:-translate-x-full fixed inset-y-0 w-full max-w-80 p-2 transition duration-300 ease-in-out"
       >
-        <div className="rounded-8 flex h-full flex-col bg-white shadow-sm ring-1 ring-zinc-950/5 dark:bg-zinc-900 dark:ring-white/10">
-          <div className="-mb-12 px-16 pt-12">
+        <div className="rounded-lg shadow-xs flex h-full flex-col bg-white ring-1 ring-zinc-950/5 dark:bg-zinc-900 dark:ring-white/10">
+          <div className="-mb-3 px-4 pt-3">
             <CloseButton as={NavbarItem} aria-label="Close navigation">
               <CloseMenuIcon />
             </CloseButton>

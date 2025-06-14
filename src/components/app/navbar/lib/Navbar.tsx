@@ -7,7 +7,7 @@ export function Navbar({ className, ...props }: NavbarProps) {
   return (
     <nav
       {...props}
-      className={clsx(className, 'flex flex-1 items-center gap-16 py-10')}
+      className={clsx(className, 'flex flex-1 items-center gap-4 py-2.5')}
     />
   )
 }

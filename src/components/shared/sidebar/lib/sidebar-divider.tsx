@@ -9,7 +9,7 @@ export function SidebarDivider({ className, ...props }: SidebarDividerProps) {
       {...props}
       className={clsx(
         className,
-        '-mx-16 border-t border-zinc-950/5 md:my-16 dark:border-white/5'
+        'my-4 border-t border-zinc-950/5 lg:-mx-4 dark:border-white/5'
       )}
     />
   )

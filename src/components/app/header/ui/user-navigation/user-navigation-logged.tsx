@@ -3,7 +3,7 @@ import clsx from 'clsx'
 import {
   DropdownMenu,
   DropdownMenuProps
-} from '@/components/shared/dropdown-menu'
+} from '@/components/shared/dropdown-menu-legacy'
 import { User } from '@/shared/types'
 
 export interface UserNavigationLoggedProps {

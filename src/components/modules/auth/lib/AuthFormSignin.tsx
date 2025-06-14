@@ -27,13 +27,12 @@ export function AuthFormSignIn() {
   const { mutateAsync: login, isPending } = loginMutation
 
   const handleSubmit = async (payload: FormSchema) => {
-    const { error, data, message } = await login({
+    const { error, data } = await login({
       email: payload.email,
       password: payload.password
     })
 
-    if (data?.access_token) {
-      localStorage.setItem('accessToken', data.access_token)
+    if (data?.accessToken) {
       location.assign('/')
 
       return
@@ -42,7 +41,7 @@ export function AuthFormSignIn() {
     if (error) {
       return toast.add({
         type: 'error',
-        message: message
+        message: error.message
       })
     }
   }

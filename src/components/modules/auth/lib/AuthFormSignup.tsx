@@ -31,19 +31,16 @@ export function AuthFormSignUp() {
   const { mutateAsync: signUp, isPending } = signupMutation
 
   const handleSubmit = async (payload: FormSchema) => {
-    const {
-      error,
-      data: _data,
-      message
-    } = await signUp({
+    const { error, data: _data } = await signUp({
       email: payload.email,
+      fullName: payload.fullName,
       password: payload.password
     })
 
     if (error) {
       return toast.add({
         type: 'error',
-        message: message
+        message: error.message
         // message: error.message,
         // detail: error.detail
       })
@@ -52,7 +49,7 @@ export function AuthFormSignUp() {
     if (!error) {
       toast.add({
         type: 'success',
-        message: message
+        message: 'Успешная регистрация'
         // message: error.message,
         // detail: error.detail
       })

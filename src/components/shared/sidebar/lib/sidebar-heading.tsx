@@ -9,7 +9,7 @@ export function SidebarHeading({ className, ...props }: SidebarHeadingProps) {
       {...props}
       className={clsx(
         className,
-        'mb-4 px-8 text-xs/6 font-medium text-zinc-500 dark:text-zinc-400'
+        'mb-1 px-2 text-xs/6 font-medium text-zinc-500 dark:text-zinc-400'
       )}
     />
   )

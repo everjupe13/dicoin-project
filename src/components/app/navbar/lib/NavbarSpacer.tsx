@@ -8,7 +8,7 @@ export function NavbarSpacer({ className, ...props }: NavbarSpacerProps) {
     <div
       aria-hidden="true"
       {...props}
-      className={clsx(className, '-ml-16 flex-1')}
+      className={clsx(className, '-ml-4 flex-1')}
     />
   )
 }

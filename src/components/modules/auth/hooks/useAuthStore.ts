@@ -19,7 +19,7 @@ export const useAuthStore = create<UseAuthStore>((set, get) => ({
       return set({ isLoading: false })
     }
 
-    const accessToken = (await localStorage.getItem('accessToken')) || ''
+    const accessToken = (await localStorage.getItem('x-auth-token')) || ''
 
     set({ isAuthed: Boolean(accessToken), isLoading: false, isInited: true })
   }

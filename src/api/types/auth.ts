@@ -4,16 +4,22 @@ export type AuthLoginPayload = {
 }
 
 export type AuthLoginResponse = {
-  refresh_token: string
-  access_token: string
+  refreshToken: string
+  accessToken: string
 }
 
 export type AuthSignupPayload = {
   email: string
+  fullName: string
   password: string
 }
 
 export type AuthSignupResponse = {
-  refresh_token: string
-  access_token: string
+  refreshToken: string
+  accessToken: string
+}
+
+export type AuthRefreshResponse = {
+  refreshToken: string
+  accessToken: string
 }
