@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { useNavigate } from 'react-router'
 import { z } from 'zod'
 
-import { useAuth } from '@/api/modules/auth'
+import { useAuthSignupMutation } from '@/api/modules/auth'
 import { Button } from '@/components/shared/button'
 import { Checkbox } from '@/components/shared/checkbox'
 import { Form, FormField, FormInput } from '@/components/shared/form'
@@ -27,11 +27,10 @@ export function AuthFormSignUp() {
 
   const navigate = useNavigate()
   const toast = useToast()
-  const { signupMutation } = useAuth()
-  const { mutateAsync: signUp, isPending } = signupMutation
+  const { mutateAsync: signup, isPending } = useAuthSignupMutation()
 
   const handleSubmit = async (payload: FormSchema) => {
-    const { error, data: _data } = await signUp({
+    const { error, data: _data } = await signup({
       email: payload.email,
       fullName: payload.fullName,
       password: payload.password

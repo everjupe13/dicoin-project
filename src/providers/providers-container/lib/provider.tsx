@@ -1,6 +1,6 @@
 import { type ReactNode } from 'react'
 
-import { AuthProvider } from '@/providers/auth-provider'
+import { InitializingContainer } from '@/providers/initializing-container'
 import { ReactQueryProvider } from '@/providers/react-query'
 import { ToastProvider } from '@/providers/toast-provider'
 
@@ -12,7 +12,7 @@ export function ProvidersContainer({ children }: ProvidersContainerProps) {
   return (
     <ReactQueryProvider>
       <ToastProvider>
-        <AuthProvider>{children}</AuthProvider>
+        <InitializingContainer>{children}</InitializingContainer>
       </ToastProvider>
     </ReactQueryProvider>
   )

@@ -1,4 +1,4 @@
-export { useAuthStore } from './hooks/useAuthStore'
+export { AuthFormConfirmCode } from './lib/AuthFormConfirmCode'
 export { AuthFormResetPassword } from './lib/AuthFormResetPassword'
 export { AuthFormSignIn } from './lib/AuthFormSignin'
 export { AuthFormSignUp } from './lib/AuthFormSignup'

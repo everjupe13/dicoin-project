@@ -23,3 +23,7 @@ export type AuthRefreshResponse = {
   refreshToken: string
   accessToken: string
 }
+
+export type AuthCheckPermissionResponse = {
+  isAuth: boolean
+}

@@ -1,13 +1,17 @@
 import { useState } from 'react'
 import { z } from 'zod'
 
-import { useAuth } from '@/api/modules/auth'
+import { useAuthLoginMutation } from '@/api/modules/auth'
 import { Button } from '@/components/shared/button'
 import { Checkbox } from '@/components/shared/checkbox'
 import { Form, FormField, FormInput } from '@/components/shared/form'
 import { Strong, Text, TextLink } from '@/components/shared/text'
 import { useToast } from '@/providers/toast-provider'
 import { ROUTES } from '@/shared/const'
+import { textSignIn } from '@/shared/const'
+import { utilLocaleString } from '@/shared/utils/locale-string'
+
+import { AuthFormWrapper } from './AuthFormWrapper'
 
 const loginSchema = z.object({
   email: z.string().email('Невалидный email'),
@@ -23,8 +27,7 @@ export function AuthFormSignIn() {
   })
 
   const toast = useToast()
-  const { loginMutation } = useAuth()
-  const { mutateAsync: login, isPending } = loginMutation
+  const { mutateAsync: login, isPending } = useAuthLoginMutation()
 
   const handleSubmit = async (payload: FormSchema) => {
     const { error, data } = await login({
@@ -47,39 +50,41 @@ export function AuthFormSignIn() {
   }
 
   return (
-    <section>
-      <Form
-        schema={loginSchema}
-        options={{ values: formData }}
-        className="grid w-full max-w-sm grid-cols-1 gap-8"
-        onSubmit={handleSubmit}
-      >
-        <FormField name="email" label="Email">
-          <FormInput />
-        </FormField>
+    <AuthFormWrapper title={utilLocaleString(textSignIn)}>
+      <section>
+        <Form
+          schema={loginSchema}
+          options={{ values: formData }}
+          className="grid w-full max-w-sm grid-cols-1 gap-8"
+          onSubmit={handleSubmit}
+        >
+          <FormField name="email" label="Email">
+            <FormInput />
+          </FormField>
 
-        <FormField name="password" label="Пароль">
-          <FormInput type="password" />
-        </FormField>
+          <FormField name="password" label="Пароль">
+            <FormInput type="password" />
+          </FormField>
 
-        <div className="flex items-center justify-between">
-          <Checkbox label="Запомнить" name="remember" />
+          <div className="flex items-center justify-between">
+            <Checkbox label="Запомнить" name="remember" />
+            <Text>
+              <TextLink to={ROUTES.AUTH.RESET_PASSWORD}>
+                <Strong>Забыли пароль?</Strong>
+              </TextLink>
+            </Text>
+          </div>
+
+          <Button disabled={isPending} type="submit">
+            Вход
+          </Button>
+
           <Text>
-            <TextLink to={ROUTES.AUTH.RESET_PASSWORD}>
-              <Strong>Забыли пароль?</Strong>
-            </TextLink>
+            Еще нет аккаунта?{' '}
+            <TextLink to={ROUTES.AUTH.SIGN_UP}>Создайте</TextLink>
           </Text>
-        </div>
-
-        <Button disabled={isPending} type="submit">
-          Вход
-        </Button>
-
-        <Text>
-          Еще нет аккаунта?{' '}
-          <TextLink to={ROUTES.AUTH.SIGN_UP}>Создайте</TextLink>
-        </Text>
-      </Form>
-    </section>
+        </Form>
+      </section>
+    </AuthFormWrapper>
   )
 }

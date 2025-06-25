@@ -1,6 +1,6 @@
 import { Navigate, Outlet, useLocation } from 'react-router-dom'
 
-import { useAuthStore } from '@/components/modules/auth'
+import { useAuthCheckAuth } from '@/api/modules/auth'
 import { ROUTES, SEARCH_PARAMS } from '@/shared/const'
 
 import { PERSON_ROLES, PersonRole } from '../types'
@@ -45,9 +45,9 @@ export function ProtectedRoutes({
 }: ProtectedRouteProps) {
   const location = useLocation()
 
-  const { isAuthed, isLoading } = useAuthStore()
+  const { data, isLoading } = useAuthCheckAuth()
 
-  const isAllowed = checkAccess(type, isAuthed)
+  const isAllowed = checkAccess(type, data.isAuth)
   const redirectUrl = getNavigateUrl(type, location.pathname, withRedirect)
 
   if (isLoading) {

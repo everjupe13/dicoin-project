@@ -104,7 +104,7 @@ async function makeRequest<T>(
           if (newToken) {
             originalRequest.headers = {
               ...originalRequest.headers,
-              Authorization: `Bearer: ${newToken}`
+              Authorization: `Bearer ${newToken}`
             }
           }
 

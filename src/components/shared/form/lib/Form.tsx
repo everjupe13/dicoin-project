@@ -1,6 +1,6 @@
 import { zodResolver } from '@hookform/resolvers/zod'
 import clsx from 'clsx'
-import { type ReactNode } from 'react'
+import { type ReactNode, useEffect } from 'react'
 import {
   FormProvider,
   type SubmitHandler,
@@ -33,11 +33,11 @@ export function Form<TSchema extends ZodTypeAny>({
   })
 
   // TODO обновление данных формы из пропса
-  // const formValues = methods.watch()
+  const formValues = methods.watch()
 
-  // useEffect(() => {
-  //   console.log(formValues)
-  // }, [formValues])
+  useEffect(() => {
+    console.log(formValues)
+  }, [formValues])
 
   return (
     <FormProvider {...methods}>

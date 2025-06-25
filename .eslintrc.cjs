@@ -43,7 +43,6 @@ module.exports = {
     ],
 
     'no-console': 'warn',
-    curly: 'error',
 
     'unicorn/prevent-abbreviations': 'off',
     'unicorn/filename-case': 'off',
@@ -69,6 +68,6 @@ module.exports = {
     'simple-import-sort/imports': 'error',
     'import/newline-after-import': 'error',
     'simple-import-sort/exports': 'error',
-    'import/first': 'error'
+    'import/first': 'error',
   }
 }

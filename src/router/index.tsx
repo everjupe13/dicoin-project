@@ -9,6 +9,7 @@ import { AuthLayout } from '@/layout/auth'
 import { DefaultLayout } from '@/layout/default'
 import { AboutPage } from '@/pages/AboutPage'
 import { AnalyticsPage } from '@/pages/AnalyticsPage'
+import { CodeConfirmPage } from '@/pages/auth/CodeConfirm'
 import { ResetPasswordPage } from '@/pages/auth/ResetPasswordPage'
 import { SignInPage } from '@/pages/auth/SignInPage'
 import { SignUpPage } from '@/pages/auth/SignUpPage'
@@ -53,6 +54,10 @@ const router = createBrowserRouter(
           <Route
             path={ROUTES.AUTH.RESET_PASSWORD}
             element={<ResetPasswordPage />}
+          />
+          <Route
+            path={ROUTES.AUTH.CONFIRM_CODE}
+            element={<CodeConfirmPage />}
           />
         </Route>
       </Route>

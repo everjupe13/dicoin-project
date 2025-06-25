@@ -1,5 +1,3 @@
-import { FC } from 'react'
-
 import {
   AuthFormResetPassword,
   AuthFormWrapper
@@ -7,7 +5,7 @@ import {
 import { textResetPassword } from '@/shared/const'
 import { utilLocaleString } from '@/shared/utils/locale-string'
 
-export const ResetPasswordPage: FC = () => {
+export function ResetPasswordPage() {
   return (
     <>
       <AuthFormWrapper title={utilLocaleString(textResetPassword)}>
