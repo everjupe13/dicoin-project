@@ -27,5 +27,5 @@ jobs:
       - name: Run Type Check
         run: yarn run type-check
 
-      # - name: Run tests
-      #   run: npm test
+      - name: Run tests
+        run: yarn run test

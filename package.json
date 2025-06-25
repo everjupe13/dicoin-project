@@ -11,7 +11,8 @@
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives",
     "lint:fix": "yarn run lint --fix",
     "type-check": "npx tsc --noEmit",
-    "prepare": "husky"
+    "prepare": "husky",
+    "test": "vitest run"
   },
   "lint-staged": {
     "*.{js,ts,tsx,jsx}": [
@@ -74,7 +75,8 @@
     "tailwindcss": "^4.1.8",
     "typescript": "^5.0.2",
     "vite": "^4.4.5",
-    "vite-plugin-svgr": "^4.3.0"
+    "vite-plugin-svgr": "^4.3.0",
+    "vitest": "^3.2.4"
   },
   "browserslist": {
     "production": [
